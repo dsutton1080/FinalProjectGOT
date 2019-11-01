@@ -3,7 +3,7 @@ CREATE TABLE ForumPosts (
     author_username varchar(255) NOT NULL,
     forum_question_id int UNSIGNED NOT NULL,
     content text NOT NULL,
-    time TIMESTAMP NOT NULL CURRENT_TIME,
+    post_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     FOREIGN KEY (forum_question_id) REFERENCES ForumQuestions (id),
     FOREIGN KEY (author_username) REFERENCES Users (username)
