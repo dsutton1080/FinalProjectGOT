@@ -1,4 +1,4 @@
-FROM mariadb:latest
-ENV MYSQL_ROOT_PASSWORD='password'
-RUN mkdir /setup && cd /setup
+FROM mysql
+ENV MYSQL_ROOT_PASSWORD=password
+RUN mkdir /setup
 COPY . /setup
