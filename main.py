@@ -17,3 +17,8 @@ def login():
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
+
+
+@app.route('home')
+def home():
+    return render_template('homepage.html')
