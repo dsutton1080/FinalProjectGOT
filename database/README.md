@@ -4,7 +4,7 @@
 * MySQL Client Tool
 
 ### Steps:
-1. Navigate to the database directory (this directory) in the repository
+1. Navigate to the FinalProjectGOT/database directory (this directory) in the repository
 2. Run the following command:
 ```bash
 python3 spawn_db.py
