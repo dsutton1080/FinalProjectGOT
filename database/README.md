@@ -25,7 +25,7 @@ mysql -h 127.0.0.1 -P 3306 -uroot -ppassword -e "CREATE DATABASE test;"
 ```bash
 mysql -h 127.0.0.1 -P 3306 -uroot -ppassword test < #.sql
 ```
-                                                         ...where # is in {1,2,3,4,5,6,7}</p>
+where # is in {1,2,3,4,5,6,7}</p>
 8. <p>Navigate back to the FinalProjectGOT/database folder and test the database connection by running:
 ```bash
 python3 connect_test.py
