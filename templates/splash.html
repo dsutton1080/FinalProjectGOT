@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html style="background-image: url({{ url_for('static', filename='splashBackground.jpg') }})" lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href=" {{ url_for('static', filename='splash.css') }} ">
+    <title>LinkUp</title>
+</head>
+<body style="background-image: url({{ url_for('static', filename='splashBackground.jpg') }})" lang="en">
+    <div id="menu" class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+          <a class="navbar-brand js-scroll-trigger" href="#page-top">Mentor/Mentee</a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <input type="text" name="username" id="username" placeholder="Username">
+              </li>
+              <li class="nav-item">
+                  <input type="password" name="password" id="password" placeholder="Password">
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{{ url_for('login') }}">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{{ url_for('signup') }}">SignUp </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div id="container-fluid">
+        <h4 style="margin: 15%;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mi purus, sollicitudin quis
+            nunc sed, faucibus tempus nunc. Ut vestibulum nisl lacinia, efficitur dolor eu, pharetra odio.
+            Nam rhoncus pharetra purus vel sagittis. In metus lacus, cursus at auctor eu, finibus a risus.
+            Duis scelerisque erat quis orci laoreet hendrerit. Phasellus tempor tortor est, quis vestibulum est
+            placerat sed. Quisque leo tellus, finibus sit amet ex eget, laoreet pulvinar purus. Nunc vulputate,
+            lacus non pharetra posuere, risus tellus tincidunt ex, quis aliquet ex risus eu quam. Ut purus ligula,
+            sodales vitae nibh sit amet, interdum condimentum nibh. Nullam enim augue, tempor quis leo ut, molestie
+            tincidunt risus. Suspendisse potenti. Nunc erat lacus, rhoncus ac rutrum eu, laoreet eget lectus.
+            Pellentesque posuere lorem id dolor pharetra, at rhoncus turpis faucibus. Nunc eleifend leo congue
+            lorem suscipit egestas.
+        </h4>
+    </div>
+    <div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </div>
+</body>
+
+<!--<footer>-->
+<!--    <h2>-->
+<!--        Contact Section-->
+<!--    </h2>-->
+<!--</footer>-->
+</html>

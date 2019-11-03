@@ -1,24 +1,19 @@
 from flask import Flask, render_template, url_for
+
 app = Flask(__name__)
 
 
-@app.route("/")
-@app.route("splashScreen")
-def home():
-    return "<h1>At Splash Screen</h1>"
+@app.route('/')
+@app.route('/splash')
+def splash():
+    return render_template('splash.html')
 
-@app.route("/home")
-def home():
-    return "<h1>At Home Page</h1>"
 
-@app.route("/login")
+@app.route('/login')
 def login():
-    return "<h1>At Login Page</h1>"
+    return render_template('login.html')
 
-@app.route("/signup")
+
+@app.route('/signup')
 def signup():
-    return "<h1>At Signup Page</h1>"
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
+    return render_template('signup.html')
