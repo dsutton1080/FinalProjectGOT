@@ -8,6 +8,10 @@ from init import app
 @app.route('/splash', methods=['GET', 'POST'])
 def splash():
     form = LoginForm()
+    if form.validate_on_submit():
+        print("made it here")
+        if form.username != ' ' and form.password != ' ':
+            return redirect('/home')
     return render_template('splash.html', form=form)
 
 
@@ -19,9 +23,41 @@ def login():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = SignupForm()
+    if form.validate_on_submit():
+        if signup_not_empty(form):
+            signup_handler(form)
+            print('signup verified')
+            return redirect('/home')
+        else:
+            print('signup not verefied')
+            return redirect('/signup')
     return render_template('signup.html', form=form)
 
 
 @app.route('/home')
 def home():
     return render_template('homepage.html')
+
+
+def signup_handler(form):
+    f_name = form.first_name.data
+    l_name = form.last_name.data
+    username = form.username.data
+    password = form.password.data
+    password_v = form.password_v.data
+    email = form.email.data
+    state = form.state.data
+    grade = form.grade.data
+    school = form.school.data
+
+
+def signup_not_empty(form):
+    if form.first_name.data and form.last_name.data and form.username.data:
+        print('True')
+        if form.password.data and form.password_v.data and form.email.data:
+            print('True')
+            if form.state.data and form.grade.data and form.school.data:
+                print('True')
+                return True
+    return False
+

@@ -16,18 +16,15 @@
             <i class="fas fa-bars"></i>
           </button>
           {% block content %}
-          <form action="" method="post" novalidate>
-            {{ form.hidden_tag() }}
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    {{ form.username(placeholder="Username") }}
-                </li>
-                <li class="nav-item">
-                    {{ form.password(placeholder="Password") }}
-                </li>
-                <li class="nav-item">
-                    {{ form.submit() }}
+                    <form action="" mthod="POST" novalidate>
+                        {{ form.hidden_tag() }}
+                        {{ form.username(placeholder="Username") }}
+                        {{ form.password(placeholder="Password") }}
+                        {{ form.submit() }}
+                    </form>
                 </li>
               </ul>
             </div>
@@ -44,12 +41,7 @@
                     nunc sed, faucibus tempus nunc. Ut vestibulum nisl lacinia, efficitur dolor eu, pharetra odio.
                     Nam rhoncus pharetra purus vel sagittis. In metus lacus, cursus at auctor eu, finibus a risus.
                     Duis scelerisque erat quis orci laoreet hendrerit. Phasellus tempor tortor est, quis vestibulum est
-                    placerat sed. Quisque leo tellus, finibus sit amet ex eget, laoreet pulvinar purus. Nunc vulputate,
-                    lacus non pharetra posuere, risus tellus tincidunt ex, quis aliquet ex risus eu quam. Ut purus ligula,
-                    sodales vitae nibh sit amet, interdum condimentum nibh. Nullam enim augue, tempor quis leo ut, molestie
-                    tincidunt risus. Suspendisse potenti. Nunc erat lacus, rhoncus ac rutrum eu, laoreet eget lectus.
-                    Pellentesque posuere lorem id dolor pharetra, at rhoncus turpis faucibus. Nunc eleifend leo congue
-                    lorem suscipit egestas.
+                    placerat sed. Quisque leo tellus, finibus sit amet ex eget, laoreet pulvinar purus.
                 </h4>
             </div>
             <div class="col-lg-5" style="margin-top: 10%;">
