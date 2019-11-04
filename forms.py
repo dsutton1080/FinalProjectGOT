@@ -3,10 +3,12 @@ from wtforms import StringField, PasswordField, SelectField, SubmitField, TextFi
 from wtforms.fields.html5 import EmailField
 from constants import STATE_ABBREVS, STATE_NAMES
 
+
 class LoginForm(FlaskForm):
     username = StringField('Username')
     password = PasswordField('Password')
     submit = SubmitField('Sign In')
+
 
 class SignupForm(FlaskForm):
     first_name = StringField('First Name')
@@ -16,7 +18,7 @@ class SignupForm(FlaskForm):
     password = PasswordField('Password')
     password_v = PasswordField('Verify Password')
     school = StringField('School')
-    grade = SelectField('Grade in School', choices= [
+    grade = SelectField('Grade in School', choices=[
         ('hs_fresh', 'High School Freshman'),
         ('hs_soph', 'High School Sophomore'),
         ('hs_jun', 'High School Junior'),

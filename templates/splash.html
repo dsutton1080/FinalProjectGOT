@@ -29,9 +29,6 @@
                 <li class="nav-item">
                     {{ form.submit() }}
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="{{ url_for('signup') }}">SignUp </a>
-                </li>
               </ul>
             </div>
           </form>
@@ -39,19 +36,28 @@
         </div>
       </nav>
     </div>
-    <div id="container-fluid">
-        <h4 style="margin: 15%;">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mi purus, sollicitudin quis
-            nunc sed, faucibus tempus nunc. Ut vestibulum nisl lacinia, efficitur dolor eu, pharetra odio.
-            Nam rhoncus pharetra purus vel sagittis. In metus lacus, cursus at auctor eu, finibus a risus.
-            Duis scelerisque erat quis orci laoreet hendrerit. Phasellus tempor tortor est, quis vestibulum est
-            placerat sed. Quisque leo tellus, finibus sit amet ex eget, laoreet pulvinar purus. Nunc vulputate,
-            lacus non pharetra posuere, risus tellus tincidunt ex, quis aliquet ex risus eu quam. Ut purus ligula,
-            sodales vitae nibh sit amet, interdum condimentum nibh. Nullam enim augue, tempor quis leo ut, molestie
-            tincidunt risus. Suspendisse potenti. Nunc erat lacus, rhoncus ac rutrum eu, laoreet eget lectus.
-            Pellentesque posuere lorem id dolor pharetra, at rhoncus turpis faucibus. Nunc eleifend leo congue
-            lorem suscipit egestas.
-        </h4>
+    <div id="container-fluid" style="margin-left: 15%; margin-right:15%; margin-top:10%; text-align: center;">
+        <div class="row">
+            <div class="col-lg-7">
+                <h4>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mi purus, sollicitudin quis
+                    nunc sed, faucibus tempus nunc. Ut vestibulum nisl lacinia, efficitur dolor eu, pharetra odio.
+                    Nam rhoncus pharetra purus vel sagittis. In metus lacus, cursus at auctor eu, finibus a risus.
+                    Duis scelerisque erat quis orci laoreet hendrerit. Phasellus tempor tortor est, quis vestibulum est
+                    placerat sed. Quisque leo tellus, finibus sit amet ex eget, laoreet pulvinar purus. Nunc vulputate,
+                    lacus non pharetra posuere, risus tellus tincidunt ex, quis aliquet ex risus eu quam. Ut purus ligula,
+                    sodales vitae nibh sit amet, interdum condimentum nibh. Nullam enim augue, tempor quis leo ut, molestie
+                    tincidunt risus. Suspendisse potenti. Nunc erat lacus, rhoncus ac rutrum eu, laoreet eget lectus.
+                    Pellentesque posuere lorem id dolor pharetra, at rhoncus turpis faucibus. Nunc eleifend leo congue
+                    lorem suscipit egestas.
+                </h4>
+            </div>
+            <div class="col-lg-5" style="margin-top: 10%;">
+                <h1>Get started with our program now and begin planning your future and networking with our members.</h1>
+                <a href="{{ url_for('signup') }}"><h4>Register Now</h4></a>
+            </div>
+        </div>
+
     </div>
 </body>
 </html>
