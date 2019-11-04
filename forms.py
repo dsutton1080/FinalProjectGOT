@@ -1,0 +1,30 @@
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SelectField, SubmitField, TextField
+from wtforms.fields.html5 import EmailField
+from constants import STATE_ABBREVS, STATE_NAMES
+
+class LoginForm(FlaskForm):
+    username = StringField('Username')
+    password = PasswordField('Password')
+    submit = SubmitField('Sign In')
+
+class SignupForm(FlaskForm):
+    first_name = StringField('First Name')
+    last_name = StringField('Last Name')
+    username = StringField('Username')
+    email = EmailField('Email')
+    password = PasswordField('Password')
+    password_v = PasswordField('Verify Password')
+    school = StringField('School')
+    grade = SelectField('Grade in School', choices= [
+        ('hs_fresh', 'High School Freshman'),
+        ('hs_soph', 'High School Sophomore'),
+        ('hs_jun', 'High School Junior'),
+        ('hs_sen', 'High School Senior'),
+        ('col_fresh', 'College Freshman'),
+        ('col_soph', 'College Sophomore'),
+        ('col_jun', 'College Junior'),
+        ('col_sen', 'College Senior')
+    ])
+    state = SelectField('State', choices=list(zip(STATE_ABBREVS, STATE_NAMES)))
+    submit = SubmitField('Join Now')

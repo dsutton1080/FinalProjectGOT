@@ -5,8 +5,8 @@ CREATE TABLE Users (
     last_name varchar(255) NOT NULL,
     email varchar(255) NOT NULL,
     school varchar(255),
-    school_grade varchar(255),
-    state varchar(255),
+    school_grade ENUM('freshman', 'sophomore', 'junior', 'senior') NOT NULL,
+    state varchar(255) NOT NULL,
     role ENUM('highschool', 'college') NOT NULL,
     PRIMARY KEY (username)
 );

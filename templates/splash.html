@@ -15,22 +15,27 @@
             Menu
             <i class="fas fa-bars"></i>
           </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                  <input type="text" name="username" id="username" placeholder="Username">
-              </li>
-              <li class="nav-item">
-                  <input type="password" name="password" id="password" placeholder="Password">
-              </li>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{{ url_for('login') }}">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{{ url_for('signup') }}">SignUp </a>
-              </li>
-            </ul>
-          </div>
+          {% block content %}
+          <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    {{ form.username(placeholder="Username") }}
+                </li>
+                <li class="nav-item">
+                    {{ form.password(placeholder="Password") }}
+                </li>
+                <li class="nav-item">
+                    {{ form.submit() }}
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="{{ url_for('signup') }}">SignUp </a>
+                </li>
+              </ul>
+            </div>
+          </form>
+          {% endblock %}
         </div>
       </nav>
     </div>
