@@ -5,8 +5,13 @@
   <title>Game of Threads</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href=" {{ url_for('static', filename='homepage.css') }} ">
-  <link rel="stylesheet" href=" {{ url_for('static', filename='bootstrap.css') }} ">
+
+  <link rel="stylesheet" type="text/css" href="../static/chris.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- These scripts are probably under /static, just went the easier route. -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -39,7 +44,7 @@
     <div class="col-sm-2 sidebar">
       <div class= "mar-top">
       <div class="card">
-        <img class="card-img-top" src=" {{ url_for('static', filename='blank-profile.png') }} " alt="Card Image" style="width:100%">
+        <img class="card-img-top" src="../static/blank-profile.png" alt="Card Image" style="width:100%">
         <div class="card-body">
           <h4 class="card-title"> First Last </h4>
           <p class="card-text"> Hello! I am a ____ at ____. </p>
@@ -50,9 +55,37 @@
     </div>
     <div class="col-sm-8">
       <div class= "mar-top">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <h3> ... </h3>
-        <p> ... </p>
+
+        <div class="chat dark">
+          <img src="../static/blank-profile.png" alt="Avatar" class="rightside">
+          <p> Hey ____! I was matched with you to be my mentor. </p>
+          <span class="time-left"> 5:53pm</span>
+        </div>
+
+        <div class="chat">
+          <img src="../static/blank-profile.png" alt="Avatar">
+          <p> Oh hey ____! Awesome. If there are any questions you have regarding college or future employment, let me know! </p>
+          <span class="time-right"> 6:08pm</span>
+        </div>
+
+        <div class="chat dark">
+          <img src="../static/blank-profile.png" alt="Avatar" class="rightside">
+          <p> Cool! If the region in the first quadrant bounded by the curve y=e^x and x=1 is rotatred about the x-axis, what is the volume of the resulting solid?</p>
+          <span class="time-left"> 7:33pm</span>
+        </div>
+
+        <div class="chat">
+          <img src="../static/blank-profile.png" alt="Avatar">
+          <p> The region being rotated is that under the curve y=e^x between x=0 and x=1. Now dV = pi*r^2 dx = pi * e^(2x) dx </p>
+          <span class="time-right"> 7:59pm</span>
+        </div>
+
+        <div class="chat">
+          <img src="../static/blank-profile.png" alt="Avatar">
+          <p> So the volume is:  [Integral 0 -> 1] e^2x dx =  ( e^(2x) ) / 2 from 0 -> 1 =  (e^2 - 1) / 2  </p>
+          <span class="time-right"> 8:05pm</span>
+        </div>
+
       </div>
     </div>
     <div class="col sidebar">
