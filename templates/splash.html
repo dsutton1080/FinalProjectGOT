@@ -11,25 +11,22 @@
       <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
           <a class="navbar-brand js-scroll-trigger" href="#page-top">Mentor/Mentee</a>
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
-          </button>
-          {% block content %}
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <form action="" mthod="POST" novalidate>
+                    {% block content %}
+                    <form action="{{ url_for('splash') }}" method="post" novalidate>
                         {{ form.hidden_tag() }}
                         {{ form.username(placeholder="Username") }}
                         {{ form.password(placeholder="Password") }}
                         {{ form.submit() }}
                     </form>
+                    {% endblock %}
                 </li>
               </ul>
             </div>
           </form>
-          {% endblock %}
+
         </div>
       </nav>
     </div>
@@ -49,7 +46,6 @@
                 <a href="{{ url_for('signup') }}"><h4>Register Now</h4></a>
             </div>
         </div>
-
     </div>
 </body>
 </html>

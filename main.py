@@ -9,15 +9,19 @@ from init import app
 def splash():
     form = LoginForm()
     if form.validate_on_submit():
-        print("made it here")
-        if form.username != ' ' and form.password != ' ':
+        if login(form):
             return redirect('/home')
+        else:
+            return redirect('/splash')
     return render_template('splash.html', form=form)
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    return render_template('login.html')
+def login(form):
+    username = form.username.data
+    password = form.password.data
+    if username == 'kuedu' and password == 'jayhawks':
+        return True
+    return False
 
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -53,11 +57,9 @@ def signup_handler(form):
 
 def signup_not_empty(form):
     if form.first_name.data and form.last_name.data and form.username.data:
-        print('True')
         if form.password.data and form.password_v.data and form.email.data:
-            print('True')
             if form.state.data and form.grade.data and form.school.data:
-                print('True')
-                return True
+                if form.password.data == form.password_v.data:
+                    return True
     return False
 
