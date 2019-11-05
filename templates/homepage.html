@@ -6,34 +6,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" type="text/css" href="../static/chris.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <!-- These scripts are probably under /static, just went the easier route. -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href=" {{ url_for('static', filename='homepage.css') }} ">
+  <link rel="stylesheet" href=" {{ url_for('static', filename='bootstrap.css') }} ">
 </head>
 <body>
 
 <!-- Navigation toolbar -->
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Change href when refactoring name of file -->
-  <a class="navbar-brand" href="chris.html">Game of Threads</a>
+  <a class="navbar-brand" href="{{ url_for('home') }}">Game of Threads</a>
 
   <!-- Links -->
   <!-- Replace # with file names for href -->
   <ul class = "navbar-nav ml-auto">
     <li class="nav-item">
-      <a class="nav-link" href="#">Link 1</a>
+      <a class="nav-link" href="#">Friends</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link 2</a>
+      <a class="nav-link" href="#">Network</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link 3</a>
+      <a class="nav-link" href="{{ url_for('splash') }}">LogOut</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Log-In</a>
+      <a class="nav-link" href="#">Account</a>
   </ul>
 </nav>
 
@@ -44,7 +40,7 @@
     <div class="col-sm-2 sidebar">
       <div class= "mar-top">
       <div class="card">
-        <img class="card-img-top" src="../img/blank-profile.png" alt="Card Image" style="width:100%">
+        <img class="card-img-top" src="{{ url_for('static', filename='blank-profile.png') }}" alt="Card Image" style="width:100%">
         <div class="card-body">
           <h4 class="card-title"> First Last </h4>
           <p class="card-text"> Hello! I am a ____ at ____. </p>
