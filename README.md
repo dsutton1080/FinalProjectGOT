@@ -14,3 +14,4 @@ A mentor/mentee website to be used between high school and college students for 
 * [SQLAlchemy](https://www.sqlalchemy.org/)
 * [WTForms](https://wtforms.readthedocs.io/en/stable/)
 * [Bootstrap](https://getbootstrap.com/)
+* [Sphinx](https://www.sphinx-doc.org/en/master/index.html)
