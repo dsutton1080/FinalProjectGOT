@@ -1,10 +1,77 @@
+<!-- template from w3schools -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Home</title>
+  <title>Game of Threads</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href=" {{ url_for('static', filename='homepage.css') }} ">
+  <link rel="stylesheet" href=" {{ url_for('static', filename='bootstrap.css') }} ">
 </head>
 <body>
-    <p>This is HomePage</p>
+
+<!-- Navigation toolbar -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Change href when refactoring name of file -->
+  <a class="navbar-brand" href="chris.html">Game of Threads</a>
+
+  <!-- Links -->
+  <!-- Replace # with file names for href -->
+  <ul class = "navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link 2</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link 3</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Log-In</a>
+  </ul>
+</nav>
+
+<div class="page-container">
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 sidebar">
+      <div class= "mar-top">
+      <div class="card">
+        <img class="card-img-top" src=" {{ url_for('static', filename='blank-profile.png') }} " alt="Card Image" style="width:100%">
+        <div class="card-body">
+          <h4 class="card-title"> First Last </h4>
+          <p class="card-text"> Hello! I am a ____ at ____. </p>
+          <a href="#" class="btn btn-primary"> My Profile </a>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class= "mar-top">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <h3> ... </h3>
+        <p> ... </p>
+      </div>
+    </div>
+    <div class="col sidebar">
+      <div class= "mar-top">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <h3> ... </h3>
+        <p> ... </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- bg-dark is color; -->
+<footer class="container-fluid bg-dark">
+  <p> This website was created for our final project for EECS 448: Software Engineering </p>
+  <p> The members involved are: Jace Kline, DeRon Sutton, Chris Hardin, Cedric Starks, Rick Petzold </p>
+</footer>
+
+</div>
+
 </body>
 </html>
