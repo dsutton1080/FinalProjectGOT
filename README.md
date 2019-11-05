@@ -8,6 +8,7 @@ A mentor/mentee website to be used between high school and college students for 
 2. [Full Product Backlog](https://docs.google.com/document/d/14cwSK8Xj_ThxQhAPU8CixIeFdW5hPqGxLE3cRL_0hWY/edit?usp=sharing)
 3. [Retrospective Write-up](https://docs.google.com/document/d/1fWMUTJFGaVZObnmuwut-uP_KIYvae_L6sPcgTjjYeaE/edit?usp=sharing)
 4. [Python Code Documentation](http://htmlpreview.github.io/?https://github.com/dsutton1080/FinalProjectGOT/blob/PROJECT3_beta/docs/build/html/index.html)
+5. [UML Documents and Gantt Chart](https://github.com/dsutton1080/FinalProjectGOT/tree/PROJECT3_beta/UML%20Documentation)
 
 ## Works Cited
 * [Flask](https://github.com/pallets/flask)
