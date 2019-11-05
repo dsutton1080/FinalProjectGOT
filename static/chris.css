@@ -1,0 +1,90 @@
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: relative;
+  padding-top: 20px;
+  background-color: #f1f1f1;
+  height: 100vh;
+}
+
+.mar-top {
+  margin-top: 20px;
+}
+
+.row {
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: .5rem 1rem;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+p.footer{
+  text-align-last: center;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidebar {
+    height: auto;
+    padding: 15px;
+  }
+  .row {height:auto;}
+}
+
+
+/* css for chat boxes */
+.chat {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+/* darker chat box */
+.dark {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+/* Clear floats */
+.chat::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+/* style images */
+.chat img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+/* Style the right image */
+.chat img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+/* Style time text */
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+  float: left;
+  color: #999;
+}
