@@ -1,7 +1,8 @@
 from flask import Flask, render_template, url_for, flash, redirect
 from forms import LoginForm, SignupForm
 
-from init import app
+from init import app, db
+from models import User
 
 
 @app.route('/')
@@ -33,7 +34,7 @@ def signup():
             print('signup verified')
             return redirect('/home')
         else:
-            print('signup not verefied')
+            print('signup not verified')
             return redirect('/signup')
     return render_template('signup.html', form=form)
 
@@ -53,7 +54,12 @@ def signup_handler(form):
     state = form.state.data
     grade = form.grade.data
     school = form.school.data
-
+    new_user = User (first_name = f_name, last_name = l_name,
+                     username = username, password = password,
+                     email = email, state = state, grade = grade,
+                     school = school)
+    db.session.add(new_user)
+    db.session.commit()
 
 def signup_not_empty(form):
     if form.first_name.data and form.last_name.data and form.username.data:
