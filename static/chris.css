@@ -1,3 +1,50 @@
-.card {
-  margin: 20px;
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+
+
+.sidebar {
+  position: relative;
+  padding-top: 20px;
+  background-color: #f1f1f1;
+  height: 100vh;
+}
+.mar-top {
+  margin-top: 20px;
+}
+
+.row {
+
+
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+
+  padding: .5rem 1rem;
+
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+
+}
+
+p.footer{
+  text-align-last: center;
+}
+
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidebar {
+    height: auto;
+    padding: 15px;
+  }
+  .row {height:auto;}
 }
