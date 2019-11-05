@@ -5,12 +5,18 @@ from constants import STATE_ABBREVS, STATE_NAMES
 
 
 class LoginForm(FlaskForm):
+    """
+    This class inherits from the FlaskForm class in Flask. This defines the fields to be received in a Login POST request from the default page.
+    """
     username = StringField('Username')
     password = PasswordField('Password')
     submit = SubmitField('Sign In')
 
 
 class SignupForm(FlaskForm):
+    """
+    This class inherits from the FlaskForm class in Flask. This defines the fields to be received in a Login POST request from the Sign Up page.
+    """
     first_name = StringField('First Name')
     last_name = StringField('Last Name')
     username = StringField('Username')
