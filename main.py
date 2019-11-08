@@ -1,9 +1,7 @@
 from flask import Flask, render_template, url_for, flash, redirect
 from forms import LoginForm, SignupForm
-
-from init import app, db
-from models import User
-
+from db_setup import conn, curs
+from init import app
 
 @app.route('/')
 @app.route('/splash', methods=['GET', 'POST'])

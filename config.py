@@ -5,5 +5,5 @@ class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'GameOfThreads'
     FLASK_APP = os.environ.get('FLASK_APP') or 'main.py'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'sqlite:///' + os.path.join(basedir, 'app.db')
+        'sqlite:///' + os.path.join(basedir, 'dev.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
