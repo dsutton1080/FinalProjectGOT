@@ -71,3 +71,7 @@ class Follow(db.Model):
 
     def __repr__(self):
         return '<Follow ID {} ({} -> {})>'.format(self.id, self.follower_username, self.following_username)
+
+
+db.create_all()
+db.session.commit()

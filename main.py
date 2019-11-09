@@ -1,7 +1,18 @@
 from flask import Flask, render_template, url_for, flash, redirect
 from forms import LoginForm, SignupForm
 from db_setup import conn, curs
-from init import app
+from init import app, db
+from db_models import *
+
+@app.shell_context_processor
+def make_shell_context():
+    return {'db': db, 
+            'User': User, 
+            'ForumQuestion': ForumQuestion,
+            'ForumPost' : ForumPost,
+            'Message' : Message,
+            'UserPost' : UserPost,
+            'Follow' : Follow }
 
 @app.route('/')
 @app.route('/splash', methods=['GET', 'POST'])
