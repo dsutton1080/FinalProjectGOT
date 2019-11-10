@@ -18,3 +18,9 @@ A mentor/mentee website to be used between high school and college students for 
 * [WTForms](https://wtforms.readthedocs.io/en/stable/)
 * [Bootstrap](https://getbootstrap.com/)
 * [Sphinx](https://www.sphinx-doc.org/en/master/index.html)
+
+## Install notes
+* pip install Flask
+* pip install Flask-WTF
+* pip install Flask-SQLAlchemy
+* pip install Flask-Migrate
