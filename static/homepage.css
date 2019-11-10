@@ -32,14 +32,6 @@ p.footer{
   text-align-last: center;
 }
 
-/* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
-  .sidebar {
-    height: auto;
-    padding: 15px;
-  }
-  .row {height:auto;}
-}
 
 
 /* css for chat boxes */
@@ -87,4 +79,13 @@ p.footer{
 .time-left {
   float: left;
   color: #999;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidebar {
+    height: auto;
+    padding: 15px;
+  }
+  .row {height:auto;}
 }
