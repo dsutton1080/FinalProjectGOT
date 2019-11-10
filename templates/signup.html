@@ -21,7 +21,10 @@
                 <label><strong>{{ form.password.label }} (8 or more characters)</strong></label><br>
                     {{ form.password() }}<br><br>
                 <label><strong>{{ form.password_v.label }}</strong></label><br>
-                    {{ form.password_v() }}<br><br>
+                    {{ form.password_v() }} <br>
+                    {% for error in form.password.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}<br><br>
                 <label><strong>{{ form.school.label }}</strong></label><br>
                     {{ form.school() }}<br><br>
                 <label><strong>{{ form.grade.label }}</strong></label><br>
