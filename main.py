@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for, flash, redirect
 from forms import LoginForm, SignupForm
 from db_setup import conn, curs
 from init import app, db
+from flask_login import current_user, login_user, logout_user
 from db_models import *
 
 @app.shell_context_processor
@@ -17,22 +18,25 @@ def make_shell_context():
 @app.route('/')
 @app.route('/splash', methods=['GET', 'POST'])
 def splash():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
-        if login(form):
-            return redirect('/home')
-        else:
-            return redirect('/splash')
+        user = User.query.filter_by(username=form.username.data).first()
+        if user is None or not user.test_password(form.password.data):
+            flash('Username or Password is incorrect')
+            return redirect(url_for('splash'))
+        user.authenticated = True
+        login_user(user)
+        return redirect(url_for('home'))
     return render_template('splash.html', form=form)
 
-
-def login(form):
-    username = form.username.data
-    password = form.password.data
-    if username == 'kuedu' and password == 'jayhawks':
-        return True
-    return False
-
+@app.route('/logout')
+def logout():
+    user = current_user
+    user.authenticated = False
+    logout_user()
+    return redirect(url_for('splash'))
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():

@@ -1,5 +1,7 @@
 from datetime import datetime
-from init import db
+from init import db, login_manager
+
+
 
 class User(db.Model):
     __tablename__ = 'Users'
@@ -15,9 +17,28 @@ class User(db.Model):
     forum_questions = db.relationship("ForumQuestion", backref='author', lazy='dynamic')
     forum_posts = db.relationship("ForumPost", backref='author', lazy='dynamic')
     user_posts = db.relationship("UserPost", backref='author', lazy='dynamic')
+    authenticated = db.Column(db.Boolean, default=False)
+
+    def is_active(self):
+        return True
+
+    def get_id(self):
+        return self.username
+
+    def is_authenticated(self):
+        return self.authenticated
+
+    def is_anonymous(self):
+        return False
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
+
+    def test_password(self, password):
+        if password == self.password:
+            return True
+        return False
+
 
 class ForumQuestion(db.Model):
     __tablename__ = 'ForumQuestions'
@@ -30,6 +51,7 @@ class ForumQuestion(db.Model):
     def __repr__(self):
         return '<ForumQuestion {}>'.format(self.id)
 
+
 class ForumPost(db.Model):
     __tablename__ = 'ForumPosts'
     id = db.Column(db.Integer, primary_key=True)
@@ -40,6 +62,7 @@ class ForumPost(db.Model):
 
     def __repr__(self):
         return '<ForumPost {}>'.format(self.id)
+
 
 class Message(db.Model):
     __tablename__ = 'Messages'
@@ -52,6 +75,7 @@ class Message(db.Model):
     def __repr__(self):
         return '<Message ID {} ({} -> {})>'.format(self.id, self.sender_username, self.receiver_username)
 
+
 class UserPost(db.Model):
     __tablename__ = 'UserPosts'
     id = db.Column(db.Integer, primary_key=True, nullable=False)
@@ -62,6 +86,7 @@ class UserPost(db.Model):
     def __repr__(self):
         return '<UserPost {} by {}>'.format(self.id, self.author_username)
 
+
 class Follow(db.Model):
     __tablename__ = 'Follows'
     id = db.Column(db.Integer, primary_key=True, nullable=False)
@@ -71,6 +96,13 @@ class Follow(db.Model):
 
     def __repr__(self):
         return '<Follow ID {} ({} -> {})>'.format(self.id, self.follower_username, self.following_username)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    if user_id is not None:
+        return User.query.get(user_id)
+    return None
 
 
 db.create_all()
