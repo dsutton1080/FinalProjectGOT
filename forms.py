@@ -1,7 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SelectField, SubmitField, TextField
+from wtforms import StringField, PasswordField, SelectField, SubmitField
+from wtforms.validators import DataRequired, EqualTo, Length, ValidationError
 from wtforms.fields.html5 import EmailField
 from constants import STATE_ABBREVS, STATE_NAMES
+from db_models import *
 
 
 class LoginForm(FlaskForm):
@@ -21,7 +23,12 @@ class SignupForm(FlaskForm):
     last_name = StringField('Last Name')
     username = StringField('Username')
     email = EmailField('Email')
-    password = PasswordField('Password')
+    password = PasswordField(
+        'Password', validators=[
+            DataRequired(),
+            EqualTo('password_v', "Passwords must match."),
+            Length(min=8)]
+    )
     password_v = PasswordField('Verify Password')
     school = StringField('School')
     grade = SelectField('Grade in School', choices=[
@@ -36,3 +43,9 @@ class SignupForm(FlaskForm):
     ])
     state = SelectField('State', choices=list(zip(STATE_ABBREVS, STATE_NAMES)))
     submit = SubmitField('Join Now')
+
+    def validate_username(self, username):
+        user = User.query.filter_by(username=username.data).first()
+        if user is not None:
+            raise ValidationError('Username already exists.')
+
