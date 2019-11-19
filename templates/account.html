@@ -15,7 +15,21 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Change href when refactoring name of file -->
   <a class="navbar-brand" href="{{ url_for('home') }}">Game of Threads</a>
+
+  <!-- Links -->
+  <!-- Replace # with file names for href -->
   <ul class = "navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Friends</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Network</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('logout') }}">LogOut</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Account</a>
   </ul>
 </nav>
 
@@ -25,54 +39,52 @@
   <div class="row">
     <div class="col-sm-2 sidebar">
       <div class= "mar-top">
+          <br>
       </div>
     </div>
 
     <div class="col-sm-8">
       <div class= "mar-top">
-        <div class="chat dark">
-            <h3>Start Your Journey</h3>
         {% block content %}
         <form action="" method="post" novalidate>
                 {{ form.hidden_tag() }}
                 <label><strong>{{ form.first_name.label }}</strong></label><br>
-                    {{ form.first_name() }}<br><br>
+                    {{ form.first_name(placeholder = "TestFName") }}<br><br>
                 <label><strong>{{ form.last_name.label }}</strong></label><br>
-                    {{ form.last_name() }}<br><br>
+                    {{ form.last_name(placeholder = "TestLName") }}<br><br>
                 <label><strong>{{ form.username.label }}</strong></label><br>
-                    {{ form.username() }} <br>
+                    {{ form.username(placeholder = "TestUser") }} <br>
                      {% for error in form.username.errors %}
                         <span style="color: red;">[{{ error }}]</span>
                     {% endfor %}<br>
                 <label><strong>{{ form.email.label }}</strong></label><br>
-                    {{ form.email() }}<br><br>
+                    {{ form.email(placeholder = "TestEmail") }}<br><br>
                 <label><strong>{{ form.password.label }} (8 or more characters)</strong></label><br>
-                    {{ form.password() }}<br>
+                    {{ form.password(placeholder = "TestPass") }}<br>
                     {% for error in form.password.errors %}
                         <span style="color: red;">[{{ error }}]</span><br>
                     {% endfor %}<br>
-                <label><strong>{{ form.password_v.label }}</strong></label><br>
-                    {{ form.password_v() }}<br><br>
                 <label><strong>{{ form.school.label }}</strong></label><br>
-                    {{ form.school() }}<br><br>
+                    {{ form.school(placeholder = "TestState") }}<br><br>
                 <label><strong>{{ form.grade.label }}</strong></label><br>
                     {{ form.grade() }}<br><br>
                 <label><strong>{{ form.state.label }}</strong></label><br>
                     {{ form.state() }}<br><br>
-                {{ form.submit() }}
+                {{ form.submit(value = "Update") }}
             </form>
         {% endblock %}
-        </div>
       </div>
     </div>
 
     <div class="col sidebar">
+        <br>
     </div>
   </div>
 </div>
 
 <!-- bg-dark is color; -->
 <footer class="container-fluid bg-dark">
+    <br>
 </footer>
 
 </div>

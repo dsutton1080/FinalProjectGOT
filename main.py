@@ -66,6 +66,12 @@ def home():
     return render_template('homepage.html')
 
 
+@app.route('/account', methods=['GET', 'POST'])
+def account():
+    form = SignupForm()
+    return render_template('account.html', form=form)
+
+
 def signup_handler(form):
     """
     Processes the POST request of a sign up form and adds a user to the database
