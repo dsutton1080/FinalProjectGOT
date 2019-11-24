@@ -1,40 +1,7 @@
-<!-- template from w3schools -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Game of Threads</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "base.html" %}
 
-  <link rel="stylesheet" href=" {{ url_for('static', filename='homepage.css') }} ">
-  <link rel="stylesheet" href=" {{ url_for('static', filename='bootstrap.css') }} ">
-</head>
-<body>
 
-<!-- Navigation toolbar -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <!-- Change href when refactoring name of file -->
-  <a class="navbar-brand" href="{{ url_for('home') }}">Game of Threads</a>
-
-  <!-- Links -->
-  <!-- Replace # with file names for href -->
-  <ul class = "navbar-nav ml-auto">
-    <li class="nav-item">
-      <a class="nav-link" href="#">Friends</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Network</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{{ url_for('logout') }}">LogOut</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Account</a>
-  </ul>
-</nav>
-
-<div class="page-container">
-
+{% block page_content %}
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-2 sidebar">
@@ -45,27 +12,25 @@
 
     <div class="col-sm-8">
       <div class= "mar-top">
+        <h3>Update Account Information</h3><br><br>
         {% block content %}
         <form action="" method="post" novalidate>
                 {{ form.hidden_tag() }}
                 <label><strong>{{ form.first_name.label }}</strong></label><br>
-                    {{ form.first_name(placeholder = "TestFName") }}<br><br>
+                    {{ form.first_name(value = current_user.first_name) }}<br><br>
                 <label><strong>{{ form.last_name.label }}</strong></label><br>
-                    {{ form.last_name(placeholder = "TestLName") }}<br><br>
-                <label><strong>{{ form.username.label }}</strong></label><br>
-                    {{ form.username(placeholder = "TestUser") }} <br>
-                     {% for error in form.username.errors %}
-                        <span style="color: red;">[{{ error }}]</span>
-                    {% endfor %}<br>
+                    {{ form.last_name(value = current_user.last_name) }}<br><br>
                 <label><strong>{{ form.email.label }}</strong></label><br>
-                    {{ form.email(placeholder = "TestEmail") }}<br><br>
-                <label><strong>{{ form.password.label }} (8 or more characters)</strong></label><br>
-                    {{ form.password(placeholder = "TestPass") }}<br>
-                    {% for error in form.password.errors %}
+                    {{ form.email(value = current_user.email) }}<br><br>
+                <label><strong>New Password</strong></label><br>
+                    {{ form.new_password() }}<br>
+                    {% for error in form.new_password.errors %}
                         <span style="color: red;">[{{ error }}]</span><br>
                     {% endfor %}<br>
+                <label><strong>Verify New Password</strong></label><br>
+                    {{ form.new_password_v() }}<br>
                 <label><strong>{{ form.school.label }}</strong></label><br>
-                    {{ form.school(placeholder = "TestState") }}<br><br>
+                    {{ form.school(value = current_user.school) }}<br><br>
                 <label><strong>{{ form.grade.label }}</strong></label><br>
                     {{ form.grade() }}<br><br>
                 <label><strong>{{ form.state.label }}</strong></label><br>
@@ -81,13 +46,4 @@
     </div>
   </div>
 </div>
-
-<!-- bg-dark is color; -->
-<footer class="container-fluid bg-dark">
-    <br>
-</footer>
-
-</div>
-
-</body>
-</html>
+{% endblock %}

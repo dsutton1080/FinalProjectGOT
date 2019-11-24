@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Game of Threads</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href=" {{ url_for('static', filename='homepage.css') }} ">
+  <link rel="stylesheet" href=" {{ url_for('static', filename='bootstrap.css') }} ">
+</head>
+<body>
+
+<!-- Navigation toolbar -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Change href when refactoring name of file -->
+  <a class="navbar-brand" href="{{ url_for('home') }}">Mentoring Website</a>
+
+  <!-- Links -->
+  <!-- Replace # with file names for href -->
+  <ul class = "navbar-nav ml-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+      </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Friends</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Search People</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('account') }}">Account</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="page-container">
+{% block page_content %}{% endblock %}
+
+<!-- bg-dark is color;
+<footer class="container-fluid bg-dark" id="credits-footer">
+    <p> This website was created for our final project for EECS 448: Software Engineering </p>
+    <p> The members involved are: Jace Kline, DeRon Sutton, Chris Hardin, Cedric Starks, Rick Petzold </p>
+</footer> -->
+</div>
+
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 from datetime import datetime
-from init import db, login_manager
+from init import db, login
 
 
 
@@ -7,8 +7,8 @@ class User(db.Model):
     __tablename__ = 'Users'
     first_name = db.Column(db.String(64), index=True, nullable=False)
     last_name = db.Column(db.String(64), index=True, nullable=False)
-    username = db.Column(db.String(64), index=True, primary_key=True, unique=True, nullable=False)
-    email = db.Column(db.String(120), index=True, unique=True, nullable=False)
+    username = db.Column(db.String(64), index=True, unique=True, nullable=False)
+    email = db.Column(db.String(120), index=True, unique=True, primary_key=True, nullable=False)
     password = db.Column(db.String(128), nullable=False)
     school = db.Column(db.String(128))
     grade = db.Column(db.String(64))
@@ -32,7 +32,7 @@ class User(db.Model):
         return False
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return '<User username={}>'.format(self.username)
 
     def test_password(self, password):
         if password == self.password:
@@ -97,12 +97,6 @@ class Follow(db.Model):
     def __repr__(self):
         return '<Follow ID {} ({} -> {})>'.format(self.id, self.follower_username, self.following_username)
 
-
-@login_manager.user_loader
-def load_user(user_id):
-    if user_id is not None:
-        return User.query.get(user_id)
-    return None
 
 
 db.create_all()

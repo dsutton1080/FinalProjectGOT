@@ -15,7 +15,7 @@
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     {% block content %}
-                    <form action="{{ url_for('splash') }}" method="post" novalidate>
+                    <form method="post" novalidate>
                         {{ form.hidden_tag() }}
                         {{ form.username(placeholder="Username") }}
                         {{ form.password(placeholder="Password") }}
@@ -25,8 +25,6 @@
                 </li>
               </ul>
             </div>
-          </form>
-
         </div>
       </nav>
     </div>
