@@ -77,29 +77,29 @@ def account():
     return render_template('account.html', form=form)
 
 
-@app.route('/testsuite' methods=['GET', 'POST'])
-@login_required
-def testsuite():
-    pass
+# @app.route('/testsuite', methods=['GET', 'POST'])
+# @login_required
+# def testsuite():
+#     pass
 
-@app.route('/friends' methods=['GET', 'POST'])
-@login_required
-def friends():
-    pass
+# @app.route('/friends', methods=['GET', 'POST'])
+# @login_required
+# def friends():
+#     pass
 
-@app.route('/profile' methods=['GET', 'POST'])
-@login_required
-def profile():
-    pass
+# @app.route('/profile', methods=['GET', 'POST'])
+# @login_required
+# def profile():
+#     pass
 
-@app.route('/forums' methods=['GET', 'POST'])
-@login_required
-def forums():
-    pass
+# @app.route('/forums', methods=['GET', 'POST'])
+# @login_required
+# def forums():
+#     pass
 
-@app.route('/messages' methods=['GET', 'POST'])
-@login_required
-def messages():
-    pass
+# @app.route('/messages', methods=['GET', 'POST'])
+# @login_required
+# def messages():
+#     pass
 
 

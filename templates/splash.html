@@ -29,6 +29,17 @@
       </nav>
     </div>
     <div id="container-fluid" style="margin-left: 15%; margin-right:15%; margin-top:10%; text-align: center;">
+      <div class="flashed-message-box">
+        {% with msgs = get_flashed_messages(with_categories=true) %}
+          {% if msgs %}
+            <ul>
+            {% for category, msg in msgs %}
+              <li><div class="flash-msg {{ category }}">{{ msg }}</div></li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+      </div>
         <div class="row">
             <div class="col-lg-7">
                 <h4>
