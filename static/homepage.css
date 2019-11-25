@@ -3,6 +3,22 @@
   min-height: 100vh;
 }
 
+.flash-msg {
+  width: 50%;
+  padding: .5rem 1rem;
+  align-content: center;
+  color: green;
+  size: 40px;
+}
+
+.flash-msg warning {
+  color: red;
+}
+
+.flash-msg error {
+  color: red;
+}
+
 .sidebar {
   position: relative;
   padding-top: 20px;

@@ -72,10 +72,34 @@ def home():
 def account():
     form = UpdateAccountForm(grade=current_user.grade, state=current_user.state)
     if form.validate_on_submit():
-        #account_update_handler(form)
+        update_account_handler(form)
         return redirect('/account')
-    else:
-        return redirect('/home')
     return render_template('account.html', form=form)
+
+
+@app.route('/testsuite' methods=['GET', 'POST'])
+@login_required
+def testsuite():
+    pass
+
+@app.route('/friends' methods=['GET', 'POST'])
+@login_required
+def friends():
+    pass
+
+@app.route('/profile' methods=['GET', 'POST'])
+@login_required
+def profile():
+    pass
+
+@app.route('/forums' methods=['GET', 'POST'])
+@login_required
+def forums():
+    pass
+
+@app.route('/messages' methods=['GET', 'POST'])
+@login_required
+def messages():
+    pass
 
 

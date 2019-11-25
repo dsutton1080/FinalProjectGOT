@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Game of Threads</title>
+  <title>Mentoring Website</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,6 +18,11 @@
   <!-- Links -->
   <!-- Replace # with file names for href -->
   <ul class = "navbar-nav ml-auto">
+    {% if current_user.username == "admin" %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('testsuite') }}">Test Suite</a>
+      </li>
+    {% endif %}
     <li class="nav-item">
         <a class="nav-link" href="{{ url_for('home') }}">Home</a>
       </li>
@@ -35,6 +40,18 @@
     </li>
   </ul>
 </nav>
+
+<div class="flashed-message-box">
+  {% with msgs = get_flashed_messages(with_categories=true) %}
+    {% if msgs %}
+      <ul>
+      {% for category, msg in msgs %}
+        <li><div class="flash-msg {{ category }}">{{ msg }}</div></li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+</div>
 
 <div class="page-container">
 {% block page_content %}{% endblock %}

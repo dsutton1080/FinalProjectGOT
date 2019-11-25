@@ -23,12 +23,12 @@
                 <label><strong>{{ form.email.label }}</strong></label><br>
                     {{ form.email(value = current_user.email) }}<br><br>
                 <label><strong>New Password</strong></label><br>
-                    {{ form.new_password() }}<br>
+                    {{ form.new_password(value=current_user.password) }}<br>
                     {% for error in form.new_password.errors %}
                         <span style="color: red;">[{{ error }}]</span><br>
                     {% endfor %}<br>
                 <label><strong>Verify New Password</strong></label><br>
-                    {{ form.new_password_v() }}<br>
+                    {{ form.new_password_v(value=current_user.password) }}<br><br>
                 <label><strong>{{ form.school.label }}</strong></label><br>
                     {{ form.school(value = current_user.school) }}<br><br>
                 <label><strong>{{ form.grade.label }}</strong></label><br>
