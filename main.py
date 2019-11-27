@@ -77,10 +77,10 @@ def account():
     return render_template('account.html', form=form)
 
 
-# @app.route('/testsuite', methods=['GET', 'POST'])
-# @login_required
-# def testsuite():
-#     pass
+@app.route('/testsuite', methods=['GET', 'POST'])
+@login_required
+def testsuite():
+    pass
 
 # @app.route('/friends', methods=['GET', 'POST'])
 # @login_required

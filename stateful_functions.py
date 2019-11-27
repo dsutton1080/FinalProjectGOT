@@ -4,6 +4,7 @@ from db_setup import conn, curs
 from init import app, db, login
 from db_models import *
 from flask_login import current_user
+from sqlalchemy import desc
 
 @login.user_loader
 def load_user(user_id):
@@ -51,3 +52,6 @@ def update_account_handler(form):
 def is_distinct_username(uname):
     user = User.query.get(username=uname).first()
     return (user is None)
+
+def get_messages(sender_username, receiver_username):
+    return list(db.session.query(Message).filter_by(sender_username=sender_username).filter_by(receiver_username=receiver_username).order_by(desc(Message.id)))
