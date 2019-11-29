@@ -15,6 +15,21 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Sign In')
 
 
+class PostForm(FlaskForm):
+    content = StringField('Create a New Post')
+    submit = SubmitField('Make Post')
+
+
+class MessageForm(FlaskForm):
+    message = StringField()
+    submit = SubmitField('Send')
+
+
+class CommentForm(FlaskForm):
+    comment = StringField('')
+    submit = SubmitField('Add Comment')
+
+
 class SignupForm(FlaskForm):
     """
     This class inherits from the FlaskForm class in Flask. This defines the fields to be received in a Login POST request from the Sign Up page.

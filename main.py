@@ -5,15 +5,17 @@ from init import app, db
 from flask_login import current_user, login_user, logout_user
 from db_models import *
 
+
 @app.shell_context_processor
 def make_shell_context():
-    return {'db': db, 
-            'User': User, 
+    return {'db': db,
+            'User': User,
             'ForumQuestion': ForumQuestion,
-            'ForumPost' : ForumPost,
-            'Message' : Message,
-            'UserPost' : UserPost,
-            'Follow' : Follow }
+            'ForumPost': ForumPost,
+            'Message': Message,
+            'UserPost': UserPost,
+            'Follow': Follow}
+
 
 @app.route('/')
 @app.route('/splash', methods=['GET', 'POST'])
@@ -31,12 +33,14 @@ def splash():
         return redirect(url_for('home'))
     return render_template('splash.html', form=form)
 
+
 @app.route('/logout')
 def logout():
     user = current_user
     user.authenticated = False
     logout_user()
     return redirect(url_for('splash'))
+
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -63,7 +67,8 @@ def home():
     This is a procedure defining the control flow on the home page of the website.
     :return: An HTML response to the client
     """
-    return render_template('homepage.html')
+    form = ForumPost()
+    return render_template('homepage.html', form=form)
 
 
 @app.route('/account', methods=['GET', 'POST'])
@@ -87,12 +92,13 @@ def signup_handler(form):
     state = form.state.data
     grade = form.grade.data
     school = form.school.data
-    new_user = User (first_name = f_name, last_name = l_name,
-                     username = username, password = password,
-                     email = email, state = state, grade = grade,
-                     school = school)
+    new_user = User(first_name=f_name, last_name=l_name,
+                    username=username, password=password,
+                    email=email, state=state, grade=grade,
+                    school=school)
     db.session.add(new_user)
     db.session.commit()
+
 
 def signup_not_empty(form):
     """
@@ -106,4 +112,3 @@ def signup_not_empty(form):
                 if form.password.data == form.password_v.data:
                     return True
     return False
-

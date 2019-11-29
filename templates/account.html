@@ -1,43 +1,10 @@
-<!-- template from w3schools -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Game of Threads</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "base.html" %}
 
-  <link rel="stylesheet" href=" {{ url_for('static', filename='homepage.css') }} ">
-  <link rel="stylesheet" href=" {{ url_for('static', filename='bootstrap.css') }} ">
-</head>
-<body>
 
-<!-- Navigation toolbar -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <!-- Change href when refactoring name of file -->
-  <a class="navbar-brand" href="{{ url_for('home') }}">Game of Threads</a>
-
-  <!-- Links -->
-  <!-- Replace # with file names for href -->
-  <ul class = "navbar-nav ml-auto">
-    <li class="nav-item">
-      <a class="nav-link" href="#">Friends</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Network</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{{ url_for('logout') }}">LogOut</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Account</a>
-  </ul>
-</nav>
-
-<div class="page-container">
-
+{% block page_content %}
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-2 sidebar">
+    <div class="col-sm-1 sidebar">
       <div class= "mar-top">
           <br>
       </div>
@@ -45,32 +12,85 @@
 
     <div class="col-sm-8">
       <div class= "mar-top">
+        <!-- This is the dynamic tab section -->
+
+        <div class="col-sm-12" align="center"> <h3>Update Account Information</h3><br></div>
         {% block content %}
+
         <form action="" method="post" novalidate>
                 {{ form.hidden_tag() }}
-                <label><strong>{{ form.first_name.label }}</strong></label><br>
-                    {{ form.first_name(placeholder = "TestFName") }}<br><br>
-                <label><strong>{{ form.last_name.label }}</strong></label><br>
-                    {{ form.last_name(placeholder = "TestLName") }}<br><br>
-                <label><strong>{{ form.username.label }}</strong></label><br>
-                    {{ form.username(placeholder = "TestUser") }} <br>
-                     {% for error in form.username.errors %}
-                        <span style="color: red;">[{{ error }}]</span>
-                    {% endfor %}<br>
-                <label><strong>{{ form.email.label }}</strong></label><br>
-                    {{ form.email(placeholder = "TestEmail") }}<br><br>
-                <label><strong>{{ form.password.label }} (8 or more characters)</strong></label><br>
-                    {{ form.password(placeholder = "TestPass") }}<br>
-                    {% for error in form.password.errors %}
-                        <span style="color: red;">[{{ error }}]</span><br>
-                    {% endfor %}<br>
-                <label><strong>{{ form.school.label }}</strong></label><br>
-                    {{ form.school(placeholder = "TestState") }}<br><br>
-                <label><strong>{{ form.grade.label }}</strong></label><br>
-                    {{ form.grade() }}<br><br>
-                <label><strong>{{ form.state.label }}</strong></label><br>
-                    {{ form.state() }}<br><br>
-                {{ form.submit(value = "Update") }}
+                <div class="form-group row">
+                    <div class="col-sm-1"></div>
+                    <label  class="col-sm-2 col-form-label col-form-label-lg" >{{ form.first_name.label }}</label>
+                    <div class="col-sm-8">
+                        {{ form.first_name(value = current_user.first_name, class="form-control") }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-1"></div>
+                    <label  class="col-sm-2 col-form-label col-form-label-lg">{{ form.last_name.label }}</label>
+                    <div class="col-sm-8">
+                        {{ form.last_name(value = current_user.last_name, class="form-control") }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-1"></div>
+                    <label  class="col-sm-2 col-form-label col-form-label-lg">{{ form.email.label }}</label>
+                    <div class="col-sm-8">
+                        {{ form.email(value = current_user.email, class="form-control") }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-1"></div>
+                    <label  class="col-sm-2 col-form-label col-form-label-lg">New password</label>
+                    <div class="col-sm-8">
+                        {{ form.password(value=current_user.password, class="form-control") }}
+                        {% for error in form.password.errors %}
+                            <span style="color: red;">[{{ error }}]</span><br>
+                        {% endfor %}<br>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-1"></div>
+                    <label  class="col-sm-2 col-form-label col-form-label-lg">Verify password</label>
+                    <div class="col-sm-8">
+                        {{ form.password_v(value=current_user.password, class="form-control") }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-1"></div>
+                    <label  class="col-sm-2 col-form-label col-form-label-lg">{{ form.school.label }}</label>
+                    <div class="col-sm-8">
+                        {{ form.school(value = current_user.school, class="form-control") }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-1"></div>
+                    <label  class="col-sm-2 col-form-label col-form-label-lg">{{ form.grade.label }}</label>
+                    <div class="col-sm-8">
+                        {{ form.grade(class="form-control") }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-1"></div>
+                    <label  class="col-sm-2 col-form-label col-form-label-lg">{{ form.state.label }}</label>
+                    <div class="col-sm-8">
+                        {{ form.state(class="form-control") }}
+                    </div>
+                </div>
+            <div class="form-group row">
+                 <div class="col-sm-12" align="center">
+                    {{ form.submit(value = "Update", class="btn btn-primary") }}
+                 </div>
+            </div>
+
             </form>
         {% endblock %}
       </div>
@@ -81,13 +101,4 @@
     </div>
   </div>
 </div>
-
-<!-- bg-dark is color; -->
-<footer class="container-fluid bg-dark">
-    <br>
-</footer>
-
-</div>
-
-</body>
-</html>
+{% endblock %}
