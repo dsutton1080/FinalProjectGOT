@@ -1,10 +1,12 @@
 {% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{{ wtf.quick_form(form) }}
 
 
 {% block page_content %}
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-2 sidebar">
+    <div class="col-sm-1 sidebar">
       <div class= "mar-top">
           <br>
       </div>
@@ -12,30 +14,85 @@
 
     <div class="col-sm-8">
       <div class= "mar-top">
-        <h3>Update Account Information</h3><br><br>
+        <!-- This is the dynamic tab section -->
+
+        <div class="col-sm-12" align="center"> <h3>Update Account Information</h3><br></div>
         {% block content %}
+
         <form action="" method="post" novalidate>
                 {{ form.hidden_tag() }}
-                <label><strong>{{ form.first_name.label }}</strong></label><br>
-                    {{ form.first_name(value = current_user.first_name) }}<br><br>
-                <label><strong>{{ form.last_name.label }}</strong></label><br>
-                    {{ form.last_name(value = current_user.last_name) }}<br><br>
-                <label><strong>{{ form.email.label }}</strong></label><br>
-                    {{ form.email(value = current_user.email) }}<br><br>
-                <label><strong>New Password</strong></label><br>
-                    {{ form.new_password(value=current_user.password) }}<br>
-                    {% for error in form.new_password.errors %}
-                        <span style="color: red;">[{{ error }}]</span><br>
-                    {% endfor %}<br>
-                <label><strong>Verify New Password</strong></label><br>
-                    {{ form.new_password_v(value=current_user.password) }}<br><br>
-                <label><strong>{{ form.school.label }}</strong></label><br>
-                    {{ form.school(value = current_user.school) }}<br><br>
-                <label><strong>{{ form.grade.label }}</strong></label><br>
-                    {{ form.grade() }}<br><br>
-                <label><strong>{{ form.state.label }}</strong></label><br>
-                    {{ form.state() }}<br><br>
-                {{ form.submit(value = "Update") }}
+                <div class="form-group row">
+                    <div class="col-sm-1"></div>
+                    <label  class="col-sm-2 col-form-label col-form-label-lg" >{{ form.first_name.label }}</label>
+                    <div class="col-sm-8">
+                        {{ form.first_name(value = current_user.first_name, class="form-control") }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-1"></div>
+                    <label  class="col-sm-2 col-form-label col-form-label-lg">{{ form.last_name.label }}</label>
+                    <div class="col-sm-8">
+                        {{ form.last_name(value = current_user.last_name, class="form-control") }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-1"></div>
+                    <label  class="col-sm-2 col-form-label col-form-label-lg">{{ form.email.label }}</label>
+                    <div class="col-sm-8">
+                        {{ form.email(value = current_user.email, class="form-control") }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-1"></div>
+                    <label  class="col-sm-2 col-form-label col-form-label-lg">New password</label>
+                    <div class="col-sm-8">
+                        {{ form.new_password(value=current_user.password, class="form-control") }}
+                        {% for error in form.new_password.errors %}
+                            <span style="color: red;">[{{ error }}]</span><br>
+                        {% endfor %}<br>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-1"></div>
+                    <label  class="col-sm-2 col-form-label col-form-label-lg">Verify password</label>
+                    <div class="col-sm-8">
+                        {{ form.new_password_v(value=current_user.password, class="form-control") }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-1"></div>
+                    <label  class="col-sm-2 col-form-label col-form-label-lg">{{ form.school.label }}</label>
+                    <div class="col-sm-8">
+                        {{ form.school(value = current_user.school, class="form-control") }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-1"></div>
+                    <label  class="col-sm-2 col-form-label col-form-label-lg">{{ form.grade.label }}</label>
+                    <div class="col-sm-8">
+                        {{ form.grade(class="form-control") }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-1"></div>
+                    <label  class="col-sm-2 col-form-label col-form-label-lg">{{ form.state.label }}</label>
+                    <div class="col-sm-8">
+                        {{ form.state(class="form-control") }}
+                    </div>
+                </div>
+            <div class="form-group row">
+                 <div class="col-sm-12" align="center">
+                    {{ form.submit(value = "Update", class="btn btn-primary") }}
+                 </div>
+            </div>
+
             </form>
         {% endblock %}
       </div>

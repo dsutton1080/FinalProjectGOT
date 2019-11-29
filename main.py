@@ -82,10 +82,14 @@ def account():
 def testsuite():
     pass
 
-# @app.route('/friends', methods=['GET', 'POST'])
-# @login_required
-# def friends():
-#     pass
+@app.route('/friends', methods=['GET', 'POST'])
+@login_required
+def friends():
+    form = UpdateAccountForm(grade=current_user.grade, state=current_user.state)
+    if form.validate_on_submit():
+        update_account_handler(form)
+        return redirect('/friends')
+    return render_template('friends.html', form=form)
 
 # @app.route('/profile', methods=['GET', 'POST'])
 # @login_required
