@@ -28,8 +28,8 @@ A mentor/mentee website to be used between high school and college students for 
 * pip install flask_bootstrap
 
 ## Run notes
-* 1) Go to project location in terminal
-* 2) export FLASK_APP=main.py
-* or
-* 2) set FLASK_APP=main.py
-* 3) run flask
+* Go to project location in terminal
+  * export FLASK_APP=main.py
+  * or
+  * set FLASK_APP=main.py
+    * run flask
