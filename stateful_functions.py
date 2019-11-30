@@ -3,14 +3,16 @@ from forms import LoginForm, SignupForm
 from db_setup import conn, curs
 from init import app, db, login
 from db_models import *
-from flask_login import current_user
+from flask_login import current_user, login_user
 from sqlalchemy import desc
+
 
 @login.user_loader
 def load_user(user_id):
     if user_id is not None:
         return User.query.get(user_id)
     return None
+
 
 def signup_handler(form):
     f_name = form.first_name.data
@@ -28,6 +30,23 @@ def signup_handler(form):
                      school = school)
     db.session.add(new_user)
     db.session.commit()
+    new_user.authenticated = True
+    login_user(new_user)
+
+
+def signup_not_empty(form):
+    """
+    Determines whether a field in the submitted sign up form is empty.
+    :param form: a FlaskForm object containing the inputted fields
+    :return: boolean indicating True if valid, False otherwise
+    """
+    if form.first_name.data and form.last_name.data and form.username.data:
+        if form.password.data and form.password_v.data and form.email.data:
+            if form.state.data and form.grade.data and form.school.data:
+                if form.password.data == form.password_v.data:
+                    return True
+    return False
+
 
 def update_account_handler(form):
     if current_user.first_name != form.first_name.data:
@@ -49,9 +68,11 @@ def update_account_handler(form):
     flash("Account Details Updated", category="info")
     db.session.commit()
 
+
 def is_distinct_username(uname):
     user = User.query.get(username=uname).first()
     return (user is None)
+
 
 def get_messages(sender_username, receiver_username):
     return list(db.session.query(Message).filter_by(sender_username=sender_username).filter_by(receiver_username=receiver_username).order_by(desc(Message.id)))

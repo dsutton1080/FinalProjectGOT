@@ -36,25 +36,40 @@
         <form action="" method="post" novalidate>
                 {{ form.hidden_tag() }}
                 <label><strong>{{ form.first_name.label }}</strong></label><br>
-                    {{ form.first_name() }}<br><br>
+                    {{ form.first_name() }} <br>
+                    {% for error in form.first_name.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}<br>
                 <label><strong>{{ form.last_name.label }}</strong></label><br>
-                    {{ form.last_name() }}<br><br>
+                    {{ form.last_name() }} <br>
+                    {% for error in form.last_name.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}<br>
                 <label><strong>{{ form.username.label }}</strong></label><br>
                     {{ form.username() }} <br>
-                     {% for error in form.username.errors %}
+                    {% for error in form.username.errors %}
                         <span style="color: red;">[{{ error }}]</span>
                     {% endfor %}<br>
                 <label><strong>{{ form.email.label }}</strong></label><br>
-                    {{ form.email() }}<br><br>
+                    {{ form.email() }} <br>
+                    {% for error in form.email.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}<br>
                 <label><strong>{{ form.password.label }} (8 or more characters)</strong></label><br>
-                    {{ form.password() }}<br>
+                    {{ form.password() }} <br>
                     {% for error in form.password.errors %}
                         <span style="color: red;">[{{ error }}]</span><br>
                     {% endfor %}<br>
                 <label><strong>{{ form.password_v.label }}</strong></label><br>
-                    {{ form.password_v() }}<br><br>
+                    {{ form.password_v() }} <br>
+                    {% for error in form.password_v.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}<br>
                 <label><strong>{{ form.school.label }}</strong></label><br>
-                    {{ form.school() }}<br><br>
+                    {{ form.school() }} <br>
+                    {% for error in form.school.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}<br>
                 <label><strong>{{ form.grade.label }}</strong></label><br>
                     {{ form.grade() }}<br><br>
                 <label><strong>{{ form.state.label }}</strong></label><br>

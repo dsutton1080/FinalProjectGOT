@@ -16,7 +16,7 @@ def make_shell_context():
             'UserPost' : UserPost,
             'Follow' : Follow }
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/splash', methods=['GET', 'POST'])
 def splash():
     if current_user.is_authenticated:
