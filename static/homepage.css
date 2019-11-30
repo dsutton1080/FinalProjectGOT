@@ -87,3 +87,7 @@ p.footer{
   float: left;
   color: #999;
 }
+
+a:hover{
+    text-decoration: none;
+}
