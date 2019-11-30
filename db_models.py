@@ -2,7 +2,6 @@ from datetime import datetime
 from init import db, login
 
 
-
 class User(db.Model):
     __tablename__ = 'Users'
     first_name = db.Column(db.String(64), index=True, nullable=False)
@@ -97,7 +96,6 @@ class Follow(db.Model):
 
     def __repr__(self):
         return '<Follow ID {} ({} -> {})>'.format(self.id, self.follower_username, self.following_username)
-
 
 
 db.create_all()

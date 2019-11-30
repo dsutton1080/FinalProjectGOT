@@ -91,29 +91,6 @@ def add_post(user, post):
         # Then take them to the new post page
         return redirect(url_for('home'))
 
-
-def signup_handler(form):
-    """
-    Processes the POST request of a sign up form and adds a user to the database
-    :param form: a FlaskForm object containing the inputted fields
-    :return: Void
-    """
-    f_name = form.first_name.data
-    l_name = form.last_name.data
-    username = form.username.data
-    password = form.password.data
-    password_v = form.password_v.data
-    email = form.email.data
-    state = form.state.data
-    grade = form.grade.data
-    school = form.school.data
-    new_user = User(first_name=f_name, last_name=l_name,
-                    username=username, password=password,
-                    email=email, state=state, grade=grade,
-                    school=school)
-    db.session.add(new_user)
-    db.session.commit()
-
 @app.route('/testsuite', methods=['GET', 'POST'])
 @login_required
 def testsuite():

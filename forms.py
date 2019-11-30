@@ -56,6 +56,11 @@ class SignupForm(FlaskForm):
         if user is not None:
             raise ValidationError('Username already exists.')
 
+    def validate_email(self, email):
+        email = User.query.filter_by(email=email.data).first()
+        if email is not None:
+            raise ValidationError("Email already in use.")
+
 
 class UpdateAccountForm(FlaskForm):
     """
