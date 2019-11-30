@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, flash, redirect
-from forms import LoginForm, SignupForm
+from forms import LoginForm, SignupForm, PostForm
 from db_setup import conn, curs
 from init import app, db
 from flask_login import current_user, login_user, logout_user
@@ -61,13 +61,17 @@ def signup():
     return render_template('signup.html', form=form)
 
 
-@app.route('/home')
+@app.route('/home', methods=['GET', 'POST'])
 def home():
     """
     This is a procedure defining the control flow on the home page of the website.
     :return: An HTML response to the client
     """
-    form = ForumPost()
+    form = PostForm()
+    if form.validate_on_submit():
+        usr = current_user
+        new_post = form.content
+        add_post(usr, new_post)
     return render_template('homepage.html', form=form)
 
 
@@ -75,6 +79,13 @@ def home():
 def account():
     form = SignupForm()
     return render_template('account.html', form=form)
+
+
+def add_post(user, post):
+    if user and post:
+        # Add the post to the database
+        # Then take them to the new post page
+        return redirect(url_for('home'))
 
 
 def signup_handler(form):

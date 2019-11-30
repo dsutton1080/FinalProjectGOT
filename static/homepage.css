@@ -91,3 +91,8 @@ p.footer{
 a:hover{
     text-decoration: none;
 }
+
+#ta{
+    max-width: 90%;
+    max-height: 60%;
+}

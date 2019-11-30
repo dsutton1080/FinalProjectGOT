@@ -18,6 +18,20 @@
     <div class="col-sm-8">
       <div class= "mar-top">
 
+        {% block content %}
+        <form action="" method="post" novalidate>
+          {{ form.hidden_tag() }}
+          <div class="chat">
+            <h2>Create a New Post</h2>
+            {{ form.content( id="ta", cols="90", rows="3") }}<br>
+            <span class="time-right">
+              {{ form.submit(value = "Submit", class="btn btn-primary") }}
+            </span>
+          </div>
+
+        </form>
+        {% endblock %}
+
         <a href="#">
         <div class="chat dark">
           <img src="{{ url_for('static', filename='mentee.jpg') }}" alt="Avatar">

@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SelectField, SubmitField
 from wtforms.validators import DataRequired, EqualTo, Length, ValidationError
 from wtforms.fields.html5 import EmailField
+from wtforms.widgets import TextArea
 from constants import STATE_ABBREVS, STATE_NAMES
 from db_models import *
 
@@ -16,7 +17,7 @@ class LoginForm(FlaskForm):
 
 
 class PostForm(FlaskForm):
-    content = StringField('Create a New Post')
+    content = StringField('Create a New Post', widget=TextArea())
     submit = SubmitField('Make Post')
 
 
