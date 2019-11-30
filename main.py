@@ -1,5 +1,5 @@
-from flask import Flask, render_template, url_for, flash, redirect
-from forms import LoginForm, SignupForm, PostForm
+from flask import Flask, render_template, url_for, flash, redirect, request
+from forms import LoginForm, SignupForm, PostForm, SearchForm
 from db_setup import conn, curs
 from init import app, db
 from flask_login import current_user, login_user, logout_user
@@ -80,11 +80,35 @@ def account():
     form = SignupForm()
     return render_template('account.html', form=form)
 
+
+
 @app.route('/search', methods=['GET', 'POST'])
 def search():
-    form = SignupForm()
-    return render_template('search.html', form=form)
+    searchform = SearchForm(request.form)
+    if request.method == 'POST':
+        return redirect((url_for('search_results', query=searchform.search.data)))
+    return render_template('search.html', form=searchform)
 
+
+@app.route('/search',methods=['GET', 'POST'])
+def search_results(query):
+    results = []
+    search_string = search.data['search']
+    results1 = Searchable.query.all()
+    return render_template('search', query=query,results=results1)
+    """
+    if search.data['search'] == '':
+        qry = db_session.query(Searchable)
+        results = qry.all()
+
+    if not results:
+        flash('No results found!')
+        return redirect('/search')
+    if search_string ==
+    else:
+
+        return render_template('search.html#results', results=results)
+        """
 
 def add_post(user, post):
     if user and post:

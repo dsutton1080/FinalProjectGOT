@@ -12,25 +12,25 @@
 
     <div class="col-sm-8">
       <div class= "mar-top">
-        <!-- This is the dynamic tab section -->
+
 
         <div class="col-sm-12" align="center"> <h3>Search other users!</h3><br></div>
-        {% block content %}
 
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-
-              <span class="input-group-text"><input type="checkbox" aria-label="Checkbox for following text input"> Mentor</span>
-                <span class="input-group-text"><input type="checkbox" aria-label="Checkbox for following text input"> Mentee</span>
-
-          </div>
-          <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Search...">
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="button">Submit</button>
+        <form method=post>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  {{ form.select(class="form-control btn-outline-secondary") }}
+              </div>
+              {{ form.search(class="form-control") }}
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Submit</button>
+              </div>
             </div>
-        </div>
+        </form>
+        <div id="results">
+          {{ url_for('search'), searchform, results, query }}
 
-        {% endblock %}
+        </div>
       </div>
     </div>
 
@@ -40,3 +40,24 @@
   </div>
 </div>
 {% endblock %}
+
+
+<!--
+
+- My vision was when mentee/mentor is selected, name is typed, then when submitted is pressed
+  it will show all people with the same "characters"? that is searched
+- ex: Typed: "bob" -> Bob, Bobby, Bobbison ; will all pop up
+- Im having trouble getting it to detect the dropdown
+- I am leaving all my code for you to look at
+- You can probably get rid of the id=results,
+  I know with normal html when you href="search.html#results" it will send to the results id (line 30)
+  , but it didnt doesnt really work with our site
+
+Code I affected (lines might not be the same once I push)
+-  main.py line85-111
+- forms.py line68-75
+- db_models.py line101-105
+
+for main.py, I was trying to get stuff to work using queries but it wasnt going to plan
+- also imported request and SearchForm
+-->

@@ -65,3 +65,11 @@ class SignupForm(FlaskForm):
         if user is not None:
             raise ValidationError('Username already exists.')
 
+class SearchForm(FlaskForm):
+    choices = [('mentee', 'Mentee'), ('mentor', 'Mentor')]
+
+    mentor = StringField('Mentor')
+    mentee = StringField('Mentee')
+
+    select = SelectField('Search for other people!', choices=choices)
+    search = StringField('')
