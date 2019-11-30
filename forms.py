@@ -1,9 +1,9 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SelectField, SubmitField
-from wtforms.validators import DataRequired, EqualTo, Length, ValidationError
+from wtforms.validators import DataRequired, EqualTo, Length, ValidationError, Email
 from wtforms.fields.html5 import EmailField
 from wtforms.widgets import TextArea
-from constants import STATE_ABBREVS, STATE_NAMES
+from constants import STATE_ABBREVS, STATE_NAMES, GRADE_LEVELS
 from db_models import *
 
 
@@ -47,16 +47,7 @@ class SignupForm(FlaskForm):
     )
     password_v = PasswordField('Verify Password')
     school = StringField('School')
-    grade = SelectField('Grade in School', choices=[
-        ('hs_fresh', 'High School Freshman'),
-        ('hs_soph', 'High School Sophomore'),
-        ('hs_jun', 'High School Junior'),
-        ('hs_sen', 'High School Senior'),
-        ('col_fresh', 'College Freshman'),
-        ('col_soph', 'College Sophomore'),
-        ('col_jun', 'College Junior'),
-        ('col_sen', 'College Senior')
-    ])
+    grade = SelectField('Grade in School', choices=GRADE_LEVELS)
     state = SelectField('State', choices=list(zip(STATE_ABBREVS, STATE_NAMES)))
     submit = SubmitField('Join Now')
 
@@ -73,3 +64,17 @@ class SearchForm(FlaskForm):
 
     select = SelectField('Search for other people!', choices=choices)
     search = StringField('')
+
+class UpdateAccountForm(FlaskForm):
+    """
+    This class inherits from the FlaskForm class in Flask. This defines the fields to be received in a Login POST request from the Account page.
+    """
+    first_name = StringField('First Name', validators=[DataRequired()])
+    last_name = StringField('Last Name', validators=[DataRequired()])
+    email = EmailField('Email', validators=[DataRequired(), Email()])
+    new_password = PasswordField('New Password')
+    new_password_v = PasswordField('Verify New Password')
+    school = StringField('School', validators=[DataRequired()])
+    grade = SelectField('Grade in School', choices=GRADE_LEVELS, validators=[DataRequired()])
+    state = SelectField('State', choices=list(zip(STATE_ABBREVS, STATE_NAMES)), validators=[DataRequired()])
+    submit = SubmitField('Update Account')

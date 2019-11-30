@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, flash, redirect, request
-from forms import LoginForm, SignupForm, PostForm, SearchForm
+from forms import LoginForm, SignupForm, PostForm, SearchForm, UpdateAccountForm
 from db_setup import conn, curs
 from init import app, db
 from flask_login import current_user, login_user, logout_user
@@ -77,7 +77,10 @@ def home():
 
 @app.route('/account', methods=['GET', 'POST'])
 def account():
-    form = SignupForm()
+    form = UpdateAccountForm(grade=current_user.grade, state=current_user.state)
+    if form.validate_on_submit():
+        update_account_handler(form)
+        return redirect('/account')
     return render_template('account.html', form=form)
 
 
@@ -152,3 +155,23 @@ def signup_not_empty(form):
                 if form.password.data == form.password_v.data:
                     return True
     return False
+
+def update_account_handler(form):
+    if current_user.first_name != form.first_name.data:
+        current_user.first_name = form.first_name.data
+    if current_user.last_name != form.last_name.data:
+        current_user.last_name = form.last_name.data
+    if current_user.email != form.email.data:
+        current_user.email = form.email.data
+    if current_user.school != form.school.data:
+        current_user.school = form.school.data
+    if current_user.grade != form.grade.data:
+        current_user.grade = form.grade.data
+    if current_user.state != form.state.data:
+        current_user.state = form.state.data
+    if form.new_password.data is not None:
+        if current_user.password != form.new_password.data and form.new_password.data == form.new_password_v.data and len(form.new_password.data) >= 8:
+            current_user.password = form.new_password.data
+            flash("Password Changed", category="info")
+    flash("Account Details Updated", category="info")
+    db.session.commit()

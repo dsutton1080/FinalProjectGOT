@@ -13,4 +13,13 @@ STATE_NAMES = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado",
   "Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah",
   "Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
 
- 
+GRADE_LEVELS = [
+    ('hs_fresh', 'High School Freshman'),
+    ('hs_soph', 'High School Sophomore'),
+    ('hs_jun', 'High School Junior'),
+    ('hs_sen', 'High School Senior'),
+    ('col_fresh', 'College Freshman'),
+    ('col_soph', 'College Sophomore'),
+    ('col_jun', 'College Junior'),
+    ('col_sen', 'College Senior')
+]
