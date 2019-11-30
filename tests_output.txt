@@ -83,3 +83,88 @@ Testing whether a query list for users returns empty
 ----------
 Result: PASSED
 
+Test 1
+----------
+TEST DESCRIPTION: Testing whether a User can be added to the Database in a predictable manner
+Adding a valid arbitrary user to empty database
+Testing whether user query list is length 1
+Testing whether added user is equivalent to created user
+----------
+Result: PASSED
+
+Test 2
+----------
+TEST DESCRIPTION: Testing whether the User Table requires unique usernames
+Attempting to add two users to empty database with same username
+Testing whether there is only one user in the database
+----------
+Result: PASSED
+
+Test 3
+----------
+TEST DESCRIPTION: Testing whether the User Table requires unique email addresses
+Attempting to add 2 users with same email address to the empty database
+Testing whether the number of database users is 1
+----------
+Result: PASSED
+
+Test 4
+----------
+TEST DESCRIPTION: Testing if passwords are verified correctly
+Adding a user with known password to the empty database
+Verfiying the known password
+Testing verification of incorrect passwords
+----------
+Result: PASSED
+
+Test 5
+----------
+TEST DESCRIPTION: Testing if User has reference to the forum questions under their username
+Adding user to empty database
+Adding 2 forum questions under the created user's username
+Testing whether there are 2 forum questions referenced by user
+Testing whether the referenced forum questions are equivalent
+----------
+Result: PASSED
+
+Test 6
+----------
+TEST DESCRIPTION: Testing if User has reference to the forum posts under their username
+Adding user to empty database
+Adding a user-referenced forum question to database
+Adding 2 forum posts to database, referenced by both username and forum question id
+Testing whether there are 2 forum posts referenced by username
+Testing whether there are 2 forum posts referenced by forum question id
+----------
+Result: PASSED
+
+Test 7
+----------
+TEST DESCRIPTION: Testing if the User has reference to the user posts under their username
+Adding user to empty database
+Adding 2 user posts under the created user's username
+Testing whether there are 2 user posts referenced by user
+----------
+Result: PASSED
+
+Test 8
+----------
+TEST DESCRIPTION: Testing whether the a post with empty content is rejected by the database
+Adding user to empty database
+Creating a post with empty content
+Attempting to add empty post to the database
+Empty post not allowed; exception thrown
+Ensuring that query for user posts returns an empty list
+----------
+Result: PASSED
+
+Test 9
+----------
+TEST DESCRIPTION: Testing whether a User without required parameters is rejected from the database
+Creating user with incomplete parameters
+Attempting to add incomplete user to database
+Incomplete user not added to database; exception thrown
+Testing whether a query list for users returns empty
+----------
+Result: PASSED
+

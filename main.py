@@ -4,6 +4,7 @@ from db_setup import conn, curs
 from init import app, db
 from flask_login import current_user, login_user, logout_user
 from db_models import *
+import subprocess
 
 
 @app.shell_context_processor
@@ -86,7 +87,6 @@ def account():
     return render_template('account.html', form=form)
 
 
-
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     searchform = SearchForm(request.form)
@@ -95,25 +95,30 @@ def search():
     return render_template('search.html', form=searchform)
 
 
-@app.route('/search',methods=['GET', 'POST'])
-def search_results(query):
-    results = []
-    search_string = search.data['search']
-    results1 = Searchable.query.all()
-    return render_template('search', query=query,results=results1)
-    """
-    if search.data['search'] == '':
-        qry = db_session.query(Searchable)
-        results = qry.all()
+@app.route('/runtests')
+def runtests():
+    subprocess.Popen(['python3', 'tests.py'])
+    return render_template('testpage.html')
 
-    if not results:
-        flash('No results found!')
-        return redirect('/search')
-    if search_string ==
-    else:
+# @app.route('/search',methods=['GET', 'POST'])
+# def search_results(query):
+#     results = []
+#     search_string = search.data['search']
+#     results1 = Searchable.query.all()
+#     return render_template('search', query=query,results=results1)
+#     """
+#     if search.data['search'] == '':
+#         qry = db_session.query(Searchable)
+#         results = qry.all()
 
-        return render_template('search.html#results', results=results)
-        """
+#     if not results:
+#         flash('No results found!')
+#         return redirect('/search')
+#     if search_string ==
+#     else:
+
+#         return render_template('search.html#results', results=results)
+#         """
 
 def add_post(user, post):
     if user and post:

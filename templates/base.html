@@ -21,11 +21,9 @@
   <!-- Links -->
   <!-- Replace # with file names for href -->
   <ul class = "navbar-nav ml-auto">
-    {% if current_user.username == "admin" %}
     <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('testsuite') }}">Test Suite</a>
+        <a class="nav-link" href="{{ url_for('runtests') }}">Test Suite</a>
       </li>
-    {% endif %}
     <li class="nav-item">
         <a class="nav-link" href="{{ url_for('home') }}">Home</a>
       </li>
