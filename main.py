@@ -52,7 +52,9 @@ def signup():
     form = SignupForm()
     if form.validate_on_submit():
         if signup_not_empty(form):
-            signup_handler(form)
+            user = signup_handler(form)
+            user.authenticated = True
+            login_user(user)
             print('signup verified')
             return redirect('/home')
         else:
@@ -141,6 +143,7 @@ def signup_handler(form):
                     school=school)
     db.session.add(new_user)
     db.session.commit()
+    return new_user
 
 
 def signup_not_empty(form):
