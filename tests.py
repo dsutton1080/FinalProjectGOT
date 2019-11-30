@@ -2,7 +2,8 @@ import os
 
 from config import basedir
 from init import app, db
-from db_models import User, ForumQuestion, ForumPost, UserPost, Follow
+from db_models import *
+from funcs import *
 
 OUT_FILE_PATH = 'tests_output.txt'
 f = open(OUT_FILE_PATH, "a+")
@@ -16,13 +17,6 @@ def write_output(msg):
     f.write(msg + '\n')
 
 def tester(test_obj):
-    app.config['TESTING'] = True
-    app.config['WTF_CSRF_ENABLED'] = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
-    test_app = app.test_client()
-    db.create_all()
-    User.query.delete()
-    db.session.commit()
     write_output("TEST DESCRIPTION: " + test_obj.description)
     passed, msgs = test_obj.run() # each test run method returns a boolean
     for msg in msgs:
@@ -31,9 +25,6 @@ def tester(test_obj):
         write_output("----------\nResult: PASSED\n")
     else:
         write_output("----------\nResult: FAILED\n")
-    db.session.remove()
-    db.drop_all()
-
 
 def test_add_user():
     messages = []
@@ -242,7 +233,7 @@ def test_non_completed_user_not_in_db():
         return (False, messages)
     return (True, messages)
 
-tests = [
+db_tests = [
     Test(
         description = "Testing whether a User can be added to the Database in a predictable manner",
         proc = test_add_user
@@ -281,9 +272,39 @@ tests = [
     )
 ]
 
-if __name__ == "__main__":
-    i = 1
-    for test in tests:
-        write_output("Test " + str(i) + "\n----------")
-        tester(test)
-        i += 1
+func_tests = []
+
+if __name__ == "__main__":   
+    def test_db():
+        i = 1
+        app.config['TESTING'] = True
+        app.config['WTF_CSRF_ENABLED'] = False
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
+        test_app = app.test_client()
+        db.create_all()
+        db.session.commit()
+        for test in db_tests:
+            clear_all_tables()
+            write_output("Database Test " + str(i) + "\n----------")
+            tester(test)
+            i += 1
+    
+    def test_funcs():
+        i = 1
+        app.config['TESTING'] = True
+        app.config['WTF_CSRF_ENABLED'] = False
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
+        test_app = app.test_client()
+        db.create_all()
+        db.session.commit()
+        from create_test_users import run
+        run()
+        for test in func_tests:
+            write_output("Database Test " + str(i) + "\n----------")
+            tester(test)
+            i += 1
+
+    test_db()
+    test_funcs()
+
+

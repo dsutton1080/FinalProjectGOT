@@ -4,12 +4,19 @@ from db_setup import conn, curs
 from init import app, db
 from flask_login import current_user, login_user, logout_user
 from db_models import *
+from config import Config
 import subprocess
+from funcs import *
 
+
+if app.config['TEST_USER_POPULATED_DB'] == True:
+    from create_test_users import run
+    run()
 
 @app.shell_context_processor
 def make_shell_context():
     return {'db': db,
+            'app':app,
             'User': User,
             'ForumQuestion': ForumQuestion,
             'ForumPost': ForumPost,
