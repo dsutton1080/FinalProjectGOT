@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 
 {% block page_content %}
@@ -7,7 +6,7 @@
     <div class="col-sm-2 sidebar">
       <div class= "mar-top">
       <div class="card">
-        <img class="card-img-top" src="{{ url_for('static', filename='blank-profile.png') }}" alt="Card Image" style="width:100%">
+        <img class="card-img-top" src="{{ url_for('static', filename='mentee.jpg') }}" alt="Card Image" style="width:100%">
         <div class="card-body">
           <h5 style="text-align: center"> ({{current_user.user_type}}) </h5>
           <h4 class="card-title"> {{ current_user.first_name }} {{ current_user.last_name }} </h4>
@@ -21,44 +20,82 @@
     <div class="col-sm-8">
       <div class= "mar-top">
 
+        {% block content %}
+        <form action="" method="post" novalidate>
+          {{ form.hidden_tag() }}
+          <div class="chat">
+            <h2>Create a New Post</h2>
+            {{ form.content( id="ta", cols="90", rows="3") }}<br>
+            <span class="time-right">
+              {{ form.submit(value = "Submit", class="btn btn-primary") }}
+            </span>
+          </div>
+
+        </form>
+        {% endblock %}
+
+        <a href="#">
         <div class="chat dark">
           <img src="{{ url_for('static', filename='blank-profile.png') }}" alt="Avatar">
           <p> This is a post. </p>
+          <img src="{{ url_for('static', filename='mentee.jpg') }}" alt="Avatar">
+          <p style="text-decoration : none; color : #000;"> This is a post. </p>
           <span class="time-right"> 5:53pm</span>
         </div>
+        </a>
 
+        <a href="#">
         <div class="chat">
-          <img src="{{ url_for('static', filename='blank-profile.png') }}" alt="Avatar">
-          <p> Oh hey ____! Awesome. If there are any questions you have regarding college or future employment, let me know! </p>
+          <img src="{{ url_for('static', filename='mentee.jpg') }}" alt="Avatar">
+          <p style="text-decoration : none; color : #000;"> Oh hey ____! Awesome. If there are any questions you have regarding college or future employment, let me know! </p>
           <span class="time-right"> 6:08pm</span>
         </div>
+        </a>
 
+        <a href="#">
         <div class="chat dark">
-          <img src="{{ url_for('static', filename='blank-profile.png') }}" alt="Avatar">
-          <p> Cool! If the region in the first quadrant bounded by the curve y=e^x and x=1 is rotatred about the x-axis, what is the volume of the resulting solid?</p>
+          <img src="{{ url_for('static', filename='mentor.jpg') }}" alt="Avatar">
+          <p style="text-decoration : none; color : #000;"> Cool! If the region in the first quadrant bounded by the curve y=e^x and x=1 is rotatred about the x-axis, what is the volume of the resulting solid?</p>
           <span class="time-right"> 7:33pm</span>
         </div>
+        </a>
 
+        <a href="#">
         <div class="chat">
-          <img src="{{ url_for('static', filename='blank-profile.png') }}" alt="Avatar">
-          <p> The region being rotated is that under the curve y=e^x between x=0 and x=1. Now dV = pi*r^2 dx = pi * e^(2x) dx </p>
+          <img src="{{ url_for('static', filename='mentor.jpg') }}" alt="Avatar">
+          <p style="text-decoration : none; color : #000;"> The region being rotated is that under the curve y=e^x between x=0 and x=1. Now dV = pi*r^2 dx = pi * e^(2x) dx </p>
           <span class="time-right"> 7:59pm</span>
         </div>
+        </a>
 
+        <a href="#">
         <div class="chat dark">
-          <img src="{{ url_for('static', filename='blank-profile.png') }}" alt="Avatar">
-          <p> So the volume is:  [Integral 0 -> 1] e^2x dx =  ( e^(2x) ) / 2 from 0 -> 1 =  (e^2 - 1) / 2  </p>
+          <img src="{{ url_for('static', filename='mentee.jpg') }}" alt="Avatar">
+          <p style="text-decoration : none; color : #000;"> So the volume is:  [Integral 0 -> 1] e^2x dx =  ( e^(2x) ) / 2 from 0 -> 1 =  (e^2 - 1) / 2  </p>
           <span class="time-right"> 8:05pm</span>
         </div>
+        </a>
 
       </div>
     </div>
 
     <div class="col sidebar">
       <div class= "mar-top">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <h3> ... </h3>
-        <p> ... </p>
+        <div class="chat dark">
+          <img src="{{ url_for('static', filename='mentor.jpg') }}" alt="Avatar">
+          <p>Drake</p>
+          <span class="time-right">Online</span>
+        </div>
+        <div class="chat dark">
+          <img src="{{ url_for('static', filename='mentor.jpg') }}" alt="Avatar">
+          <p>Sam</p>
+          <span class="time-right">Offline</span>
+        </div>
+        <div class="chat dark">
+          <img src="{{ url_for('static', filename='mentor.jpg') }}" alt="Avatar">
+          <p>Sandy</p>
+          <span class="time-right">Offline</span>
+        </div>
       </div>
     </div>
   </div>

@@ -1,20 +1,22 @@
 from flask import Flask, render_template, url_for, flash, redirect
-from forms import LoginForm, SignupForm, UpdateAccountForm
+from forms import LoginForm, SignupForm, UpdateAccountForm, PostForm
 from db_setup import conn, curs
 from init import app, db
+from flask_login import current_user, login_user, logout_user
 from db_models import *
 from stateful_functions import *
 from flask_login import current_user, login_user, logout_user, login_required
 
+
 @app.shell_context_processor
 def make_shell_context():
-    return {'db': db, 
-            'User': User, 
+    return {'db': db,
+            'User': User,
             'ForumQuestion': ForumQuestion,
-            'ForumPost' : ForumPost,
-            'Message' : Message,
-            'UserPost' : UserPost,
-            'Follow' : Follow }
+            'ForumPost': ForumPost,
+            'Message': Message,
+            'UserPost': UserPost,
+            'Follow': Follow}
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/splash', methods=['GET', 'POST'])
@@ -40,6 +42,7 @@ def logout():
     logout_user()
     return redirect(url_for('splash'))
 
+
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     """
@@ -57,14 +60,19 @@ def signup():
     return render_template('signup.html', form=form)
 
 
-@app.route('/home')
+@app.route('/home', methods=['GET', 'POST'])
 @login_required
 def home():
     """
     This is a procedure defining the control flow on the home page of the website.
     :return: An HTML response to the client
     """
-    return render_template('homepage.html')
+    form = PostForm()
+    if form.validate_on_submit():
+        usr = current_user
+        new_post = form.content
+        add_post(usr, new_post)
+    return render_template('homepage.html', form=form)
 
 
 @app.route('/account', methods=['GET', 'POST'])
@@ -76,6 +84,35 @@ def account():
         return redirect('/account')
     return render_template('account.html', form=form)
 
+
+def add_post(user, post):
+    if user and post:
+        # Add the post to the database
+        # Then take them to the new post page
+        return redirect(url_for('home'))
+
+
+def signup_handler(form):
+    """
+    Processes the POST request of a sign up form and adds a user to the database
+    :param form: a FlaskForm object containing the inputted fields
+    :return: Void
+    """
+    f_name = form.first_name.data
+    l_name = form.last_name.data
+    username = form.username.data
+    password = form.password.data
+    password_v = form.password_v.data
+    email = form.email.data
+    state = form.state.data
+    grade = form.grade.data
+    school = form.school.data
+    new_user = User(first_name=f_name, last_name=l_name,
+                    username=username, password=password,
+                    email=email, state=state, grade=grade,
+                    school=school)
+    db.session.add(new_user)
+    db.session.commit()
 
 @app.route('/testsuite', methods=['GET', 'POST'])
 @login_required

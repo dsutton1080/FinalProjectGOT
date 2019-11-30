@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SelectField, SubmitField
 from wtforms.validators import DataRequired, EqualTo, Length, ValidationError, Email
 from wtforms.fields.html5 import EmailField
+from wtforms.widgets import TextArea
 from constants import STATE_ABBREVS, STATE_NAMES, GRADE_LEVELS
 from db_models import *
 
@@ -13,6 +14,21 @@ class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Sign In')
+
+
+class PostForm(FlaskForm):
+    content = StringField('Create a New Post', widget=TextArea())
+    submit = SubmitField('Make Post')
+
+
+class MessageForm(FlaskForm):
+    message = StringField()
+    submit = SubmitField('Send')
+
+
+class CommentForm(FlaskForm):
+    comment = StringField('')
+    submit = SubmitField('Add Comment')
 
 
 class SignupForm(FlaskForm):
@@ -39,6 +55,7 @@ class SignupForm(FlaskForm):
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
             raise ValidationError('Username already exists.')
+
 
 class UpdateAccountForm(FlaskForm):
     """
