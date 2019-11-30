@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+
+{% block page_content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-1 sidebar">
+      <div class= "mar-top">
+          <br>
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+      <div class= "mar-top">
+        <!-- This is the dynamic tab section -->
+
+        <div class="col-sm-12" align="center"> <h3>Search other users!</h3><br></div>
+        {% block content %}
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+
+              <span class="input-group-text"><input type="checkbox" aria-label="Checkbox for following text input"> Mentor</span>
+                <span class="input-group-text"><input type="checkbox" aria-label="Checkbox for following text input"> Mentee</span>
+
+          </div>
+          <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Search...">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button">Submit</button>
+            </div>
+        </div>
+
+        {% endblock %}
+      </div>
+    </div>
+
+    <div class="col sidebar">
+        <br>
+    </div>
+  </div>
+</div>
+{% endblock %}

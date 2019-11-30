@@ -80,6 +80,11 @@ def account():
     form = SignupForm()
     return render_template('account.html', form=form)
 
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    form = SignupForm()
+    return render_template('search.html', form=form)
+
 
 def add_post(user, post):
     if user and post:

@@ -5,8 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href=" {{ url_for('static', filename='homepage.css') }} ">
   <link rel="stylesheet" href=" {{ url_for('static', filename='bootstrap.css') }} ">
+  <link rel="stylesheet" href=" {{ url_for('static', filename='homepage.css') }} ">
+
 
 
 </head>
@@ -29,10 +30,10 @@
         <a class="nav-link" href="{{ url_for('home') }}">Home</a>
       </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Friends</a>
+      <a class="nav-link disabled" href="#">Friends-Disabled</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Search People</a>
+      <a class="nav-link" href="{{ url_for('search') }}">Search People</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ url_for('account') }}">Account</a>
