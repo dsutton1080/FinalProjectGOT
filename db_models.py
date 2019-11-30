@@ -13,6 +13,7 @@ class User(db.Model):
     school = db.Column(db.String(128))
     grade = db.Column(db.String(64))
     state = db.Column(db.String(64))
+    user_type = db.Column(db.String(64))
     post_time = db.Column(db.DateTime, index=True, default=datetime.utcnow, nullable=False)
     forum_questions = db.relationship("ForumQuestion", backref='author', lazy='dynamic')
     forum_posts = db.relationship("ForumPost", backref='author', lazy='dynamic')

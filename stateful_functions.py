@@ -23,11 +23,15 @@ def signup_handler(form):
     email = form.email.data
     state = form.state.data
     grade = form.grade.data
+    if grade[:3] == "col":
+        user_type = "Mentor"
+    else:
+        user_type = "Mentee"
     school = form.school.data
-    new_user = User (first_name = f_name, last_name = l_name,
-                     username = username, password = password,
-                     email = email, state = state, grade = grade,
-                     school = school)
+    new_user = User (first_name=f_name, last_name=l_name,
+                     username=username, password=password,
+                     email=email, state=state, grade=grade,
+                     user_type=user_type, school=school)
     db.session.add(new_user)
     db.session.commit()
     new_user.authenticated = True
@@ -59,6 +63,10 @@ def update_account_handler(form):
         current_user.school = form.school.data
     if current_user.grade != form.grade.data:
         current_user.grade = form.grade.data
+    if form.grade.data[:3] == "col":
+        current_user.user_type = "Mentor"
+    else:
+        current_user.user_type = "Mentee"
     if current_user.state != form.state.data:
         current_user.state = form.state.data
     if form.new_password.data is not None:

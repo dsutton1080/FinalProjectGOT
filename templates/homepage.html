@@ -9,6 +9,7 @@
       <div class="card">
         <img class="card-img-top" src="{{ url_for('static', filename='blank-profile.png') }}" alt="Card Image" style="width:100%">
         <div class="card-body">
+          <h5 style="text-align: center"> ({{current_user.user_type}}) </h5>
           <h4 class="card-title"> {{ current_user.first_name }} {{ current_user.last_name }} </h4>
           <p class="card-text"> {{ grade_level_string(current_user.grade) }} at {{ current_user.school }}. </p>
          <!-- <a href="#" class="btn btn-primary"> My Profile </a>-->
