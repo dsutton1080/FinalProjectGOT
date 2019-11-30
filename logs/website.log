@@ -959,3 +959,6 @@ jinja2.exceptions.UndefinedError: 'wtforms.widgets.core.HTMLString object' has n
 2019-11-29 03:38:06,717 INFO: Logging Startup... [in C:\Users\17854\Documents\GitHub\FinalProjectGOT\init.py:28]
 2019-11-29 03:49:23,917 INFO: Logging Startup... [in C:\Users\17854\Documents\GitHub\FinalProjectGOT\init.py:28]
 2019-11-29 03:50:48,622 INFO: Logging Startup... [in C:\Users\17854\Documents\GitHub\FinalProjectGOT\init.py:28]
+2019-11-29 21:31:53,699 INFO: Logging Startup... [in /Users/dsutton/Documents/GitHub/FinalProjectGOT/init.py:28]
+2019-11-29 21:35:00,341 INFO: Logging Startup... [in /Users/dsutton/Documents/GitHub/FinalProjectGOT/init.py:28]
+2019-11-29 21:35:38,790 INFO: Logging Startup... [in /Users/dsutton/Documents/GitHub/FinalProjectGOT/init.py:28]

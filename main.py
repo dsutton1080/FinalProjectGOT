@@ -18,6 +18,7 @@ def make_shell_context():
             'UserPost': UserPost,
             'Follow': Follow}
 
+
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/splash', methods=['GET', 'POST'])
 def splash():
@@ -33,6 +34,7 @@ def splash():
         login_user(user, remember=True)
         return redirect(url_for('home'))
     return render_template('splash.html', form=form)
+
 
 @app.route('/logout')
 @login_required
@@ -91,10 +93,12 @@ def add_post(user, post):
         # Then take them to the new post page
         return redirect(url_for('home'))
 
+
 @app.route('/testsuite', methods=['GET', 'POST'])
 @login_required
 def testsuite():
     pass
+
 
 @app.route('/friends', methods=['GET', 'POST'])
 @login_required
