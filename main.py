@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, flash, redirect, request
+from flask import Flask, render_template, url_for, flash, redirect, request, session
 from forms import LoginForm, SignupForm, PostForm, SearchForm, UpdateAccountForm
 from db_setup import conn, curs
 from init import app, db
@@ -8,15 +8,16 @@ from config import Config
 import subprocess
 from funcs import *
 
-
 if app.config['TEST_USER_POPULATED_DB'] == True:
     from create_test_users import run
+
     run()
+
 
 @app.shell_context_processor
 def make_shell_context():
     return {'db': db,
-            'app':app,
+            'app': app,
             'User': User,
             'ForumQuestion': ForumQuestion,
             'ForumPost': ForumPost,
@@ -79,9 +80,9 @@ def home():
     """
     form = PostForm()
     if form.validate_on_submit():
-        usr = current_user
-        new_post = form.content
-        add_post(usr, new_post)
+        new_post = form.content.data
+        add_post(new_post)
+        return redirect('/thread')
     return render_template('homepage.html', form=form)
 
 
@@ -107,6 +108,7 @@ def runtests():
     subprocess.Popen(['python3', 'tests.py'])
     return render_template('testpage.html')
 
+
 # @app.route('/search',methods=['GET', 'POST'])
 # def search_results(query):
 #     results = []
@@ -127,11 +129,23 @@ def runtests():
 #         return render_template('search.html#results', results=results)
 #         """
 
-def add_post(user, post):
-    if user and post:
+
+@app.route('/thread')
+def thread():
+    post = session['post']
+    time = session['time']
+    print(post)
+    print("made it here")
+    return render_template('thread.html', p=post, first=current_user.first_name, last=current_user.last_name, time=time)
+
+
+def add_post(post):
+    if post:
+        print(current_user.email)
+        print(post)
+        session['post'] = post
+        session['time'] = "6:01 PM"
         # Add the post to the database
-        # Then take them to the new post page
-        return redirect(url_for('home'))
 
 
 def signup_handler(form):
@@ -171,6 +185,7 @@ def signup_not_empty(form):
                     return True
     return False
 
+
 def update_account_handler(form):
     if current_user.first_name != form.first_name.data:
         current_user.first_name = form.first_name.data
@@ -185,7 +200,8 @@ def update_account_handler(form):
     if current_user.state != form.state.data:
         current_user.state = form.state.data
     if form.new_password.data is not None:
-        if current_user.password != form.new_password.data and form.new_password.data == form.new_password_v.data and len(form.new_password.data) >= 8:
+        if current_user.password != form.new_password.data and form.new_password.data == form.new_password_v.data and len(
+                form.new_password.data) >= 8:
             current_user.password = form.new_password.data
             flash("Password Changed", category="info")
     flash("Account Details Updated", category="info")

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+
+{% block page_content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-1 sidebar">
+      <div class= "mar-top">
+          <br>
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+      <div class= "mar-top">
+          <div class="col-sm-12" align="left">Forum Question</div><br>
+          <div class="col-sm-12" align="center"> <h3>{{ p }}</h3><br></div>
+          <div class="col-sm-12" align="right">Author: {{ first }} {{ last }}</div>
+          <div class="col-sm-12" align="right">Submitted: {{ time }}</div>
+
+          <div class="chat dark">
+              <img src="{{ url_for('static', filename='mentee.jpg') }}" alt="Avatar">
+              <p> Nah, I don't think so. Thanks though. </p>
+              <span class="time-right">James 6:08pm</span>
+          </div>
+
+          <div class="chat dark">
+              <img src="{{ url_for('static', filename='mentor.jpg') }}" alt="Avatar">
+              <p> I actually agree with you wholefully. </p>
+              <span class="time-right">Kate 7:08pm</span>
+          </div>
+
+      </div>
+    </div>
+
+    <div class="col sidebar">
+        <br>
+    </div>
+  </div>
+</div>
+{% endblock %}
