@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, flash, redirect, request, session
-from forms import LoginForm, SignupForm, PostForm, SearchForm, UpdateAccountForm, CommentForm
+from forms import LoginForm, SignupForm, PostForm, SearchForm, UpdateAccountForm, CommentForm,NewForumQuestion
 from db_setup import conn, curs
 from init import app, db
 from flask_login import current_user, login_user, logout_user
@@ -82,8 +82,20 @@ def home():
     if form.validate_on_submit():
         new_post = form.content.data
         add_post(new_post)
-        return redirect('/thread')
+        return redirect('/home')
     return render_template('homepage.html', form=form)
+
+
+@app.route('/forums', methods=['GET', 'POST'])
+def forums():
+    form = NewForumQuestion()
+    lis = "This will be the list that is passed in containing the forums"
+    if form.validate_on_submit():
+        question = form.question.data
+        add_forum(question)
+        return redirect('/thread')
+    # need to pass in a list of all the forums in the database
+    return render_template('forums.html', form=form, list=lis)
 
 
 @app.route('/account', methods=['GET', 'POST'])
@@ -133,19 +145,22 @@ def runtests():
 @app.route('/thread')
 def thread():
     form = CommentForm()
-    post = session['post']
+    question = session['question']
     time = session['time']
-    print(post)
-    print("made it here")
-    return render_template('thread.html', form=form, p=post, first=current_user.first_name, last=current_user.last_name, time=time)
+    return render_template('thread.html', form=form, q=question, first=current_user.first_name, last=current_user.last_name, time=time)
 
 
 def add_post(post):
     if post:
-        print(current_user.email)
-        print(post)
         session['post'] = post
         session['time'] = "6:01 PM"
+        # Add the post to the database
+
+
+def add_forum(question):
+    if question:
+        session['question'] = question
+        session['time'] = "4:04 PM"
         # Add the post to the database
 
 

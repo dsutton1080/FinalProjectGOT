@@ -21,6 +21,11 @@ class PostForm(FlaskForm):
     submit = SubmitField('Make Post')
 
 
+class NewForumQuestion(FlaskForm):
+    question = StringField('Create a New Forum', widget=TextArea())
+    submit = SubmitField('Create Forum')
+
+
 class MessageForm(FlaskForm):
     message = StringField()
     submit = SubmitField('Send')
@@ -56,6 +61,7 @@ class SignupForm(FlaskForm):
         if user is not None:
             raise ValidationError('Username already exists.')
 
+
 class SearchForm(FlaskForm):
     choices = [('mentee', 'Mentee'), ('mentor', 'Mentor')]
 
@@ -64,6 +70,7 @@ class SearchForm(FlaskForm):
 
     select = SelectField('Search for other people!', choices=choices)
     search = StringField('')
+
 
 class UpdateAccountForm(FlaskForm):
     """
