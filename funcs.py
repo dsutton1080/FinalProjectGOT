@@ -107,3 +107,20 @@ def add_user_post(uname, content):
 def id_to_forum_question(question_id):
     return ForumQuestion.query.get(question_id)
 
+# def get_search_results(filt, text):
+#     users = list(User.query.all())
+#     if filt == 'mentor':
+#         return list(search_results(text, list(filter(is_mentor, users))))
+#     elif filt == 'mentee':
+#         return list(search_results(text, list(filter(is_mentee, users))))
+#     else:
+#         return list(search_results(text, users))
+
+# def search_results(text, searchlist):
+#     pass
+
+def is_following(follower, following):
+    return len(list(Follow.query.filter_by(follower_username = follower.username).filter_by(following_username = following.username))) == 1
+
+def is_valid_user(u):
+    return False if (User.query.get(u.username) is None) else True

@@ -16,20 +16,30 @@
 
         <div class="col-sm-12" align="center"> <h3>Search other users!</h3><br></div>
 
-        <form method=post>
+        <form method="post" action="" novalidate>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
-                  {{ form.select(class="form-control btn-outline-secondary") }}
+                  {{ form.filt(class="form-control btn-outline-secondary") }}
               </div>
-              {{ form.search(class="form-control") }}
+              {{ form.text(class="form-control") }}
               <div class="input-group-append">
-                <button class="btn btn-primary" type="submit">Submit</button>
+                  {{ form.submit(class="btn btn-primary") }}
               </div>
             </div>
         </form>
         <div id="results">
-          {{ url_for('search'), searchform, results, query }}
-
+          {% if results %}
+          {% for u in results %}
+          <div class="chat dark">
+              <img src="{{ url_for('static', filename='mentee.jpg' if is_mentee(u) else 'mentor.jpg') }}" alt="Avatar">
+              <p>{{ u.first_name }} {{ u.last_name }}</p>
+              <p>@{{ u.username }}</p>
+              {% if not is_following(current_user, u) %}
+              <a href="{{ url_for('follow', current_user, u) }}"><input type="button" value="Follow"></a>
+              {% endif %}
+            </div>
+          {% endfor %}
+          {% endif %}
         </div>
       </div>
     </div>

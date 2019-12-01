@@ -63,13 +63,9 @@ class SignupForm(FlaskForm):
 
 
 class SearchForm(FlaskForm):
-    choices = [('mentee', 'Mentee'), ('mentor', 'Mentor')]
-
-    mentor = StringField('Mentor')
-    mentee = StringField('Mentee')
-
-    select = SelectField('Search for other people!', choices=choices)
-    search = StringField('')
+    filt = SelectField('Search for other people!', choices=[('mentee', 'Mentee'), ('mentor', 'Mentor'), ('all', 'All Users')], validators=[DataRequired()])
+    text = StringField('Search Input', validators=[DataRequired()])
+    submit = SubmitField('Search')
 
 
 class UpdateAccountForm(FlaskForm):

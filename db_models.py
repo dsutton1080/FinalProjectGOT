@@ -1,9 +1,10 @@
 from datetime import datetime
-from init import db, login_manager
-
+from init import app, db, login_manager
 
 class User(db.Model):
     __tablename__ = 'Users'
+    __searchable__ = ['username', 'first_name', 'last_name', 'email', 'school', 'state']
+
     first_name = db.Column(db.String(64), index=True, nullable=False)
     last_name = db.Column(db.String(64), index=True, nullable=False)
     username = db.Column(db.String(64), index=True, primary_key=True, unique=True, nullable=False)
@@ -95,12 +96,6 @@ class Follow(db.Model):
 
     def __repr__(self):
         return '<Follow ID {} ({} -> {})>'.format(self.id, self.follower_username, self.following_username)
-
-class Searchable(db.Model):
-    __tablename__ = 'Searchable'
-    __searchable__ = ["user_first_name"]
-    id = db.Column(db.Integer, primary_key=True, nullable=False)
-    user_first_name = db.Column(db.String(64), index=True, nullable=False)
 
 @login_manager.user_loader
 def load_user(user_id):

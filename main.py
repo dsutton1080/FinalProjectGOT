@@ -28,6 +28,7 @@ app.jinja_env.globals.update(get_forum_question_posts = get_forum_question_posts
 app.jinja_env.globals.update(get_user_by_username = get_user_by_username)
 app.jinja_env.globals.update(date_to_string = date_to_string)
 app.jinja_env.globals.update(id_to_forum_question=id_to_forum_question)
+app.jinja_env.globals.update(is_following=is_following)
 
 @app.shell_context_processor
 def make_shell_context():
@@ -123,39 +124,30 @@ def account():
     return render_template('account.html', form=form)
 
 
-@app.route('/search', methods=['GET', 'POST'])
-def search():
-    searchform = SearchForm(request.form)
-    if request.method == 'POST':
-        return redirect((url_for('search_results', query=searchform.search.data)))
-    return render_template('search.html', form=searchform)
-
-
 @app.route('/runtests')
 def runtests():
     subprocess.Popen(['python3', 'tests.py'])
     return render_template('testpage.html')
 
 
-# @app.route('/search',methods=['GET', 'POST'])
-# def search_results(query):
-#     results = []
-#     search_string = search.data['search']
-#     results1 = Searchable.query.all()
-#     return render_template('search', query=query,results=results1)
-#     """
-#     if search.data['search'] == '':
-#         qry = db_session.query(Searchable)
-#         results = qry.all()
+@app.route('/search',methods=['GET', 'POST'])
+def search():
+    form = SearchForm()
+    results = []
+    if form.validate_on_submit():
+        results = get_search_results(form.filt.data, form.text.data)
+        if results == []:
+            flash("The query returned no results.")
+            redirect('search')
+    return render_template('search.html', form=form, results=results)
 
-#     if not results:
-#         flash('No results found!')
-#         return redirect('/search')
-#     if search_string ==
-#     else:
-
-#         return render_template('search.html#results', results=results)
-#         """
+@app.route('/follow/<follower>/<following>')
+def follow(follower, following):
+    if is_valid_user(follower) and is_valid_user(following) and follower != following:
+        f = Follow(follower_username=follower.username, following_username=following.username)
+        db.session.add(f)
+        db.session.commit()
+    return redirect(redirect_url())
 
 
 @app.route('/thread/<int:question_id>', methods=['GET', 'POST'])
@@ -230,3 +222,8 @@ def update_account_handler(form):
             flash("Password Changed", category="info")
     flash("Account Details Updated", category="info")
     db.session.commit()
+
+def redirect_url(default='home'):
+    return request.args.get('next') or \
+           request.referrer or \
+           url_for(default)

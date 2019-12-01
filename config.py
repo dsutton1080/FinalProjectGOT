@@ -12,5 +12,5 @@ class Config(object):
                                if TEST_USER_POPULATED_DB \
                                else os.environ.get('DATABASE_URL') or \
                                     'sqlite:///' + os.path.join(basedir, 'dev.db')
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL') or 'http://localhost:9200'
