@@ -27,13 +27,13 @@
         </form>
         {% endblock %}
 
-        {% for fp in get_forum_questions() %}
-        <a href="/forum/{{ fp.id }}">
+        {% for fq in get_forum_questions() %}
+        <a href="{{ url_for('thread', question_id=fq.id) }}">
         <div class="chat dark">
-          <img src="{{ url_for('static', filename='mentee.jpg' if is_mentee(get_user_by_username(fp.author_username)) else 'mentor.jpg') }}" alt="Avatar">
-          <p style="text-decoration : none; color : #000;">{{ fp.content }}</p>
-          <span class="time-right">Posted: {{ date_to_string(fp.post_time) }}</span><br>
-          <span class="time-right">Author: {% with u = get_user_by_username(fp.author_username) %}{{ u.first_name}} {{ u.last_name }} (@{{ u.username }}){% endwith %}</span>
+          <img src="{{ url_for('static', filename='mentee.jpg' if is_mentee(get_user_by_username(fq.author_username)) else 'mentor.jpg') }}" alt="Avatar">
+          <p style="text-decoration : none; color : #000;">{{ fq.content }}</p>
+          <span class="time-right">Posted: {{ date_to_string(fq.post_time) }}</span><br>
+          <span class="time-right">Author: {% with u = get_user_by_username(fq.author_username) %}{{ u.first_name}} {{ u.last_name }} (@{{ u.username }}){% endwith %}</span>
         </div>
         </a>
         {% endfor %}

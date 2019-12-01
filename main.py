@@ -27,6 +27,7 @@ app.jinja_env.globals.update(get_forum_questions = get_forum_questions)
 app.jinja_env.globals.update(get_forum_question_posts = get_forum_question_posts)
 app.jinja_env.globals.update(get_user_by_username = get_user_by_username)
 app.jinja_env.globals.update(date_to_string = date_to_string)
+app.jinja_env.globals.update(id_to_forum_question=id_to_forum_question)
 
 @app.shell_context_processor
 def make_shell_context():
@@ -103,13 +104,14 @@ def home():
 @app.route('/forums', methods=['GET', 'POST'])
 def forums():
     form = NewForumQuestion()
-    lis = "This will be the list that is passed in containing the forums"
     if form.validate_on_submit():
-        question = form.question.data
-        add_forum(question)
-        return redirect('/thread')
+        content = form.question.data
+        user = current_user.username
+        forumObj = add_forum_question(username, content)
+        if forumObj is not None:
+            return redirect('/thread/{}'.format(forumObj.id))
     # need to pass in a list of all the forums in the database
-    return render_template('forums.html', form=form, list=lis)
+    return render_template('forums.html', form=form)
 
 
 @app.route('/account', methods=['GET', 'POST'])
@@ -156,26 +158,18 @@ def runtests():
 #         """
 
 
-@app.route('/thread')
-def thread():
+@app.route('/thread/<int:question_id>', methods=['GET', 'POST'])
+def thread(question_id):
     form = CommentForm()
-    question = session['question']
-    time = session['time']
-    return render_template('thread.html', form=form, q=question, first=current_user.first_name, last=current_user.last_name, time=time)
-
-
-def add_post(post):
-    if post:
-        session['post'] = post
-        session['time'] = "6:01 PM"
-        # Add the post to the database
-
-
-def add_forum(question):
-    if question:
-        session['question'] = question
-        session['time'] = "4:04 PM"
-        # Add the post to the database
+    if form.validate_on_submit():
+        content = form.question.data
+        user = current_user.username
+        postObj = add_forum_post(question_id, username, content)
+        if postObj is not None:
+            return redirect('/thread/{}'.format(question_id))
+        else:
+            return redirect('forums')
+    return render_template('thread.html', form=form, question_id=question_id)
 
 
 def signup_handler(form):

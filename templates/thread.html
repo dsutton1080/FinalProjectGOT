@@ -12,12 +12,13 @@
 
     <div class="col-sm-8">
       <div class= "mar-top">
-          <div class="col-sm-12" align="left">Forum Question</div><br>
-          <div class="col-sm-12" align="center"> <h3>{{ p }}</h3><br></div>
-          <div class="col-sm-12" align="right">Author: {{ first }} {{ last }}</div>
-          <div class="col-sm-12" align="right">Submitted: {{ time }}</div>
-
         {% block content %}
+
+          <div class="col-sm-12" align="left">Forum Question</div><br>
+          <div class="col-sm-12" align="center"> <h3>{{ id_to_forum_question(question_id).content }}</h3><br></div>
+          <div class="col-sm-12" align="right">Author: {% with u = get_user_by_username(id_to_forum_question(question_id).author_username) %}{{ u.first_name }} {{ u.last_name }} (@{{ u.username }}){% endwith %}</div>
+          <div class="col-sm-12" align="right">Posted: {{ date_to_string(id_to_forum_question(question_id).post_time) }}</div>
+
         <form action="" method="post" novalidate>
           {{ form.hidden_tag() }}
           <div class="chat">
@@ -27,22 +28,19 @@
             </span>
           </div>
         </form>
+
+          {% for fp in get_forum_question_posts(id_to_forum_question(question_id)) %}
+          {% with u = get_user_by_username(fp.author_username) %}
+          <div class="chat dark">
+              <img src="{{ url_for('static', filename='mentee.jpg' if is_mentee(u) else 'mentor.jpg') }}" alt="Avatar">
+              <p>{{ fp.content}}</p>
+              <span class="time-right">Author: {{ u.first_name}} {{ u.last_name }} (@{{ u.username }})</span><br>
+              <span class="time-right">Posted: {{ date_to_string(fp.post_time) }}</span>
+          </div>
+          {% endwith %}
+          {% endfor %}
+
         {% endblock %}
-
-          <div class="chat dark">
-              <img src="{{ url_for('static', filename='mentee.jpg') }}" alt="Avatar">
-              <p> Nah, I don't think so. Thanks though. </p>
-              <span class="time-right">James 7:08pm</span>
-          </div>
-
-          <div class="chat dark">
-              <img src="{{ url_for('static', filename='mentor.jpg') }}" alt="Avatar">
-              <p> I actually agree with you wholefully. </p>
-              <span class="time-right">Kate 6:08pm</span>
-          </div>
-
-
-
       </div>
     </div>
 

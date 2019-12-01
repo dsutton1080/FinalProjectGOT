@@ -60,10 +60,44 @@ def get_forum_questions():
     return sorted_reverse_id_order(list(ForumQuestion.query.all()))
 
 def get_forum_question_posts(forum_q):
-    return sorted_reverse_id_order(list(ForumPost.query.filter_by(forum_question_id=forum_q.id)))
+    return sorted_reverse_id_order(list(forum_q.forum_posts))
+
+def get_forum_question_ids():
+    return list(map(lambda q: q.id, get_forum_questions()))
 
 def get_user_by_username(uname):
     return User.query.get(uname)
 
 def date_to_string(dt_obj):
     return dt_obj.strftime("%d-%b-%Y %I:%M %p")
+
+def get_all_users():
+    return list(User.query.all())
+
+def get_all_usernames():
+    return list(map(lambda u: u.username, get_all_users()))
+
+def valid_post_params(uname, content):
+    return (uname in get_all_usernames()) and (content is not None) and (content != "")
+
+def add_forum_question(uname, content):
+    if valid_post_params(uname, content):
+        fq = ForumQuestion(author_username=uname, content=content)
+        db.session.add(fq)
+        db.session.commit()
+        return fq
+    else:
+        return None
+
+def add_forum_post(question_id, uname, content):
+    if valid_post_params(uname, content) and (question_id in get_forum_question_ids()):
+        fp = ForumPost(forum_question_id=question_id, author_username=uname, content=content)
+        db.session.add(fp)
+        db.session.commit()
+        return fp
+    else:
+        return None
+
+def id_to_forum_question(question_id):
+    return ForumQuestion.query.get(question_id)
+
