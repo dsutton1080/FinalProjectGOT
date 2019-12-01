@@ -36,11 +36,14 @@
         {% endblock %}
 
         {% for userpost in get_general_feed(current_user) %}
+        {% with u = get_user_by_username(userpost.author_username) %}
         <div class="chat">
-          <img src="{{ url_for('static', filename='mentee.jpg' if is_mentee(get_user_by_username(userpost.author_username)) else 'mentor.jpg') }}" alt="Avatar">
+          <img src="{{ url_for('static', filename='mentee.jpg' if is_mentee(u) else 'mentor.jpg') }}" alt="Avatar">
           <p>{{ userpost.content }}</p>
-          <span class="time-right">{{ date_to_string(userpost.post_time) }}</span>
+          <span class="time-right">Author: {{ u.first_name}} {{ u.last_name }} (@{{ u.username }})</span><br>
+          <span class="time-right">Posted: {{ date_to_string(userpost.post_time) }}</span>
         </div>
+        {% endwith %}
         {% endfor %}
 
       </div>

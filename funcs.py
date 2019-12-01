@@ -86,8 +86,7 @@ def add_forum_question(uname, content):
         db.session.add(fq)
         db.session.commit()
         return fq
-    else:
-        return None
+    return None
 
 def add_forum_post(question_id, uname, content):
     if valid_post_params(uname, content) and (question_id in get_forum_question_ids()):
@@ -95,8 +94,15 @@ def add_forum_post(question_id, uname, content):
         db.session.add(fp)
         db.session.commit()
         return fp
-    else:
-        return None
+    return None
+
+def add_user_post(uname, content):
+    if valid_post_params(uname, content):
+        p = UserPost(author_username=uname, content=content)
+        db.session.add(p)
+        db.session.commit()
+        return p
+    return None
 
 def id_to_forum_question(question_id):
     return ForumQuestion.query.get(question_id)

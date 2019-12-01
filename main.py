@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, flash, redirect, request, session
-from forms import LoginForm, SignupForm, PostForm, SearchForm, UpdateAccountForm, CommentForm,NewForumQuestion
+from forms import LoginForm, SignupForm, PostForm, SearchForm, UpdateAccountForm, CommentForm, ForumQuestionForm
 from db_setup import conn, curs
 from init import app, db
 from flask_login import current_user, login_user, logout_user
@@ -95,19 +95,19 @@ def home():
     """
     form = PostForm()
     if form.validate_on_submit():
-        new_post = form.content.data
-        add_post(new_post)
+        content = form.content.data
+        post = add_user_post(current_user.username, content)
         return redirect('/home')
     return render_template('homepage.html', form=form)
 
 
 @app.route('/forums', methods=['GET', 'POST'])
 def forums():
-    form = NewForumQuestion()
+    form = ForumQuestionForm()
     if form.validate_on_submit():
         content = form.question.data
         user = current_user.username
-        forumObj = add_forum_question(username, content)
+        forumObj = add_forum_question(current_user.username, content)
         if forumObj is not None:
             return redirect('/thread/{}'.format(forumObj.id))
     # need to pass in a list of all the forums in the database
@@ -162,11 +162,11 @@ def runtests():
 def thread(question_id):
     form = CommentForm()
     if form.validate_on_submit():
-        content = form.question.data
+        content = form.comment.data
         user = current_user.username
-        postObj = add_forum_post(question_id, username, content)
+        postObj = add_forum_post(question_id, current_user.username, content)
         if postObj is not None:
-            return redirect('/thread/{}'.format(question_id))
+            return redirect(url_for('thread', question_id=question_id))
         else:
             return redirect('forums')
     return render_template('thread.html', form=form, question_id=question_id)
