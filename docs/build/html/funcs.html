@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>funcs module &#8212; Mentino Beta documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-funcs">
+<span id="funcs-module"></span><h1>funcs module<a class="headerlink" href="#module-funcs" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="funcs.add_forum_post">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">add_forum_post</code><span class="sig-paren">(</span><em class="sig-param">question_id</em>, <em class="sig-param">uname</em>, <em class="sig-param">content</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.add_forum_post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a ForumPost object to the database after verification
+:param question_id: the id of the referenced ForumQuestion object
+:param uname: the username of the author
+:param content: the content of the post
+:return: a ForumPost object or None</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.add_forum_question">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">add_forum_question</code><span class="sig-paren">(</span><em class="sig-param">uname</em>, <em class="sig-param">content</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.add_forum_question" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a ForumQuesion object to the database after verification
+:param uname: username
+:param content: content
+:return: a ForumQuestion object (success) or None (failure)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.add_user">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">add_user</code><span class="sig-paren">(</span><em class="sig-param">u</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.add_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a user and its search index equivalent to the database.
+:param u: User object
+:return: void</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.add_user_post">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">add_user_post</code><span class="sig-paren">(</span><em class="sig-param">uname</em>, <em class="sig-param">content</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.add_user_post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a UserPost object to the database after verification
+:param uname: the username of the author
+:param content: the content of the post
+:return: a UserPost object or None</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.clear_all_tables">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">clear_all_tables</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#funcs.clear_all_tables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all rows from all current database tables
+:return: void</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.date_to_string">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">date_to_string</code><span class="sig-paren">(</span><em class="sig-param">dt_obj</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.date_to_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a displayable string from a DateTime object
+:param dt_obj: a DateTime object
+:return: a string that represents that date/time</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.delete_user">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">delete_user</code><span class="sig-paren">(</span><em class="sig-param">u</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.delete_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a user and its search index equivalent from the database.
+:param u: User object
+:return: void</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.fst">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">fst</code><span class="sig-paren">(</span><em class="sig-param">pair</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.fst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the first element of a 2-tuple
+:param pair: a 2-tuple object
+:return: first element of the tuple</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.get_all_usernames">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">get_all_usernames</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#funcs.get_all_usernames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all usernames from users in the database
+:return: a list of strings (usernames)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.get_all_users">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">get_all_users</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#funcs.get_all_users" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all users in the database
+:return: a list of User objects</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.get_following">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">get_following</code><span class="sig-paren">(</span><em class="sig-param">user</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.get_following" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all users who are a particular user is following
+:param user: a User object
+:return: a list of User objects</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.get_forum_question_ids">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">get_forum_question_ids</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#funcs.get_forum_question_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the ids of all ForumQuestion objects
+:return: list of integers (ids)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.get_forum_question_posts">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">get_forum_question_posts</code><span class="sig-paren">(</span><em class="sig-param">forum_q</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.get_forum_question_posts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all thread responses to a forum question
+:param forum_q: A ForumQuestion object
+:return: A list of ForumPost objects</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.get_forum_questions">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">get_forum_questions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#funcs.get_forum_questions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all forum questions posted on the website by all users
+:return: A list of ForumQuestion objects</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.get_general_feed">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">get_general_feed</code><span class="sig-paren">(</span><em class="sig-param">user</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.get_general_feed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the feed of the posts of all users whom the particular user is following in reverse chronological order
+:param user: a User object
+:return: a list of UserPost objects</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.get_mentees">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">get_mentees</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#funcs.get_mentees" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all the users that are mentees (in high school)
+:return: list of User objects</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.get_mentors">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">get_mentors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#funcs.get_mentors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all the users that are mentors (in college)
+:return: list of User objects</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.get_search_results">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">get_search_results</code><span class="sig-paren">(</span><em class="sig-param">filt</em>, <em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.get_search_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a filter parameter and search text, returns a list of possible matches for the user search
+:param filt: either ‘all’, ‘mentee’, or ‘mentor’
+:param text: the search text
+:return: a list of User objects matching (close to) the search</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.get_user_by_username">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">get_user_by_username</code><span class="sig-paren">(</span><em class="sig-param">uname</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.get_user_by_username" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a User object from its username
+:param uname: username (string)
+:return: a User object</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.get_user_feed">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">get_user_feed</code><span class="sig-paren">(</span><em class="sig-param">user</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.get_user_feed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all posts by a particular user
+:param user: a User object
+:return: a list of UserPost objects</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.grade_level_string">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">grade_level_string</code><span class="sig-paren">(</span><em class="sig-param">grLvlCode</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.grade_level_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts grade level encoding into a string.
+:param grLvlCode: Code for the grade level.
+:return: the converted string</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.id_to_forum_question">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">id_to_forum_question</code><span class="sig-paren">(</span><em class="sig-param">question_id</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.id_to_forum_question" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the id of the parent forum question, returns a ForumQuestion object
+:param question_id: The id of the forum question (int)
+:return: a ForumQuestion object</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.is_following">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">is_following</code><span class="sig-paren">(</span><em class="sig-param">follower</em>, <em class="sig-param">following</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.is_following" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given 2 users, determines if the first is following the second
+:param follower: a User object
+:param following: a User object
+:return: a boolean</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.is_mentee">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">is_mentee</code><span class="sig-paren">(</span><em class="sig-param">u</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.is_mentee" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines whether a User object is a mentee (based on grade)
+:param u: User object
+:return: boolean</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.is_mentor">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">is_mentor</code><span class="sig-paren">(</span><em class="sig-param">u</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.is_mentor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines whether a User object is a mentor (based on grade)
+:param u: User object
+:return: boolean</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.is_valid_user">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">is_valid_user</code><span class="sig-paren">(</span><em class="sig-param">u</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.is_valid_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a user object, determines whether it is in the database
+:param u: a User object
+:return: a boolean</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.sorted_reverse_id_order">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">sorted_reverse_id_order</code><span class="sig-paren">(</span><em class="sig-param">l</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.sorted_reverse_id_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sorts a list of objects with ‘id’ attributes in reverse order
+:param l: list of identified objects
+:return: sorted list</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.state_abbrev_to_name">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">state_abbrev_to_name</code><span class="sig-paren">(</span><em class="sig-param">abbrev</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.state_abbrev_to_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a state abbreviation string into the state name
+:param abbrev: state abbreviation
+:return: state name</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="funcs.valid_post_params">
+<code class="sig-prename descclassname">funcs.</code><code class="sig-name descname">valid_post_params</code><span class="sig-paren">(</span><em class="sig-param">uname</em>, <em class="sig-param">content</em><span class="sig-paren">)</span><a class="headerlink" href="#funcs.valid_post_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifies author_username and content data
+:param uname: username (string)
+:param content: text
+:return: boolean</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Mentino</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Christ Hardin, DeRon Sutton, Jace Kline, William Stark, Rick Petzold.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/funcs.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

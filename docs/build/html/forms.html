@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>forms module &#8212; Final Project Beta documentation</title>
+    <title>forms module &#8212; Mentino Beta documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -33,13 +33,47 @@
   <div class="section" id="module-forms">
 <span id="forms-module"></span><h1>forms module<a class="headerlink" href="#module-forms" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
+<dt id="forms.CommentForm">
+<em class="property">class </em><code class="sig-prename descclassname">forms.</code><code class="sig-name descname">CommentForm</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#forms.CommentForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
+<p>Inherits from FlaskForm object. Defines the data to be received when a user makes a ForumPost (response to a forum thread).</p>
+<dl class="attribute">
+<dt id="forms.CommentForm.comment">
+<code class="sig-name descname">comment</code><em class="property"> = &lt;UnboundField(StringField, (), {'widget': &lt;wtforms.widgets.core.TextArea object&gt;, 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#forms.CommentForm.comment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="forms.CommentForm.submit">
+<code class="sig-name descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Add Comment',), {})&gt;</em><a class="headerlink" href="#forms.CommentForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="forms.ForumQuestionForm">
+<em class="property">class </em><code class="sig-prename descclassname">forms.</code><code class="sig-name descname">ForumQuestionForm</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#forms.ForumQuestionForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
+<p>Inherits from FlaskForm object. Defines the data to be received when a user posts a ForumQuestion.</p>
+<dl class="attribute">
+<dt id="forms.ForumQuestionForm.question">
+<code class="sig-name descname">question</code><em class="property"> = &lt;UnboundField(StringField, ('Create a New Forum',), {'widget': &lt;wtforms.widgets.core.TextArea object&gt;, 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#forms.ForumQuestionForm.question" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="forms.ForumQuestionForm.submit">
+<code class="sig-name descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Create Forum',), {})&gt;</em><a class="headerlink" href="#forms.ForumQuestionForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="forms.LoginForm">
 <em class="property">class </em><code class="sig-prename descclassname">forms.</code><code class="sig-name descname">LoginForm</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#forms.LoginForm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
 <p>This class inherits from the FlaskForm class in Flask. This defines the fields to be received in a Login POST request from the default page.</p>
 <dl class="attribute">
 <dt id="forms.LoginForm.password">
-<code class="sig-name descname">password</code><em class="property"> = &lt;UnboundField(PasswordField, ('Password',), {})&gt;</em><a class="headerlink" href="#forms.LoginForm.password" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">password</code><em class="property"> = &lt;UnboundField(PasswordField, ('Password',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#forms.LoginForm.password" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -49,7 +83,46 @@
 
 <dl class="attribute">
 <dt id="forms.LoginForm.username">
-<code class="sig-name descname">username</code><em class="property"> = &lt;UnboundField(StringField, ('Username',), {})&gt;</em><a class="headerlink" href="#forms.LoginForm.username" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">username</code><em class="property"> = &lt;UnboundField(StringField, ('Username',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#forms.LoginForm.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="forms.PostForm">
+<em class="property">class </em><code class="sig-prename descclassname">forms.</code><code class="sig-name descname">PostForm</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#forms.PostForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
+<p>Inherits from FlaskForm object. Defines the data to be received when a user makes a UserPost.</p>
+<dl class="attribute">
+<dt id="forms.PostForm.content">
+<code class="sig-name descname">content</code><em class="property"> = &lt;UnboundField(StringField, ('Create a New Post',), {'widget': &lt;wtforms.widgets.core.TextArea object&gt;, 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#forms.PostForm.content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="forms.PostForm.submit">
+<code class="sig-name descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Make Post',), {})&gt;</em><a class="headerlink" href="#forms.PostForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="forms.SearchForm">
+<em class="property">class </em><code class="sig-prename descclassname">forms.</code><code class="sig-name descname">SearchForm</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#forms.SearchForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
+<p>Inherits from FlaskForm object. Defines the data to be received when a user inputs search text to search for users.</p>
+<dl class="attribute">
+<dt id="forms.SearchForm.filt">
+<code class="sig-name descname">filt</code><em class="property"> = &lt;UnboundField(SelectField, ('Search for other people!',), {'choices': [('mentee', 'Mentee'), ('mentor', 'Mentor'), ('all', 'All Users')], 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#forms.SearchForm.filt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="forms.SearchForm.submit">
+<code class="sig-name descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Search',), {})&gt;</em><a class="headerlink" href="#forms.SearchForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="forms.SearchForm.text">
+<code class="sig-name descname">text</code><em class="property"> = &lt;UnboundField(StringField, ('Search Input',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#forms.SearchForm.text" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -61,32 +134,32 @@
 <p>This class inherits from the FlaskForm class in Flask. This defines the fields to be received in a Login POST request from the Sign Up page.</p>
 <dl class="attribute">
 <dt id="forms.SignupForm.email">
-<code class="sig-name descname">email</code><em class="property"> = &lt;UnboundField(EmailField, ('Email',), {})&gt;</em><a class="headerlink" href="#forms.SignupForm.email" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">email</code><em class="property"> = &lt;UnboundField(EmailField, ('Email',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;, &lt;wtforms.validators.Email object&gt;]})&gt;</em><a class="headerlink" href="#forms.SignupForm.email" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="forms.SignupForm.first_name">
-<code class="sig-name descname">first_name</code><em class="property"> = &lt;UnboundField(StringField, ('First Name',), {})&gt;</em><a class="headerlink" href="#forms.SignupForm.first_name" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">first_name</code><em class="property"> = &lt;UnboundField(StringField, ('First Name',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#forms.SignupForm.first_name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="forms.SignupForm.grade">
-<code class="sig-name descname">grade</code><em class="property"> = &lt;UnboundField(SelectField, ('Grade in School',), {'choices': [('hs_fresh', 'High School Freshman'), ('hs_soph', 'High School Sophomore'), ('hs_jun', 'High School Junior'), ('hs_sen', 'High School Senior'), ('col_fresh', 'College Freshman'), ('col_soph', 'College Sophomore'), ('col_jun', 'College Junior'), ('col_sen', 'College Senior')]})&gt;</em><a class="headerlink" href="#forms.SignupForm.grade" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">grade</code><em class="property"> = &lt;UnboundField(SelectField, ('Grade in School',), {'choices': [('hs_fresh', 'High School Freshman'), ('hs_soph', 'High School Sophomore'), ('hs_jun', 'High School Junior'), ('hs_sen', 'High School Senior'), ('col_fresh', 'College Freshman'), ('col_soph', 'College Sophomore'), ('col_jun', 'College Junior'), ('col_sen', 'College Senior')], 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#forms.SignupForm.grade" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="forms.SignupForm.last_name">
-<code class="sig-name descname">last_name</code><em class="property"> = &lt;UnboundField(StringField, ('Last Name',), {})&gt;</em><a class="headerlink" href="#forms.SignupForm.last_name" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">last_name</code><em class="property"> = &lt;UnboundField(StringField, ('Last Name',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#forms.SignupForm.last_name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="forms.SignupForm.password">
-<code class="sig-name descname">password</code><em class="property"> = &lt;UnboundField(PasswordField, ('Password',), {})&gt;</em><a class="headerlink" href="#forms.SignupForm.password" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">password</code><em class="property"> = &lt;UnboundField(PasswordField, ('Password',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;, &lt;wtforms.validators.EqualTo object&gt;, &lt;wtforms.validators.Length object&gt;]})&gt;</em><a class="headerlink" href="#forms.SignupForm.password" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="forms.SignupForm.password_v">
-<code class="sig-name descname">password_v</code><em class="property"> = &lt;UnboundField(PasswordField, ('Verify Password',), {})&gt;</em><a class="headerlink" href="#forms.SignupForm.password_v" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">password_v</code><em class="property"> = &lt;UnboundField(PasswordField, ('Verify Password',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#forms.SignupForm.password_v" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -106,7 +179,64 @@
 
 <dl class="attribute">
 <dt id="forms.SignupForm.username">
-<code class="sig-name descname">username</code><em class="property"> = &lt;UnboundField(StringField, ('Username',), {})&gt;</em><a class="headerlink" href="#forms.SignupForm.username" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">username</code><em class="property"> = &lt;UnboundField(StringField, ('Username',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#forms.SignupForm.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="forms.SignupForm.validate_username">
+<code class="sig-name descname">validate_username</code><span class="sig-paren">(</span><em class="sig-param">username</em><span class="sig-paren">)</span><a class="headerlink" href="#forms.SignupForm.validate_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="forms.UpdateAccountForm">
+<em class="property">class </em><code class="sig-prename descclassname">forms.</code><code class="sig-name descname">UpdateAccountForm</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#forms.UpdateAccountForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
+<p>This class inherits from the FlaskForm class in Flask. This defines the fields to be received in a Login POST request from the Account page.</p>
+<dl class="attribute">
+<dt id="forms.UpdateAccountForm.email">
+<code class="sig-name descname">email</code><em class="property"> = &lt;UnboundField(EmailField, ('Email',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;, &lt;wtforms.validators.Email object&gt;]})&gt;</em><a class="headerlink" href="#forms.UpdateAccountForm.email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="forms.UpdateAccountForm.first_name">
+<code class="sig-name descname">first_name</code><em class="property"> = &lt;UnboundField(StringField, ('First Name',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#forms.UpdateAccountForm.first_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="forms.UpdateAccountForm.grade">
+<code class="sig-name descname">grade</code><em class="property"> = &lt;UnboundField(SelectField, ('Grade in School',), {'choices': [('hs_fresh', 'High School Freshman'), ('hs_soph', 'High School Sophomore'), ('hs_jun', 'High School Junior'), ('hs_sen', 'High School Senior'), ('col_fresh', 'College Freshman'), ('col_soph', 'College Sophomore'), ('col_jun', 'College Junior'), ('col_sen', 'College Senior')], 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#forms.UpdateAccountForm.grade" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="forms.UpdateAccountForm.last_name">
+<code class="sig-name descname">last_name</code><em class="property"> = &lt;UnboundField(StringField, ('Last Name',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#forms.UpdateAccountForm.last_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="forms.UpdateAccountForm.new_password">
+<code class="sig-name descname">new_password</code><em class="property"> = &lt;UnboundField(PasswordField, ('New Password',), {})&gt;</em><a class="headerlink" href="#forms.UpdateAccountForm.new_password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="forms.UpdateAccountForm.new_password_v">
+<code class="sig-name descname">new_password_v</code><em class="property"> = &lt;UnboundField(PasswordField, ('Verify New Password',), {})&gt;</em><a class="headerlink" href="#forms.UpdateAccountForm.new_password_v" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="forms.UpdateAccountForm.school">
+<code class="sig-name descname">school</code><em class="property"> = &lt;UnboundField(StringField, ('School',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#forms.UpdateAccountForm.school" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="forms.UpdateAccountForm.state">
+<code class="sig-name descname">state</code><em class="property"> = &lt;UnboundField(SelectField, ('State',), {'choices': [('AL', 'Alabama'), ('AK', 'Alaska'), ('AZ', 'Arizona'), ('AR', 'Arkansas'), ('CA', 'California'), ('CO', 'Colorado'), ('CT', 'Connecticut'), ('DE', 'Delaware'), ('DC', 'District of Columbia'), ('FL', 'Florida'), ('GA', 'Georgia'), ('HI', 'Hawaii'), ('ID', 'Idaho'), ('IL', 'Illinois'), ('IN', 'Indiana'), ('IO', 'Iowa'), ('KS', 'Kansas'), ('KY', 'Kentucky'), ('LA', 'Louisiana'), ('ME', 'Maine'), ('MD', 'Maryland'), ('MA', 'Massachusetts'), ('MI', 'Michigan'), ('MN', 'Minnesota'), ('MS', 'Mississippi'), ('MO', 'Missouri'), ('MT', 'Montana'), ('NE', 'Nebraska'), ('NV', 'Nevada'), ('NH', 'New Hampshire'), ('NJ', 'New Jersey'), ('NM', 'New Mexico'), ('NY', 'New York'), ('NC', 'North Carolina'), ('ND', 'North Dakota'), ('OH', 'Ohio'), ('OK', 'Oklahoma'), ('OR', 'Oregon'), ('PA', 'Pennsylvania'), ('RI', 'Rhode Island'), ('SC', 'South Carolina'), ('SD', 'South Dakota'), ('TN', 'Tennessee'), ('TX', 'Texas'), ('UT', 'Utah'), ('VT', 'Vermont'), ('VA', 'Virginia'), ('WA', 'Washington'), ('WV', 'West Virginia'), ('WI', 'Wisconsin'), ('WY', 'Wyoming')], 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#forms.UpdateAccountForm.state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="forms.UpdateAccountForm.submit">
+<code class="sig-name descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Update Account',), {})&gt;</em><a class="headerlink" href="#forms.UpdateAccountForm.submit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -120,7 +250,7 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Final Project</a></h1>
+<h1 class="logo"><a href="index.html">Mentino</a></h1>
 
 
 
@@ -161,10 +291,10 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019, DeRon Sutton, Jace Kline, William Starks, Chris Hardin, Rick Petzold.
+      &copy;2019, Christ Hardin, DeRon Sutton, Jace Kline, William Stark, Rick Petzold.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

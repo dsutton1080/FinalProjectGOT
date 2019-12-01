@@ -6,7 +6,11 @@ FinalProjectGOT
 
    config
    constants
+   create_test_users
+   db_models
+   db_setup
    forms
+   funcs
    init
    main
-   models
+   tests

@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>db_models module &#8212; Mentino Beta documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-db_models">
+<span id="db-models-module"></span><h1>db_models module<a class="headerlink" href="#module-db_models" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="db_models.Follow">
+<em class="property">class </em><code class="sig-prename descclassname">db_models.</code><code class="sig-name descname">Follow</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#db_models.Follow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.ext.declarative.api.Model</span></code></p>
+<p>This class corresponds to the database model for a Follow object.
+A high level interface that allows more efficient interactions with the relational database.</p>
+<dl class="attribute">
+<dt id="db_models.Follow.follower_username">
+<code class="sig-name descname">follower_username</code><a class="headerlink" href="#db_models.Follow.follower_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.Follow.following_username">
+<code class="sig-name descname">following_username</code><a class="headerlink" href="#db_models.Follow.following_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.Follow.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#db_models.Follow.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.Follow.post_time">
+<code class="sig-name descname">post_time</code><a class="headerlink" href="#db_models.Follow.post_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="db_models.ForumPost">
+<em class="property">class </em><code class="sig-prename descclassname">db_models.</code><code class="sig-name descname">ForumPost</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#db_models.ForumPost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.ext.declarative.api.Model</span></code></p>
+<p>This class corresponds to the database model for a ForumPost object.
+A high level interface that allows more efficient interactions with the relational database.</p>
+<dl class="attribute">
+<dt id="db_models.ForumPost.author">
+<code class="sig-name descname">author</code><a class="headerlink" href="#db_models.ForumPost.author" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.ForumPost.author_username">
+<code class="sig-name descname">author_username</code><a class="headerlink" href="#db_models.ForumPost.author_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.ForumPost.content">
+<code class="sig-name descname">content</code><a class="headerlink" href="#db_models.ForumPost.content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.ForumPost.forum_question_id">
+<code class="sig-name descname">forum_question_id</code><a class="headerlink" href="#db_models.ForumPost.forum_question_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.ForumPost.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#db_models.ForumPost.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.ForumPost.post_time">
+<code class="sig-name descname">post_time</code><a class="headerlink" href="#db_models.ForumPost.post_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.ForumPost.question">
+<code class="sig-name descname">question</code><a class="headerlink" href="#db_models.ForumPost.question" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="db_models.ForumQuestion">
+<em class="property">class </em><code class="sig-prename descclassname">db_models.</code><code class="sig-name descname">ForumQuestion</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#db_models.ForumQuestion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.ext.declarative.api.Model</span></code></p>
+<p>This class corresponds to the database model for a ForumQuestion object.
+A high level interface that allows more efficient interactions with the relational database.</p>
+<dl class="attribute">
+<dt id="db_models.ForumQuestion.author">
+<code class="sig-name descname">author</code><a class="headerlink" href="#db_models.ForumQuestion.author" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.ForumQuestion.author_username">
+<code class="sig-name descname">author_username</code><a class="headerlink" href="#db_models.ForumQuestion.author_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.ForumQuestion.content">
+<code class="sig-name descname">content</code><a class="headerlink" href="#db_models.ForumQuestion.content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.ForumQuestion.forum_posts">
+<code class="sig-name descname">forum_posts</code><a class="headerlink" href="#db_models.ForumQuestion.forum_posts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.ForumQuestion.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#db_models.ForumQuestion.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.ForumQuestion.post_time">
+<code class="sig-name descname">post_time</code><a class="headerlink" href="#db_models.ForumQuestion.post_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="db_models.Message">
+<em class="property">class </em><code class="sig-prename descclassname">db_models.</code><code class="sig-name descname">Message</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#db_models.Message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.ext.declarative.api.Model</span></code></p>
+<p>This class corresponds to the database model for a Message object.
+A high level interface that allows more efficient interactions with the relational database.
+Due to time constraints, we were not able to implement messaging.</p>
+<dl class="attribute">
+<dt id="db_models.Message.content">
+<code class="sig-name descname">content</code><a class="headerlink" href="#db_models.Message.content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.Message.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#db_models.Message.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.Message.post_time">
+<code class="sig-name descname">post_time</code><a class="headerlink" href="#db_models.Message.post_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.Message.receiver_username">
+<code class="sig-name descname">receiver_username</code><a class="headerlink" href="#db_models.Message.receiver_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.Message.sender_username">
+<code class="sig-name descname">sender_username</code><a class="headerlink" href="#db_models.Message.sender_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="db_models.User">
+<em class="property">class </em><code class="sig-prename descclassname">db_models.</code><code class="sig-name descname">User</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#db_models.User" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.ext.declarative.api.Model</span></code></p>
+<p>This class corresponds to the database model for a User object.
+A high level interface that allows more efficient interactions with the relational database.</p>
+<dl class="attribute">
+<dt id="db_models.User.authenticated">
+<code class="sig-name descname">authenticated</code><a class="headerlink" href="#db_models.User.authenticated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.User.email">
+<code class="sig-name descname">email</code><a class="headerlink" href="#db_models.User.email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.User.first_name">
+<code class="sig-name descname">first_name</code><a class="headerlink" href="#db_models.User.first_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.User.forum_posts">
+<code class="sig-name descname">forum_posts</code><a class="headerlink" href="#db_models.User.forum_posts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.User.forum_questions">
+<code class="sig-name descname">forum_questions</code><a class="headerlink" href="#db_models.User.forum_questions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="db_models.User.get_id">
+<code class="sig-name descname">get_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#db_models.User.get_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.User.grade">
+<code class="sig-name descname">grade</code><a class="headerlink" href="#db_models.User.grade" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="db_models.User.is_active">
+<code class="sig-name descname">is_active</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#db_models.User.is_active" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="db_models.User.is_anonymous">
+<code class="sig-name descname">is_anonymous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#db_models.User.is_anonymous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="db_models.User.is_authenticated">
+<code class="sig-name descname">is_authenticated</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#db_models.User.is_authenticated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.User.last_name">
+<code class="sig-name descname">last_name</code><a class="headerlink" href="#db_models.User.last_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.User.password">
+<code class="sig-name descname">password</code><a class="headerlink" href="#db_models.User.password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.User.post_time">
+<code class="sig-name descname">post_time</code><a class="headerlink" href="#db_models.User.post_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.User.school">
+<code class="sig-name descname">school</code><a class="headerlink" href="#db_models.User.school" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.User.state">
+<code class="sig-name descname">state</code><a class="headerlink" href="#db_models.User.state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="db_models.User.test_password">
+<code class="sig-name descname">test_password</code><span class="sig-paren">(</span><em class="sig-param">password</em><span class="sig-paren">)</span><a class="headerlink" href="#db_models.User.test_password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.User.user_posts">
+<code class="sig-name descname">user_posts</code><a class="headerlink" href="#db_models.User.user_posts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.User.username">
+<code class="sig-name descname">username</code><a class="headerlink" href="#db_models.User.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="db_models.UserPost">
+<em class="property">class </em><code class="sig-prename descclassname">db_models.</code><code class="sig-name descname">UserPost</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#db_models.UserPost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.ext.declarative.api.Model</span></code></p>
+<p>This class corresponds to the database model for a UserPost object.
+A high level interface that allows more efficient interactions with the relational database.</p>
+<dl class="attribute">
+<dt id="db_models.UserPost.author">
+<code class="sig-name descname">author</code><a class="headerlink" href="#db_models.UserPost.author" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.UserPost.author_username">
+<code class="sig-name descname">author_username</code><a class="headerlink" href="#db_models.UserPost.author_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.UserPost.content">
+<code class="sig-name descname">content</code><a class="headerlink" href="#db_models.UserPost.content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.UserPost.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#db_models.UserPost.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="db_models.UserPost.post_time">
+<code class="sig-name descname">post_time</code><a class="headerlink" href="#db_models.UserPost.post_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="db_models.create_db_models">
+<code class="sig-prename descclassname">db_models.</code><code class="sig-name descname">create_db_models</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#db_models.create_db_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function translates the defined database schemas into SQL commands.
+Creates the database tables.
+:return: void</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="db_models.load_user">
+<code class="sig-prename descclassname">db_models.</code><code class="sig-name descname">load_user</code><span class="sig-paren">(</span><em class="sig-param">user_id</em><span class="sig-paren">)</span><a class="headerlink" href="#db_models.load_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is invoked by Flask as part of its built-in user management features. This essentially loads a current
+user into the session.
+:param user_id: The username of the desired user to load into the session
+:return: User object or None</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Mentino</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Christ Hardin, DeRon Sutton, Jace Kline, William Stark, Rick Petzold.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/db_models.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,7 +1,7 @@
-models module
-=============
+funcs module
+============
 
-.. automodule:: models
+.. automodule:: funcs
    :members:
    :undoc-members:
    :show-inheritance:
