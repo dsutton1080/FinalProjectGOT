@@ -2,8 +2,6 @@ from datetime import datetime
 from init import db, login_manager
 
 
-
-
 class User(db.Model):
     __tablename__ = 'Users'
     first_name = db.Column(db.String(64), index=True, nullable=False)
@@ -110,6 +108,8 @@ def load_user(user_id):
         return User.query.get(user_id)
     return None
 
+def create_db_models():
+    db.create_all()
+    db.session.commit()
 
-db.create_all()
-db.session.commit()
+create_db_models()

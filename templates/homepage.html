@@ -6,10 +6,13 @@
     <div class="col-sm-2 sidebar">
       <div class= "mar-top">
       <div class="card">
-        <img class="card-img-top" src="{{ url_for('static', filename='mentee.jpg') }}" alt="Card Image" style="width:100%">
+        <img class="card-img-top" src="{{ url_for('static', filename='mentee.jpg' if is_mentee(current_user) else 'mentor.jpg') }}" alt="Card Image" style="width:100%">
         <div class="card-body">
           <h4 class="card-title"> {{ current_user.first_name }} {{ current_user.last_name }} </h4>
-         <!-- <a href="#" class="btn btn-primary"> My Profile </a>-->
+          <p class="card-body" align='center'>@{{ current_user.username }}</p>
+          <p class="card-body" align='center'>Grade: {{ grade_level_string(current_user.grade) }}</p>
+          <p class="card-body" align='center'>School: {{ current_user.school }}</p>
+          <p class="card=body" align='center'>Role: {{ "Mentee" if is_mentee(current_user) else "Mentor" }} </p>
         </div>
       </div>
       </div>
@@ -32,57 +35,26 @@
         </form>
         {% endblock %}
 
-        <div class="chat dark">
-          <img src="{{ url_for('static', filename='mentee.jpg') }}" alt="Avatar">
-          <p> This is a post. </p>
-          <span class="time-right"> 5:53pm</span>
-        </div>
-
+        {% for userpost in get_general_feed(current_user) %}
         <div class="chat">
-          <img src="{{ url_for('static', filename='mentee.jpg') }}" alt="Avatar">
-          <p> Oh hey ____! Awesome. If there are any questions you have regarding college or future employment, let me know! </p>
-          <span class="time-right"> 6:08pm</span>
+          <img src="{{ url_for('static', filename='mentee.jpg' if is_mentee(get_user_by_username(userpost.author_username)) else 'mentor.jpg') }}" alt="Avatar">
+          <p>{{ userpost.content }}</p>
+          <span class="time-right">{{ date_to_string(userpost.post_time) }}</span>
         </div>
-
-
-        <div class="chat dark">
-          <img src="{{ url_for('static', filename='mentor.jpg') }}" alt="Avatar">
-          <p> Cool! If the region in the first quadrant bounded by the curve y=e^x and x=1 is rotatred about the x-axis, what is the volume of the resulting solid?</p>
-          <span class="time-right"> 7:33pm</span>
-        </div>
-
-        <div class="chat">
-          <img src="{{ url_for('static', filename='mentor.jpg') }}" alt="Avatar">
-          <p> The region being rotated is that under the curve y=e^x between x=0 and x=1. Now dV = pi*r^2 dx = pi * e^(2x) dx </p>
-          <span class="time-right"> 7:59pm</span>
-        </div>
-
-        <div class="chat dark">
-          <img src="{{ url_for('static', filename='mentee.jpg') }}" alt="Avatar">
-          <p> So the volume is:  [Integral 0 -> 1] e^2x dx =  ( e^(2x) ) / 2 from 0 -> 1 =  (e^2 - 1) / 2  </p>
-          <span class="time-right"> 8:05pm</span>
-        </div>
+        {% endfor %}
 
       </div>
     </div>
 
     <div class="col sidebar">
       <div class= "mar-top">
+        {% for friend in get_following(current_user) %}
         <div class="chat dark">
-          <img src="{{ url_for('static', filename='mentor.jpg') }}" alt="Avatar">
-          <p>Drake</p>
-          <span class="time-right">Online</span>
+          <img src="{{ url_for('static', filename='mentee.jpg' if is_mentee(friend) else 'mentor.jpg') }}" alt="Avatar">
+          <p>{{ friend.first_name }} {{ friend.last_name }}</p>
+          <p>@{{ friend.username }}</p>
         </div>
-        <div class="chat dark">
-          <img src="{{ url_for('static', filename='mentor.jpg') }}" alt="Avatar">
-          <p>Sam</p>
-          <span class="time-right">Offline</span>
-        </div>
-        <div class="chat dark">
-          <img src="{{ url_for('static', filename='mentor.jpg') }}" alt="Avatar">
-          <p>Sandy</p>
-          <span class="time-right">Offline</span>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </div>

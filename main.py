@@ -3,16 +3,30 @@ from forms import LoginForm, SignupForm, PostForm, SearchForm, UpdateAccountForm
 from db_setup import conn, curs
 from init import app, db
 from flask_login import current_user, login_user, logout_user
-from db_models import *
+from db_models import load_user
 from config import Config
 import subprocess
 from funcs import *
 
 if app.config['TEST_USER_POPULATED_DB'] == True:
     from create_test_users import run
-
     run()
 
+app.jinja_env.globals.update(grade_level_string = grade_level_string)
+app.jinja_env.globals.update(state_abbrev_to_name = state_abbrev_to_name)
+app.jinja_env.globals.update(fst = fst)
+app.jinja_env.globals.update(clear_all_tables = clear_all_tables)
+app.jinja_env.globals.update(is_mentor = is_mentor)
+app.jinja_env.globals.update(is_mentee = is_mentee)
+app.jinja_env.globals.update(sorted_reverse_id_order = sorted_reverse_id_order)
+app.jinja_env.globals.update(get_following = get_following)
+app.jinja_env.globals.update(get_mentees = get_mentees)
+app.jinja_env.globals.update(get_general_feed = get_general_feed)
+app.jinja_env.globals.update(get_user_feed = get_user_feed)
+app.jinja_env.globals.update(get_forum_questions = get_forum_questions)
+app.jinja_env.globals.update(get_forum_question_posts = get_forum_question_posts)
+app.jinja_env.globals.update(get_user_by_username = get_user_by_username)
+app.jinja_env.globals.update(date_to_string = date_to_string)
 
 @app.shell_context_processor
 def make_shell_context():

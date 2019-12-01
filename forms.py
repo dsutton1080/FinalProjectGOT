@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, EqualTo, Length, ValidationError, E
 from wtforms.fields.html5 import EmailField
 from wtforms.widgets import TextArea
 from constants import STATE_ABBREVS, STATE_NAMES, GRADE_LEVELS
-from db_models import *
+from db_models import User, UserPost, ForumQuestion, ForumPost, Message, Follow
 
 
 class LoginForm(FlaskForm):

@@ -27,32 +27,16 @@
         </form>
         {% endblock %}
 
-        <a href="#">
+        {% for fp in get_forum_questions() %}
+        <a href="/forum/{{ fp.id }}">
         <div class="chat dark">
-          <img src="{{ url_for('static', filename='mentee.jpg') }}" alt="Avatar">
-          <p style="text-decoration : none; color : #000;"> Do you think this is at all possible? </p>
-          <span class="time-right">Posted: 5:53 PM</span><br>
-          <span class="time-right">Author: David</span>
+          <img src="{{ url_for('static', filename='mentee.jpg' if is_mentee(get_user_by_username(fp.author_username)) else 'mentor.jpg') }}" alt="Avatar">
+          <p style="text-decoration : none; color : #000;">{{ fp.content }}</p>
+          <span class="time-right">Posted: {{ date_to_string(fp.post_time) }}</span><br>
+          <span class="time-right">Author: {% with u = get_user_by_username(fp.author_username) %}{{ u.first_name}} {{ u.last_name }} (@{{ u.username }}){% endwith %}</span>
         </div>
         </a>
-
-        <a href="#">
-        <div class="chat">
-          <img src="{{ url_for('static', filename='mentee.jpg') }}" alt="Avatar">
-          <p style="text-decoration : none; color : #000;"> When does class start for Calc 3? </p>
-          <span class="time-right">Posted: 5:08 PM</span><br>
-          <span class="time-right">Author: Samantha</span>
-        </div>
-        </a>
-
-        <a href="#">
-        <div class="chat dark">
-          <img src="{{ url_for('static', filename='mentor.jpg') }}" alt="Avatar">
-          <p style="text-decoration : none; color : #000;"> What is the resulting solid?</p>
-          <span class="time-right">Posted: 2:33 PM</span><br>
-          <span class="time-right">Author: Trey</span>
-        </div>
-        </a>
+        {% endfor %}
 
       </div>
     </div>
