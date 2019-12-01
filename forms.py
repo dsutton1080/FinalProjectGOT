@@ -27,7 +27,7 @@ class MessageForm(FlaskForm):
 
 
 class CommentForm(FlaskForm):
-    comment = StringField('')
+    comment = StringField(widget=TextArea())
     submit = SubmitField('Add Comment')
 
 

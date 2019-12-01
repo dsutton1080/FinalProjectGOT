@@ -17,17 +17,31 @@
           <div class="col-sm-12" align="right">Author: {{ first }} {{ last }}</div>
           <div class="col-sm-12" align="right">Submitted: {{ time }}</div>
 
+        {% block content %}
+        <form action="" method="post" novalidate>
+          {{ form.hidden_tag() }}
+          <div class="chat">
+            {{ form.comment( id="ta", cols="90", rows="2") }}<br>
+            <span class="time-right">
+              {{ form.submit(value = "Comment", class="btn btn-primary") }}
+            </span>
+          </div>
+        </form>
+        {% endblock %}
+
           <div class="chat dark">
               <img src="{{ url_for('static', filename='mentee.jpg') }}" alt="Avatar">
               <p> Nah, I don't think so. Thanks though. </p>
-              <span class="time-right">James 6:08pm</span>
+              <span class="time-right">James 7:08pm</span>
           </div>
 
           <div class="chat dark">
               <img src="{{ url_for('static', filename='mentor.jpg') }}" alt="Avatar">
               <p> I actually agree with you wholefully. </p>
-              <span class="time-right">Kate 7:08pm</span>
+              <span class="time-right">Kate 6:08pm</span>
           </div>
+
+
 
       </div>
     </div>

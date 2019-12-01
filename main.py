@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, flash, redirect, request, session
-from forms import LoginForm, SignupForm, PostForm, SearchForm, UpdateAccountForm
+from forms import LoginForm, SignupForm, PostForm, SearchForm, UpdateAccountForm, CommentForm
 from db_setup import conn, curs
 from init import app, db
 from flask_login import current_user, login_user, logout_user
@@ -132,11 +132,12 @@ def runtests():
 
 @app.route('/thread')
 def thread():
+    form = CommentForm()
     post = session['post']
     time = session['time']
     print(post)
     print("made it here")
-    return render_template('thread.html', p=post, first=current_user.first_name, last=current_user.last_name, time=time)
+    return render_template('thread.html', form=form, p=post, first=current_user.first_name, last=current_user.last_name, time=time)
 
 
 def add_post(post):
