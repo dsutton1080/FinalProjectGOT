@@ -17,21 +17,25 @@ class LoginForm(FlaskForm):
 
 
 class PostForm(FlaskForm):
+    """
+    Inherits from FlaskForm object. Defines the data to be received when a user makes a UserPost.
+    """
     content = StringField('Create a New Post', widget=TextArea(), validators=[DataRequired()])
     submit = SubmitField('Make Post')
 
 
 class ForumQuestionForm(FlaskForm):
+    """
+    Inherits from FlaskForm object. Defines the data to be received when a user posts a ForumQuestion.
+    """
     question = StringField('Create a New Forum', widget=TextArea(), validators=[DataRequired()])
     submit = SubmitField('Create Forum')
 
 
-# class MessageForm(FlaskForm):
-#     message = StringField()
-#     submit = SubmitField('Send')
-
-
 class CommentForm(FlaskForm):
+    """
+    Inherits from FlaskForm object. Defines the data to be received when a user makes a ForumPost (response to a forum thread).
+    """
     comment = StringField(widget=TextArea(), validators=[DataRequired()])
     submit = SubmitField('Add Comment')
 
@@ -63,6 +67,9 @@ class SignupForm(FlaskForm):
 
 
 class SearchForm(FlaskForm):
+    """
+    Inherits from FlaskForm object. Defines the data to be received when a user inputs search text to search for users.
+    """
     filt = SelectField('Search for other people!', choices=[('mentee', 'Mentee'), ('mentor', 'Mentor'), ('all', 'All Users')], validators=[DataRequired()])
     text = StringField('Search Input', validators=[DataRequired()])
     submit = SubmitField('Search')

@@ -11,6 +11,9 @@ def even(n):
     return (n % 2) == 0
 
 def spawn_mock_users():
+    """
+    Creates a set of 12 users for the purposes of testing the application.
+    """
     for i in range(1, 13):
         u = User(first_name=FIRSTS[i-1], 
                     last_name=LASTS[i-1],
@@ -23,6 +26,9 @@ def spawn_mock_users():
         add_user(u)
 
 def spawn_mock_forum_questions():
+    """
+    Creates 3 forum question posts for each user for purposes of testing.
+    """
     for i in range(0, 12):
         for j in range(1, 3):
             fq = ForumQuestion(author_username=USERNAMES[i],
@@ -31,6 +37,9 @@ def spawn_mock_forum_questions():
     db.session.commit()
 
 def spawn_mock_user_posts():
+    """
+    Creates 2 user posts per person for the purposes of testing.
+    """
     for i in range(0, 12):
         for j in range(1,3):
             upost = UserPost(author_username=USERNAMES[i],
@@ -39,6 +48,9 @@ def spawn_mock_user_posts():
     db.session.commit()
 
 def spawn_mock_forum_replies():
+    """
+    Creates a forum post reply for each forum question (each user)
+    """
     for fq in get_forum_questions():
         for k in range(0, 12):
             fp = ForumPost(forum_question_id=fq.id,
@@ -48,6 +60,9 @@ def spawn_mock_forum_replies():
     db.session.commit()
 
 def spawn_mock_follows():
+    """
+    Creates test relationships between users based on their stored index
+    """
     for i in range(0, 12):
         for j in range(0, 12):
             if even(i) and even(j):
@@ -59,6 +74,9 @@ def spawn_mock_follows():
     db.session.commit()
 
 def run():
+    """
+    Sets up the entire database test environment and fills with the test data
+    """
     clear_all_tables()
 
     spawn_mock_users()

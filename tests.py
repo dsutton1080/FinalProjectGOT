@@ -9,14 +9,27 @@ OUT_FILE_PATH = 'tests_output.txt'
 f = open(OUT_FILE_PATH, "a+")
 
 class Test:
+    """
+    An encapsulation of a test function and its description
+    """
     def __init__(self, description, proc):
         self.description = description
         self.run = proc
 
 def write_output(msg):
+    """
+    Writes test output lines to the defined file
+    :param msg: the string to write
+    :return: void
+    """
     f.write(msg + '\n')
 
 def tester(test_obj):
+    """
+    Takes a test object, displays its description, and runs the test
+    :param test_obj: a Test object
+    :return: void
+    """
     write_output("TEST DESCRIPTION: " + test_obj.description)
     passed, msgs = test_obj.run() # each test run method returns a boolean
     for msg in msgs:
@@ -27,6 +40,10 @@ def tester(test_obj):
         write_output("----------\nResult: FAILED\n")
 
 def test_add_user():
+    """
+    Tests the instantiation of a User object to the database
+    :return: tuple (boolean, message list)
+    """
     messages = []
     u1 = User(first_name='u1', last_name='u1', username='userexample', email='user623@example.com', password='password', school='KU', grade='col_jun', state='KS')
     try:
@@ -55,6 +72,10 @@ def test_add_user():
     return (True, messages)
 
 def test_unique_username():
+    """
+    Tests whether only unique usernames are allowed
+    :return: tuple (boolean, message list)
+    """
     messages = []
     messages.append("Attempting to add two users to empty database with same username")
     u1 = User(first_name='u1', last_name='u1', username='user', email='user@example.com', password='password', school='KU', grade='col_jun', state='KS')
@@ -75,6 +96,10 @@ def test_unique_username():
     return (True, messages)
 
 def test_unique_email():
+    """
+    Tests whether only unique email addresses are allowed
+    :return: tuple (boolean, message list)
+    """
     messages = []
     messages.append("Attempting to add 2 users with same email address to the empty database")
     u1 = User(first_name='u1', last_name='u1', username='user', email='user@example.com', password='password', school='KU', grade='col_jun', state='KS')
@@ -95,6 +120,10 @@ def test_unique_email():
     return (True, messages)
 
 def test_password_verification():
+    """
+    Tests the password verification method
+    :return: tuple (boolean, message list)
+    """
     messages = []
     messages.append("Adding a user with known password to the empty database")
     u1 = User(first_name='u1', last_name='u1', username='user', email='user@example.com', password='password', school='KU', grade='col_jun', state='KS')
@@ -115,6 +144,10 @@ def test_password_verification():
     return (True, messages)
 
 def test_forum_questions():
+    """
+    Tests whether forum questions are properly added and referenced
+    :return: tuple (boolean, message list)
+    """
     messages = []
     messages.append("Adding user to empty database")
     u1 = User(first_name='u1', last_name='u1', username='user', email='user@example.com', password='password', school='KU', grade='col_jun', state='KS')
@@ -141,6 +174,10 @@ def test_forum_questions():
     return (True, messages)
 
 def test_forum_posts():
+    """
+    Tests whether forum posts are properly added and referenced
+    :return: tuple (boolean, message list)
+    """
     messages = []
     messages.append("Adding user to empty database")
     u1 = User(first_name='u1', last_name='u1', username='user', email='user@example.com', password='password', school='Blue Valley West', grade='hs_jun', state='KS')
@@ -172,6 +209,10 @@ def test_forum_posts():
 
 
 def test_user_posts():
+    """
+    Tests whether user post objects are properly added and referenced
+    :return: tuple (boolean, message list)
+    """
     messages = []
     messages.append("Adding user to empty database")
     u1 = User(first_name='u1', last_name='u1', username='user', email='user@example.com', password='password', school='Blue Valley West', grade='hs_jun', state='KS')
@@ -192,6 +233,10 @@ def test_user_posts():
     return (True, messages)
 
 def test_empty_post_not_allowed():
+    """
+    Tests whether empty posts are denied from being added to the database
+    :return: tuple (boolean, message list)
+    """
     messages = []
     messages.append("Adding user to empty database")
     u1 = User(first_name='u1', last_name='u1', username='user', email='user@example.com', password='password', school='KU', grade='col_jun', state='KS')
@@ -215,6 +260,10 @@ def test_empty_post_not_allowed():
     return (True, messages)
 
 def test_non_completed_user_not_in_db():
+    """
+    Tests whether a User object with incomplete parameters is denied from database
+    :return: tuple (boolean, message list)
+    """
     messages = []
     messages.append("Creating user with incomplete parameters")
     u1 = User(first_name='u1', last_name='u1', username='user', password='password')
@@ -234,6 +283,10 @@ def test_non_completed_user_not_in_db():
     return (True, messages)
 
 def test_search_query():
+    """
+    Tests the user search query method to determine whether the change of filter criteria works properly
+    :return: tuple (boolean, message list)
+    """
     messages = []
     messages.append("Creating indexed table structure with many users")
     try:
@@ -257,6 +310,10 @@ def test_search_query():
     return (True, messages)
 
 def test_search_query2():
+    """
+    Tests whether a user can be found by entering either first or last name
+    :return: tuple (boolean, message list)
+    """
     messages = []
     messages.append("Creating indexed table structure with many users")
     try:
@@ -321,6 +378,10 @@ func_tests = [
 
 if __name__ == "__main__":   
     def test_db():
+        """
+        The procedure to run the database testing functions and write to file
+        :return: void
+        """
         i = 1
         app.config['TESTING'] = True
         app.config['WTF_CSRF_ENABLED'] = False
@@ -335,6 +396,10 @@ if __name__ == "__main__":
             i += 1
     
     def test_funcs():
+        """
+        The procedure to run the search query function tests and write to file
+        :return: void
+        """
         i = 1
         app.config['TESTING'] = True
         app.config['WTF_CSRF_ENABLED'] = False

@@ -32,6 +32,10 @@ app.jinja_env.globals.update(is_following=is_following)
 
 @app.shell_context_processor
 def make_shell_context():
+    """
+    Used to pass critical application variables to a shell context for testing and debugging.
+    :return: None
+    """
     return {'curs': curs,
             'conn': conn,
             'db': db,
@@ -47,6 +51,10 @@ def make_shell_context():
 @app.route('/')
 @app.route('/splash', methods=['GET', 'POST'])
 def splash():
+    """
+    View function for the splash screen. This page is where you either log in or redirect to the sign up page.
+    :return: HTML template or redirect
+    """
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = LoginForm()
@@ -63,6 +71,10 @@ def splash():
 
 @app.route('/logout')
 def logout():
+    """
+    Ends the current user's session and redirects to the splash screen.
+    :return: redirect
+    """
     user = current_user
     user.authenticated = False
     logout_user()
@@ -106,6 +118,10 @@ def home():
 
 @app.route('/forums', methods=['GET', 'POST'])
 def forums():
+    """
+    View function for the forums screen. This page shows all the forum questions posted in reverse chronological order.
+    :return: HTML template or redirect to forum thread
+    """
     form = ForumQuestionForm()
     if form.validate_on_submit():
         content = form.question.data
@@ -119,6 +135,10 @@ def forums():
 
 @app.route('/account', methods=['GET', 'POST'])
 def account():
+    """
+    View function for the account screen. This page is where you can update account information.
+    :return: HTML template or redirect
+    """
     form = UpdateAccountForm(grade=current_user.grade, state=current_user.state)
     if form.validate_on_submit():
         update_account_handler(form)
@@ -128,12 +148,21 @@ def account():
 
 @app.route('/runtests')
 def runtests():
+    """
+    Navigating to this page signals that the test suite has begun running (writing to a file)
+    :return: HTML template
+    """
     subprocess.Popen(['python3', 'tests.py'])
     return render_template('testpage.html')
 
 
 @app.route('/search',methods=['GET', 'POST'])
 def search():
+    """
+    View function for the user search page. This page allows a user to search all other users in the system.
+    Allows for filtering by mentor/mentee status.
+    :return: HTML template
+    """
     form = SearchForm(filt='all')
     if form.validate_on_submit():
         pass
@@ -141,6 +170,12 @@ def search():
 
 @app.route('/follow/<follower_uname>/<following_uname>')
 def follow(follower_uname, following_uname):
+    """
+    This function is invoked when a user clicks the 'Follow' button on the search users page.
+    :param follower_uname: username for a User object - the follower of the the 'Follow' transaction
+    :param following_uname: username for a User object - the followee of the the 'Follow' transaction
+    :return: redirect back to search page
+    """
     if is_valid_user(get_user_by_username(follower_uname)) and is_valid_user(get_user_by_username(following_uname)) and follower_uname != following_uname:
         f = Follow(follower_username=follower_uname, following_username=following_uname)
         db.session.add(f)
@@ -150,6 +185,11 @@ def follow(follower_uname, following_uname):
 
 @app.route('/thread/<int:question_id>', methods=['GET', 'POST'])
 def thread(question_id):
+    """
+    This view function represents the thread page of a forum question. Here you can post a response to the thread.
+    :param question_id: The identifier for the forum question
+    :return: redirect or template
+    """
     form = CommentForm()
     if form.validate_on_submit():
         content = form.comment.data
@@ -199,6 +239,11 @@ def signup_not_empty(form):
 
 
 def update_account_handler(form):
+    """
+    This method verifies account update information, then writes the changes to the current user object.
+    :param form: The form with the posted update data
+    :return: void
+    """
     if current_user.first_name != form.first_name.data:
         current_user.first_name = form.first_name.data
     if current_user.last_name != form.last_name.data:
@@ -220,6 +265,11 @@ def update_account_handler(form):
     db.session.commit()
 
 def redirect_url(default='home'):
+    """
+    This is a helper function to automatically redirect to the last URL
+    :param default: The default page to redirect to
+    :return: URL string
+    """
     return request.args.get('next') or \
            request.referrer or \
            url_for(default)
