@@ -10,8 +10,9 @@ A mentor/mentee website to be used between high school and college students for 
 4. [Retrospective Write-up](https://docs.google.com/document/d/1fWMUTJFGaVZObnmuwut-uP_KIYvae_L6sPcgTjjYeaE/edit?usp=sharing)
 5. [Python Code Documentation](http://htmlpreview.github.io/?https://github.com/dsutton1080/FinalProjectGOT/blob/PROJECT3/docs/build/html/index.html)
 6. [UML Documents and Gantt Chart](https://github.com/dsutton1080/FinalProjectGOT/tree/PROJECT3/UML%20Documentation)
-7. [Deployment Plan] (https://drive.google.com/open?id=1Lax5jbwbCNmd-ZqRJ13fX35QxigPIE_MH7KL5JPJXSE)
-8. [Maintenance Plan] (https://drive.google.com/open?id=13ikkDFQkHejwyyb0cnEVnkZ9zsxs543JhwH75g4WSDk)
+7. [User Manual] (https://drive.google.com/open?id=1jPhLzWwNfniwUqcQOLtUxbLAUq52PBhfwmOzlJiuqjM)
+8. [Deployment Plan] (https://drive.google.com/open?id=1Lax5jbwbCNmd-ZqRJ13fX35QxigPIE_MH7KL5JPJXSE)
+9. [Maintenance Plan] (https://drive.google.com/open?id=13ikkDFQkHejwyyb0cnEVnkZ9zsxs543JhwH75g4WSDk)
 
 ## Works Cited
 * [Flask](https://github.com/pallets/flask)
