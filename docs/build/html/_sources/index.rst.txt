@@ -1,22 +1,21 @@
-.. Final Project documentation master file, created by
-   sphinx-quickstart on Tue Nov  5 03:16:49 2019.
+.. Mentino documentation master file, created by
+   sphinx-quickstart on Sun Dec  1 14:47:45 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Final Project's documentation!
-=========================================
+Welcome to Mentino's documentation!
+===================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
-
-   forms
-   init
+   
    main
-   models
-   constants
-
+   config
+   db_models
+   forms
+   funcs
+   tests
 
 
 Indices and tables

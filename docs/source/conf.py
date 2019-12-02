@@ -12,14 +12,14 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../../FinalProjectGOT'))
+sys.path.insert(0, os.path.abspath('../'))
 
 
 # -- Project information -----------------------------------------------------
 
-project = 'Final Project'
-copyright = '2019, DeRon Sutton, Jace Kline, William Starks, Chris Hardin, Rick Petzold'
-author = 'DeRon Sutton, Jace Kline, William Starks, Chris Hardin, Rick Petzold'
+project = 'Mentino'
+copyright = '2019, Christ Hardin, DeRon Sutton, Jace Kline, William Stark, Rick Petzold'
+author = 'Christ Hardin, DeRon Sutton, Jace Kline, William Stark, Rick Petzold'
 
 # The full version, including alpha/beta/rc tags
 release = 'Beta'

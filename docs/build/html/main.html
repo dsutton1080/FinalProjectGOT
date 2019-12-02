@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>main module &#8212; Final Project Beta documentation</title>
+    <title>main module &#8212; Mentino Beta documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -33,6 +33,29 @@
   <div class="section" id="module-main">
 <span id="main-module"></span><h1>main module<a class="headerlink" href="#module-main" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
+<dt id="main.account">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.account" title="Permalink to this definition">¶</a></dt>
+<dd><p>View function for the account screen. This page is where you can update account information.
+:return: HTML template or redirect</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="main.follow">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">follow</code><span class="sig-paren">(</span><em class="sig-param">follower_uname</em>, <em class="sig-param">following_uname</em><span class="sig-paren">)</span><a class="headerlink" href="#main.follow" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is invoked when a user clicks the ‘Follow’ button on the search users page.
+:param follower_uname: username for a User object - the follower of the the ‘Follow’ transaction
+:param following_uname: username for a User object - the followee of the the ‘Follow’ transaction
+:return: redirect back to search page</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="main.forums">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">forums</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.forums" title="Permalink to this definition">¶</a></dt>
+<dd><p>View function for the forums screen. This page shows all the forum questions posted in reverse chronological order.
+:return: HTML template or redirect to forum thread</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="main.home">
 <code class="sig-prename descclassname">main.</code><code class="sig-name descname">home</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.home" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is a procedure defining the control flow on the home page of the website.
@@ -40,11 +63,40 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="main.login">
-<code class="sig-prename descclassname">main.</code><code class="sig-name descname">login</code><span class="sig-paren">(</span><em class="sig-param">form</em><span class="sig-paren">)</span><a class="headerlink" href="#main.login" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function matches inputted Login data with backend
-:param form: A FlaskForm object containing a set of inputted fields
-:return: boolean indicating whether the login was successful</p>
+<dt id="main.logout">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">logout</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.logout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ends the current user’s session and redirects to the splash screen.
+:return: redirect</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="main.make_shell_context">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">make_shell_context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.make_shell_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to pass critical application variables to a shell context for testing and debugging.
+:return: None</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="main.redirect_url">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">redirect_url</code><span class="sig-paren">(</span><em class="sig-param">default='home'</em><span class="sig-paren">)</span><a class="headerlink" href="#main.redirect_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a helper function to automatically redirect to the last URL
+:param default: The default page to redirect to
+:return: URL string</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="main.runtests">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">runtests</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.runtests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Navigating to this page signals that the test suite has begun running (writing to a file)
+:return: HTML template</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="main.search">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">search</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>View function for the user search page. This page allows a user to search all other users in the system.
+Allows for filtering by mentor/mentee status.
+:return: HTML template</p>
 </dd></dl>
 
 <dl class="function">
@@ -74,9 +126,24 @@ A form can be submitted for backend validation and processing.
 <dl class="function">
 <dt id="main.splash">
 <code class="sig-prename descclassname">main.</code><code class="sig-name descname">splash</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.splash" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is a procedure defining the control flow on the splash (default) page of the website.
-A form can be submitted for backend validation and processing.
-:return: An HTML response to the client with the HTML template parameters filled in</p>
+<dd><p>View function for the splash screen. This page is where you either log in or redirect to the sign up page.
+:return: HTML template or redirect</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="main.thread">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">thread</code><span class="sig-paren">(</span><em class="sig-param">question_id</em><span class="sig-paren">)</span><a class="headerlink" href="#main.thread" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view function represents the thread page of a forum question. Here you can post a response to the thread.
+:param question_id: The identifier for the forum question
+:return: redirect or template</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="main.update_account_handler">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">update_account_handler</code><span class="sig-paren">(</span><em class="sig-param">form</em><span class="sig-paren">)</span><a class="headerlink" href="#main.update_account_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method verifies account update information, then writes the changes to the current user object.
+:param form: The form with the posted update data
+:return: void</p>
 </dd></dl>
 
 </div>
@@ -88,7 +155,7 @@ A form can be submitted for backend validation and processing.
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Final Project</a></h1>
+<h1 class="logo"><a href="index.html">Mentino</a></h1>
 
 
 
@@ -129,10 +196,10 @@ A form can be submitted for backend validation and processing.
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019, DeRon Sutton, Jace Kline, William Starks, Chris Hardin, Rick Petzold.
+      &copy;2019, Christ Hardin, DeRon Sutton, Jace Kline, William Stark, Rick Petzold.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

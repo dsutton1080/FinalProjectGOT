@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>config module &#8212; Final Project Beta documentation</title>
+    <title>config module &#8212; Mentino Beta documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -36,7 +36,13 @@
 <dt id="config.Config">
 <em class="property">class </em><code class="sig-prename descclassname">config.</code><code class="sig-name descname">Config</code><a class="headerlink" href="#config.Config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>This class defines common global configuration options in the form of environment variables.</p>
+<p>This class defines common global configuration options of the Flask application.
+Inherits from an object type.</p>
+<dl class="attribute">
+<dt id="config.Config.ELASTICSEARCH_URL">
+<code class="sig-name descname">ELASTICSEARCH_URL</code><em class="property"> = 'http://localhost:9200'</em><a class="headerlink" href="#config.Config.ELASTICSEARCH_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="config.Config.FLASK_APP">
 <code class="sig-name descname">FLASK_APP</code><em class="property"> = 'main.py'</em><a class="headerlink" href="#config.Config.FLASK_APP" title="Permalink to this definition">¶</a></dt>
@@ -49,12 +55,17 @@
 
 <dl class="attribute">
 <dt id="config.Config.SQLALCHEMY_DATABASE_URI">
-<code class="sig-name descname">SQLALCHEMY_DATABASE_URI</code><em class="property"> = 'sqlite:///C:\\Personal\\Programming\\Python Environments\\FinalProjectGOT\\app.db'</em><a class="headerlink" href="#config.Config.SQLALCHEMY_DATABASE_URI" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">SQLALCHEMY_DATABASE_URI</code><em class="property"> = 'sqlite:////home/rick/Programming/KU/EECS448/Final Project/FinalProjectGOT/dev2.db'</em><a class="headerlink" href="#config.Config.SQLALCHEMY_DATABASE_URI" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="config.Config.SQLALCHEMY_TRACK_MODIFICATIONS">
-<code class="sig-name descname">SQLALCHEMY_TRACK_MODIFICATIONS</code><em class="property"> = False</em><a class="headerlink" href="#config.Config.SQLALCHEMY_TRACK_MODIFICATIONS" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">SQLALCHEMY_TRACK_MODIFICATIONS</code><em class="property"> = True</em><a class="headerlink" href="#config.Config.SQLALCHEMY_TRACK_MODIFICATIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="config.Config.TEST_USER_POPULATED_DB">
+<code class="sig-name descname">TEST_USER_POPULATED_DB</code><em class="property"> = True</em><a class="headerlink" href="#config.Config.TEST_USER_POPULATED_DB" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -68,7 +79,7 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Final Project</a></h1>
+<h1 class="logo"><a href="index.html">Mentino</a></h1>
 
 
 
@@ -109,10 +120,10 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019, DeRon Sutton, Jace Kline, William Starks, Chris Hardin, Rick Petzold.
+      &copy;2019, Christ Hardin, DeRon Sutton, Jace Kline, William Stark, Rick Petzold.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

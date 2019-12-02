@@ -84,5 +84,3 @@ def run():
     spawn_mock_forum_replies()
     spawn_mock_user_posts()
     spawn_mock_follows()
-
-

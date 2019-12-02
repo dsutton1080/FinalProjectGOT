@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>tests module &#8212; Mentino Beta documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-tests">
+<span id="tests-module"></span><h1>tests module<a class="headerlink" href="#module-tests" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="tests.Test">
+<em class="property">class </em><code class="sig-prename descclassname">tests.</code><code class="sig-name descname">Test</code><span class="sig-paren">(</span><em class="sig-param">description</em>, <em class="sig-param">proc</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.Test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>An encapsulation of a test function and its description</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.test_add_user">
+<code class="sig-prename descclassname">tests.</code><code class="sig-name descname">test_add_user</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_add_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests the instantiation of a User object to the database
+:return: tuple (boolean, message list)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.test_empty_post_not_allowed">
+<code class="sig-prename descclassname">tests.</code><code class="sig-name descname">test_empty_post_not_allowed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_empty_post_not_allowed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests whether empty posts are denied from being added to the database
+:return: tuple (boolean, message list)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.test_forum_posts">
+<code class="sig-prename descclassname">tests.</code><code class="sig-name descname">test_forum_posts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_forum_posts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests whether forum posts are properly added and referenced
+:return: tuple (boolean, message list)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.test_forum_questions">
+<code class="sig-prename descclassname">tests.</code><code class="sig-name descname">test_forum_questions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_forum_questions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests whether forum questions are properly added and referenced
+:return: tuple (boolean, message list)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.test_non_completed_user_not_in_db">
+<code class="sig-prename descclassname">tests.</code><code class="sig-name descname">test_non_completed_user_not_in_db</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_non_completed_user_not_in_db" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests whether a User object with incomplete parameters is denied from database
+:return: tuple (boolean, message list)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.test_password_verification">
+<code class="sig-prename descclassname">tests.</code><code class="sig-name descname">test_password_verification</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_password_verification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests the password verification method
+:return: tuple (boolean, message list)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.test_search_query">
+<code class="sig-prename descclassname">tests.</code><code class="sig-name descname">test_search_query</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_search_query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests the user search query method to determine whether the change of filter criteria works properly
+:return: tuple (boolean, message list)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.test_search_query2">
+<code class="sig-prename descclassname">tests.</code><code class="sig-name descname">test_search_query2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_search_query2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests whether a user can be found by entering either first or last name
+:return: tuple (boolean, message list)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.test_unique_email">
+<code class="sig-prename descclassname">tests.</code><code class="sig-name descname">test_unique_email</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unique_email" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests whether only unique email addresses are allowed
+:return: tuple (boolean, message list)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.test_unique_username">
+<code class="sig-prename descclassname">tests.</code><code class="sig-name descname">test_unique_username</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_unique_username" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests whether only unique usernames are allowed
+:return: tuple (boolean, message list)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.test_user_posts">
+<code class="sig-prename descclassname">tests.</code><code class="sig-name descname">test_user_posts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_user_posts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests whether user post objects are properly added and referenced
+:return: tuple (boolean, message list)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.tester">
+<code class="sig-prename descclassname">tests.</code><code class="sig-name descname">tester</code><span class="sig-paren">(</span><em class="sig-param">test_obj</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.tester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a test object, displays its description, and runs the test
+:param test_obj: a Test object
+:return: void</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.write_output">
+<code class="sig-prename descclassname">tests.</code><code class="sig-name descname">write_output</code><span class="sig-paren">(</span><em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.write_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes test output lines to the defined file
+:param msg: the string to write
+:return: void</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Mentino</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Christ Hardin, DeRon Sutton, Jace Kline, William Stark, Rick Petzold.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/tests.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
