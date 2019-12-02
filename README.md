@@ -1,4 +1,6 @@
-# GameOfThreads Project 3 - Mentor/Mentee Website
+# GameOfThreads Project 4 - Mentor/Mentee Website
+
+## Project Name: Mentortee
 
 ## Project Description:
 A mentor/mentee website to be used between high school and college students for mentorship and college advice. The final version plans to include user posts, followers, friends, forums, and messaging amongst college mentors and high school students looking for college advice.
