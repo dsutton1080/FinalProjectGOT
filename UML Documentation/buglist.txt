@@ -1,0 +1,54 @@
+BugList
+
+Splash Page
+    -Wallpaper begins to distort at larger resolutions
+    -The text size isn't dynamic to the size/resolution of the display
+    -The ability to sign in is lost when the horizontal size of the page
+        shrinks past a certain aspect, basically the form disappears from
+        the page
+
+Sign in
+    -Doesn't display a warning saying that the username and/or password
+        was incorrect
+    -Works correctly when the username and password are correct
+
+Register Now Page
+    -Signup validation makes sure the user enters a valid email but doesn't
+        prompt them the reason they can't sign up is that they entered an
+        invalid email, missing invalid email prompt
+    -Signup validation doesn't check to see if the first name and last name
+        are actual names, users can enter in numbers or special characters
+        as their name.
+    -Signup validation doesn't check to see if the user entered in a valid
+        school.
+
+Home Page
+    -When user has no friends, the right column appears as if it has no content in it, It
+        should have a title saying friends list above
+    -When user has not friends, thus having no post feed, the middle column will appear as
+        if it has no content, there should be a title saying User feed
+    -When the screen is shrunk to mobile dimensions, the profile images become far too big,
+        the profile images aren't adaptive/responsive to aspect ratio changes.
+    -If you log in incorrectly on the splash screen, the notification that your username
+        or password was incorrect displays on the the homepage when it shouldn't
+    -Certain medium aspect ratios can cause the friends list to dissapear to the bottom of
+        screen
+
+Test Suite Page
+    -No issues, works correctly
+
+Forums Page
+    -No issues, works correctly
+
+Forum Questions Page
+    -No issues, works correctly
+
+Search People Page
+    -No issues, works correctly
+
+Account Page
+    -No issues, works correctly
+
+Log Out
+    -No issues, works correctly
+
