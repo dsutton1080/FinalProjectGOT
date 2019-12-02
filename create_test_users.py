@@ -13,8 +13,7 @@ def spawn_mock_users():
                     school='School' + str(i), 
                     grade=fst(GRADE_LEVELS[i-1]), 
                     state=STATE_ABBREVS[i-1])
-        db.session.add(u)
-    db.session.commit()
+        add_user(u)
 
 def spawn_mock_forum_questions():
     for i in range(1, 9):

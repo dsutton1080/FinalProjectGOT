@@ -32,7 +32,9 @@ app.jinja_env.globals.update(is_following=is_following)
 
 @app.shell_context_processor
 def make_shell_context():
-    return {'db': db,
+    return {'curs': curs,
+            'conn': conn,
+            'db': db,
             'app': app,
             'User': User,
             'ForumQuestion': ForumQuestion,
@@ -133,13 +135,9 @@ def runtests():
 @app.route('/search',methods=['GET', 'POST'])
 def search():
     form = SearchForm()
-    results = []
     if form.validate_on_submit():
-        results = get_search_results(form.filt.data, form.text.data)
-        if results == []:
-            flash("The query returned no results.")
-            redirect('search')
-    return render_template('search.html', form=form, results=results)
+        pass
+    return render_template('search.html', form=form, results=get_search_results(form.filt.data, form.text.data))
 
 @app.route('/follow/<follower>/<following>')
 def follow(follower, following):
@@ -183,10 +181,8 @@ def signup_handler(form):
                     username=username, password=password,
                     email=email, state=state, grade=grade,
                     school=school)
-    db.session.add(new_user)
-    db.session.commit()
+    add_user(new_user)
     return new_user
-
 
 def signup_not_empty(form):
     """

@@ -14,7 +14,7 @@
       <div class= "mar-top">
 
 
-        <div class="col-sm-12" align="center"> <h3>Search other users!</h3><br></div>
+        <div class="col-sm-12" align="center"> <h3>Search Users</h3><br></div>
 
         <form method="post" action="" novalidate>
             <div class="input-group mb-3">
@@ -28,18 +28,16 @@
             </div>
         </form>
         <div id="results">
-          {% if results %}
           {% for u in results %}
           <div class="chat dark">
               <img src="{{ url_for('static', filename='mentee.jpg' if is_mentee(u) else 'mentor.jpg') }}" alt="Avatar">
               <p>{{ u.first_name }} {{ u.last_name }}</p>
               <p>@{{ u.username }}</p>
               {% if not is_following(current_user, u) %}
-              <a href="{{ url_for('follow', current_user, u) }}"><input type="button" value="Follow"></a>
+              <a href="{{ url_for('follow', follower=current_user, following=u) }}"><input type="button" value="Follow"></a>
               {% endif %}
             </div>
           {% endfor %}
-          {% endif %}
         </div>
       </div>
     </div>

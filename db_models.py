@@ -105,6 +105,8 @@ def load_user(user_id):
 
 def create_db_models():
     db.create_all()
+    db.engine.execute("DROP TABLE IF EXISTS usersfts")
+    db.engine.execute("CREATE VIRTUAL TABLE usersfts USING FTS5(username, first_name, last_name, email, school, state)")
     db.session.commit()
 
 create_db_models()

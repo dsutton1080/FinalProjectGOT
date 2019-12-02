@@ -2,8 +2,19 @@ from datetime import datetime
 from constants import GRADE_LEVELS, STATE_ABBREVS, STATE_NAMES
 from init import app, db
 from db_models import User, UserPost, ForumQuestion, ForumPost, Message, Follow
+from db_setup import conn
 
 MENTOR_GRADES = ['col_fresh', 'col_soph', 'col_jun', 'col_sen']
+
+def add_user(u):
+    db.session.add(u)
+    db.session.commit()
+    db.engine.execute("INSERT INTO usersfts(username, first_name, last_name, email, school, state) VALUES ('{}', '{}', '{}', '{}', '{}', '{}')".format(u.username, u.first_name, u.last_name, str(u.email), u.school, u.state))
+
+def delete_user(u):
+    db.engine.execute("DELETE FROM usersfts WHERE username='{}'".format(u.username))
+    db.session.delete(u)
+    db.session.commit()
 
 def grade_level_string(grLvlCode):
     for lvl in GRADE_LEVELS:
@@ -107,17 +118,25 @@ def add_user_post(uname, content):
 def id_to_forum_question(question_id):
     return ForumQuestion.query.get(question_id)
 
-# def get_search_results(filt, text):
-#     users = list(User.query.all())
-#     if filt == 'mentor':
-#         return list(search_results(text, list(filter(is_mentor, users))))
-#     elif filt == 'mentee':
-#         return list(search_results(text, list(filter(is_mentee, users))))
-#     else:
-#         return list(search_results(text, users))
+def get_search_results(filt, text):
+    cursor = []
+    try:
+        cursor = db.engine.execute("SELECT * FROM usersfts WHERE usersfts MATCH '{}*' ORDER BY rank".format(text))
+    except:
+        return []
+    usernames = list(map(lambda obj: obj[0], list(cursor)))
+    users = list(map(get_user_by_username, usernames))
 
-# def search_results(text, searchlist):
-#     pass
+    if filt == 'mentor':
+        return list(filter(is_mentor, users))
+    elif filt == 'mentee':
+        return list(filter(is_mentee, users))
+    else:
+        return users
+    
+    
+
+
 
 def is_following(follower, following):
     return len(list(Follow.query.filter_by(follower_username = follower.username).filter_by(following_username = following.username))) == 1
