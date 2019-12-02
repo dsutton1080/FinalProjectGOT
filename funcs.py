@@ -134,9 +134,6 @@ def get_search_results(filt, text):
     else:
         return users
     
-    
-
-
 
 def is_following(follower, following):
     return len(list(Follow.query.filter_by(follower_username = follower.username).filter_by(following_username = following.username))) == 1

@@ -33,8 +33,12 @@
               <img src="{{ url_for('static', filename='mentee.jpg' if is_mentee(u) else 'mentor.jpg') }}" alt="Avatar">
               <p>{{ u.first_name }} {{ u.last_name }}</p>
               <p>@{{ u.username }}</p>
-              {% if not is_following(current_user, u) %}
-              <a href="{{ url_for('follow', follower=current_user, following=u) }}"><input type="button" value="Follow"></a>
+              {% if u.username == current_user.username %}
+              <p><b>You are this user.</b></p>
+              {% elif not is_following(current_user, u) %}
+              <a href="{{ url_for('follow', follower_uname=current_user.username, following_uname=u.username) }}"><input type="button" value="Follow"></a>
+              {% else %}
+              <p><b>You are following this user.</b></p>
               {% endif %}
             </div>
           {% endfor %}
@@ -48,24 +52,3 @@
   </div>
 </div>
 {% endblock %}
-
-
-<!--
-
-- My vision was when mentee/mentor is selected, name is typed, then when submitted is pressed
-  it will show all people with the same "characters"? that is searched
-- ex: Typed: "bob" -> Bob, Bobby, Bobbison ; will all pop up
-- Im having trouble getting it to detect the dropdown
-- I am leaving all my code for you to look at
-- You can probably get rid of the id=results,
-  I know with normal html when you href="search.html#results" it will send to the results id (line 30)
-  , but it didnt doesnt really work with our site
-
-Code I affected (lines might not be the same once I push)
--  main.py line85-111
-- forms.py line68-75
-- db_models.py line101-105
-
-for main.py, I was trying to get stuff to work using queries but it wasnt going to plan
-- also imported request and SearchForm
--->

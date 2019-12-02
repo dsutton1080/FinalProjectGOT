@@ -2,7 +2,7 @@ import os
 
 from config import basedir
 from init import app, db
-from db_models import *
+from db_models import User, UserPost, ForumQuestion, ForumPost, Follow
 from funcs import *
 
 OUT_FILE_PATH = 'tests_output.txt'
@@ -233,6 +233,42 @@ def test_non_completed_user_not_in_db():
         return (False, messages)
     return (True, messages)
 
+def test_search_query():
+    messages = []
+    messages.append("Creating indexed table structure with many users")
+    try:
+        messages.append("Ensuring that searching with character 'J' (all users) yields 5 hits")
+        assert len(get_search_results('all', 'J')) == 5
+    except:
+        messages.append("Query failed")
+        return (False, messages)
+    try:
+        messages.append("Ensuring that searching character 'J' (mentees) yields 1 hit")
+        assert len(get_search_results('mentee', 'J')) == 1
+    except:
+        messages.append("Query failed")
+        return (False, messages)
+    try:
+        messages.append("Ensuring that searching character 'J' (mentorss) yields 4 hits")
+        assert len(get_search_results('mentor', 'J')) == 4
+    except:
+        messages.append("Query failed")
+        return (False, messages)
+    return (True, messages)
+
+def test_search_query2():
+    messages = []
+    messages.append("Creating indexed table structure with many users")
+    try:
+        messages.append("Ensuring that searching a first name yields a search match")
+        assert len(get_search_results('all', 'John')) == 1
+        messages.append("Ensuring that searching a last name yields a search match")
+        assert len(get_search_results('all', 'Thomsen')) == 1
+    except:
+        messages.append("Query failed")
+        return (False, messages)
+    return (True, messages)
+
 db_tests = [
     Test(
         description = "Testing whether a User can be added to the Database in a predictable manner",
@@ -272,7 +308,16 @@ db_tests = [
     )
 ]
 
-func_tests = []
+func_tests = [
+    Test(
+        description = "Testing whether filter parameter changes search query correctly",
+        proc = test_search_query
+    ),
+    Test(
+        description = "Testing whether a user can be searched by both first and last name",
+        proc = test_search_query2
+    )
+]
 
 if __name__ == "__main__":   
     def test_db():
@@ -285,7 +330,7 @@ if __name__ == "__main__":
         db.session.commit()
         for test in db_tests:
             clear_all_tables()
-            write_output("Database Test " + str(i) + "\n----------")
+            write_output("Database Schema Test " + str(i) + "\n----------")
             tester(test)
             i += 1
     
@@ -296,11 +341,13 @@ if __name__ == "__main__":
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
         test_app = app.test_client()
         db.create_all()
+        db.engine.execute("DROP TABLE IF EXISTS usersfts")
+        db.engine.execute("CREATE VIRTUAL TABLE usersfts USING FTS5(username, first_name, last_name, email, school, state)")
         db.session.commit()
         from create_test_users import run
         run()
         for test in func_tests:
-            write_output("Database Test " + str(i) + "\n----------")
+            write_output("Search Query Test " + str(i) + "\n----------")
             tester(test)
             i += 1
 

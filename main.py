@@ -134,15 +134,15 @@ def runtests():
 
 @app.route('/search',methods=['GET', 'POST'])
 def search():
-    form = SearchForm()
+    form = SearchForm(filt='all')
     if form.validate_on_submit():
         pass
     return render_template('search.html', form=form, results=get_search_results(form.filt.data, form.text.data))
 
-@app.route('/follow/<follower>/<following>')
-def follow(follower, following):
-    if is_valid_user(follower) and is_valid_user(following) and follower != following:
-        f = Follow(follower_username=follower.username, following_username=following.username)
+@app.route('/follow/<follower_uname>/<following_uname>')
+def follow(follower_uname, following_uname):
+    if is_valid_user(get_user_by_username(follower_uname)) and is_valid_user(get_user_by_username(following_uname)) and follower_uname != following_uname:
+        f = Follow(follower_username=follower_uname, following_username=following_uname)
         db.session.add(f)
         db.session.commit()
     return redirect(redirect_url())
